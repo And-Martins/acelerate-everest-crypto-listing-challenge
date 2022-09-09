@@ -14,7 +14,7 @@ class _WalletScreenState extends State<WalletScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 35.0),
+        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 55.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -23,7 +23,7 @@ class _WalletScreenState extends State<WalletScreen> {
                 Text(
                   "Carteira",
                   style: GoogleFonts.montserrat(
-                      fontSize: 35, fontWeight: FontWeight.w700),
+                      fontSize: 32, fontWeight: FontWeight.w800),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 197),
@@ -40,23 +40,60 @@ class _WalletScreenState extends State<WalletScreen> {
                 ),
               ],
             ),
-            Stack(
-              children: [
-                Text(
-                  'US\$ 1.000,00',
-                  style: GoogleFonts.montserrat(
-                      fontSize: 35, fontWeight: FontWeight.w700),
-                ),
-                Visibility(
-                  visible: hideWallet,
-                  child: Container(
-                    color: Colors.grey,
-                    width: MediaQuery.of(context).size.width - 100,
-                    height: MediaQuery.of(context).size.height - 642,
+            Visibility(
+              visible: hideWallet,
+              replacement: Text(
+                'US\$ 1.000,00',
+                style: GoogleFonts.montserrat(
+                    fontSize: 32, fontWeight: FontWeight.w800),
+              ),
+              child: Container(
+                color: Colors.grey,
+                width: MediaQuery.of(context).size.width - 100,
+                height: MediaQuery.of(context).size.height - 642,
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height - 197,
+              width: MediaQuery.of(context).size.width,
+              child: ListView(
+                children: [
+                  ListTile(
+                    leading: const CircleAvatar(),
+                    title: Text("ETC",
+                        style: GoogleFonts.sourceSansPro(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 20,
+                        )),
+                    subtitle: Text("Etherium",
+                        style: GoogleFonts.sourceSansPro(fontSize: 15)),
+                    trailing: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          "US\$ 0,00",
+                          style: GoogleFonts.sourceSansPro(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        Container(
+                          height: 20,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(25),
+                            color: const Color.fromRGBO(160, 244, 224, 1),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 7.0, vertical: 3.0),
+                          child: Text("+75%",
+                              style: GoogleFonts.sourceSansPro(fontSize: 12)),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            )
+                ],
+              ),
+            ),
           ],
         ),
       ),
