@@ -2,6 +2,7 @@ import 'package:crypto_listing/utils/asset.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 import 'widgets/cripto_item.dart';
 
@@ -15,6 +16,7 @@ class WalletScreen extends StatefulWidget {
 class _WalletScreenState extends State<WalletScreen> {
   bool hideWallet = true;
   int _selectedIndex = 0;
+  var format = NumberFormat('#,###.00#', 'pt_BR');
 
   void _onItemTapped(int index) {
     setState(() {
@@ -57,7 +59,7 @@ class _WalletScreenState extends State<WalletScreen> {
             Visibility(
               visible: hideWallet,
               replacement: Text(
-                'R\$ 14.798,00',
+                'R\$ ${format.format(14798.00)}',
                 style: GoogleFonts.montserrat(
                     fontSize: 32, fontWeight: FontWeight.w800),
               ),
