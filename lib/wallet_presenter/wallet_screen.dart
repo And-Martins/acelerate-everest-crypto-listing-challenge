@@ -17,9 +17,11 @@ class _WalletScreenState extends State<WalletScreen> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    setState(
+      () {
+        _selectedIndex = index;
+      },
+    );
   }
 
   @override
@@ -31,6 +33,7 @@ class _WalletScreenState extends State<WalletScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   "Cripto",
@@ -40,7 +43,7 @@ class _WalletScreenState extends State<WalletScreen> {
                       color: const Color.fromRGBO(224, 43, 87, 1)),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 230),
+                  padding: const EdgeInsets.only(right: 15),
                   child: IconButton(
                     onPressed: () {
                       hideWallet
@@ -63,8 +66,8 @@ class _WalletScreenState extends State<WalletScreen> {
               ),
               child: Container(
                 color: Colors.grey,
-                width: MediaQuery.of(context).size.width - 100,
-                height: MediaQuery.of(context).size.height - 644.3,
+                width: 305,
+                height: 39,
               ),
             ),
             Text(

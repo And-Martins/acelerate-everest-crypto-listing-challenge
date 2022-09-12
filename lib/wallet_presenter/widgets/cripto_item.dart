@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
-class CriptoItem extends StatelessWidget {
+class CriptoItem extends StatefulWidget {
   final String abbreviation;
   final String name;
   final double valueReais;
   final double valueCripto;
   final String image;
 
-  CriptoItem({
+  const CriptoItem({
     Key? key,
     required this.abbreviation,
     required this.name,
@@ -21,6 +21,11 @@ class CriptoItem extends StatelessWidget {
 
   final bool hideWallet;
 
+  @override
+  State<CriptoItem> createState() => _CriptoItemState();
+}
+
+class _CriptoItemState extends State<CriptoItem> {
   var format = NumberFormat('#,###.00#', 'pt_BR');
 
   @override
@@ -32,16 +37,16 @@ class CriptoItem extends StatelessWidget {
         ),
         ListTile(
           onTap: () {},
-          leading: CircleAvatar(backgroundImage: AssetImage(image)),
+          leading: CircleAvatar(backgroundImage: AssetImage(widget.image)),
           title: Text(
-            abbreviation,
+            widget.abbreviation,
             style: GoogleFonts.sourceSansPro(
               fontWeight: FontWeight.w500,
               fontSize: 20,
             ),
           ),
           subtitle: Text(
-            name,
+            widget.name,
             style: GoogleFonts.sourceSansPro(
               fontSize: 15,
               color: const Color.fromRGBO(117, 118, 128, 1),
@@ -55,9 +60,9 @@ class CriptoItem extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Visibility(
-                      visible: hideWallet,
+                      visible: widget.hideWallet,
                       replacement: Text(
-                        "R\$ ${format.format(valueReais)}",
+                        "R\$ ${format.format(widget.valueReais)}",
                         style: GoogleFonts.sourceSansPro(
                           fontSize: 19,
                           fontWeight: FontWeight.w400,
@@ -77,9 +82,9 @@ class CriptoItem extends StatelessWidget {
                 ),
               ),
               Visibility(
-                visible: hideWallet,
+                visible: widget.hideWallet,
                 replacement: Text(
-                  "$valueCripto $abbreviation",
+                  "${widget.valueCripto} ${widget.abbreviation}",
                   style: GoogleFonts.sourceSansPro(
                     fontSize: 15,
                     color: const Color.fromRGBO(117, 118, 128, 1),
