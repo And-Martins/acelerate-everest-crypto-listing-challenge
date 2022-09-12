@@ -1,9 +1,12 @@
-import 'package:crypto_listing/utils/asset.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+import 'package:crypto_listing/utils/asset.dart';
 
 import 'widgets/cripto_item.dart';
+import 'widgets/message_wallet.dart';
+import 'widgets/title_wallet.dart';
+import 'widgets/total_value.dart';
 
 class WalletScreen extends StatefulWidget {
   const WalletScreen({Key? key}) : super(key: key);
@@ -35,13 +38,7 @@ class _WalletScreenState extends State<WalletScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Cripto",
-                  style: GoogleFonts.montserrat(
-                      fontSize: 32,
-                      fontWeight: FontWeight.w800,
-                      color: const Color.fromRGBO(224, 43, 87, 1)),
-                ),
+                const TitleWallet('Cripto'),
                 Padding(
                   padding: const EdgeInsets.only(right: 15),
                   child: IconButton(
@@ -57,57 +54,39 @@ class _WalletScreenState extends State<WalletScreen> {
                 ),
               ],
             ),
-            Visibility(
-              visible: hideWallet,
-              replacement: Text(
-                'R\$ 14.798,00',
-                style: GoogleFonts.montserrat(
-                    fontSize: 32, fontWeight: FontWeight.w800),
-              ),
-              child: Container(
-                color: Colors.grey,
-                width: 305,
-                height: 39,
-              ),
+            TotalValue(
+              hideWallet: hideWallet,
+              totalReais: 14798.00,
             ),
-            Text(
-              "Valor total de moedas",
-              style: GoogleFonts.montserrat(
-                fontSize: 17,
-                color: const Color.fromRGBO(117, 118, 128, 1),
-                fontWeight: FontWeight.w400,
-              ),
-            ),
+            const MessageWallet('Valor total de moedas'),
             Expanded(
-              child: SizedBox(
-                child: ListView(
-                  children: [
-                    CriptoItem(
-                      abbreviation: 'BTC',
-                      name: 'Bitcoin',
-                      valueReais: 6557.0,
-                      valueCripto: 0.65,
-                      image: btc,
-                      hideWallet: hideWallet,
-                    ),
-                    CriptoItem(
-                      abbreviation: 'ETC',
-                      name: 'Ethereum',
-                      valueReais: 7996.00,
-                      valueCripto: 0.94,
-                      image: eth,
-                      hideWallet: hideWallet,
-                    ),
-                    CriptoItem(
-                      abbreviation: 'LTC',
-                      name: 'Litecoin',
-                      valueReais: 245.00,
-                      valueCripto: 0.82,
-                      image: ltc,
-                      hideWallet: hideWallet,
-                    ),
-                  ],
-                ),
+              child: ListView(
+                children: [
+                  CriptoItem(
+                    abbreviation: 'BTC',
+                    name: 'Bitcoin',
+                    valueReais: 6557.0,
+                    valueCripto: 0.65,
+                    image: btc,
+                    hideWallet: hideWallet,
+                  ),
+                  CriptoItem(
+                    abbreviation: 'ETC',
+                    name: 'Ethereum',
+                    valueReais: 7996.00,
+                    valueCripto: 0.94,
+                    image: eth,
+                    hideWallet: hideWallet,
+                  ),
+                  CriptoItem(
+                    abbreviation: 'LTC',
+                    name: 'Litecoin',
+                    valueReais: 245.00,
+                    valueCripto: 0.82,
+                    image: ltc,
+                    hideWallet: hideWallet,
+                  ),
+                ],
               ),
             ),
           ],

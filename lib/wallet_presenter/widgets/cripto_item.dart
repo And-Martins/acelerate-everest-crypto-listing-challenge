@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
+import '../../cripto_details/detail_screen.dart';
+
 class CriptoItem extends StatefulWidget {
   final String abbreviation;
   final String name;
@@ -36,7 +38,15 @@ class _CriptoItemState extends State<CriptoItem> {
           thickness: 1,
         ),
         ListTile(
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return const DetailScreen();
+                },
+              ),
+            );
+          },
           leading: CircleAvatar(backgroundImage: AssetImage(widget.image)),
           title: Text(
             widget.abbreviation,
