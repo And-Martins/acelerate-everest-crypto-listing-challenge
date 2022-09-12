@@ -43,13 +43,13 @@ class _WalletScreenState extends State<WalletScreen> {
                   padding: const EdgeInsets.only(left: 230),
                   child: IconButton(
                     onPressed: () {
-                      if (hideWallet) {
-                        setState(() => hideWallet = false);
-                      } else {
-                        setState(() => hideWallet = true);
-                      }
+                      hideWallet
+                          ? setState(() => hideWallet = false)
+                          : setState(() => hideWallet = true);
                     },
-                    icon: const Icon(Icons.remove_red_eye),
+                    icon: hideWallet
+                        ? const Icon(Icons.remove_red_eye_outlined)
+                        : const Icon(Icons.remove_red_eye),
                   ),
                 ),
               ],
