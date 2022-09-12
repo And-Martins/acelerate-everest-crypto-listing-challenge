@@ -19,9 +19,11 @@ class _WalletScreenState extends State<WalletScreen> {
   var format = NumberFormat('#,###.00#', 'pt_BR');
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    setState(
+      () {
+        _selectedIndex = index;
+      },
+    );
   }
 
   @override
@@ -33,6 +35,7 @@ class _WalletScreenState extends State<WalletScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   "Cripto",
@@ -42,16 +45,16 @@ class _WalletScreenState extends State<WalletScreen> {
                       color: const Color.fromRGBO(224, 43, 87, 1)),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 230),
+                  padding: const EdgeInsets.only(right: 15),
                   child: IconButton(
                     onPressed: () {
-                      if (hideWallet) {
-                        setState(() => hideWallet = false);
-                      } else {
-                        setState(() => hideWallet = true);
-                      }
+                      hideWallet
+                          ? setState(() => hideWallet = false)
+                          : setState(() => hideWallet = true);
                     },
-                    icon: const Icon(Icons.remove_red_eye),
+                    icon: hideWallet
+                        ? const Icon(Icons.remove_red_eye_outlined)
+                        : const Icon(Icons.remove_red_eye),
                   ),
                 ),
               ],
@@ -65,8 +68,8 @@ class _WalletScreenState extends State<WalletScreen> {
               ),
               child: Container(
                 color: Colors.grey,
-                width: MediaQuery.of(context).size.width - 100,
-                height: MediaQuery.of(context).size.height - 644.3,
+                width: 305,
+                height: 39,
               ),
             ),
             Text(
@@ -81,7 +84,6 @@ class _WalletScreenState extends State<WalletScreen> {
               child: SizedBox(
                 child: ListView(
                   children: [
-                    const Divider(),
                     CriptoItem(
                       abbreviation: 'BTC',
                       name: 'Bitcoin',
