@@ -1,5 +1,9 @@
+import 'package:crypto_listing/utils/asset.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'widgets/cripto_item.dart';
 
 class WalletScreen extends StatefulWidget {
   const WalletScreen({Key? key}) : super(key: key);
@@ -10,23 +14,33 @@ class WalletScreen extends StatefulWidget {
 
 class _WalletScreenState extends State<WalletScreen> {
   bool hideWallet = true;
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 55.0),
+        padding: const EdgeInsets.only(right: 10.0, left: 10.0, top: 50),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
                 Text(
-                  "Carteira",
+                  "Cripto",
                   style: GoogleFonts.montserrat(
-                      fontSize: 32, fontWeight: FontWeight.w800),
+                      fontSize: 32,
+                      fontWeight: FontWeight.w800,
+                      color: const Color.fromRGBO(224, 43, 87, 1)),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 197),
+                  padding: const EdgeInsets.only(left: 230),
                   child: IconButton(
                     onPressed: () {
                       if (hideWallet) {
@@ -43,59 +57,82 @@ class _WalletScreenState extends State<WalletScreen> {
             Visibility(
               visible: hideWallet,
               replacement: Text(
-                'US\$ 1.000,00',
+                'R\$ 14.798,00',
                 style: GoogleFonts.montserrat(
                     fontSize: 32, fontWeight: FontWeight.w800),
               ),
               child: Container(
                 color: Colors.grey,
                 width: MediaQuery.of(context).size.width - 100,
-                height: MediaQuery.of(context).size.height - 642,
+                height: MediaQuery.of(context).size.height - 644.3,
               ),
             ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height - 197,
-              width: MediaQuery.of(context).size.width,
-              child: ListView(
-                children: [
-                  ListTile(
-                    leading: const CircleAvatar(),
-                    title: Text("ETC",
-                        style: GoogleFonts.sourceSansPro(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 20,
-                        )),
-                    subtitle: Text("Etherium",
-                        style: GoogleFonts.sourceSansPro(fontSize: 15)),
-                    trailing: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          "US\$ 0,00",
-                          style: GoogleFonts.sourceSansPro(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        Container(
-                          height: 20,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(25),
-                            color: const Color.fromRGBO(160, 244, 224, 1),
-                          ),
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 7.0, vertical: 3.0),
-                          child: Text("+75%",
-                              style: GoogleFonts.sourceSansPro(fontSize: 12)),
-                        ),
-                      ],
+            Text(
+              "Valor total de moedas",
+              style: GoogleFonts.montserrat(
+                fontSize: 17,
+                color: const Color.fromRGBO(117, 118, 128, 1),
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+            Expanded(
+              child: SizedBox(
+                child: ListView(
+                  children: [
+                    const Divider(),
+                    CriptoItem(
+                      abbreviation: 'BTC',
+                      name: 'Bitcoin',
+                      valueReais: 6557.0,
+                      valueCripto: 0.65,
+                      image: btc,
+                      hideWallet: hideWallet,
                     ),
-                  ),
-                ],
+                    CriptoItem(
+                      abbreviation: 'ETC',
+                      name: 'Ethereum',
+                      valueReais: 7996.00,
+                      valueCripto: 0.94,
+                      image: eth,
+                      hideWallet: hideWallet,
+                    ),
+                    CriptoItem(
+                      abbreviation: 'LTC',
+                      name: 'Litecoin',
+                      valueReais: 245.00,
+                      valueCripto: 0.82,
+                      image: ltc,
+                      hideWallet: hideWallet,
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              portifolioIcon,
+              color: Colors.grey,
+            ),
+            activeIcon: SvgPicture.asset(portifolioIcon),
+            label: 'Portifólio',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              movimentacoesIcon,
+              color: Colors.grey,
+            ),
+            activeIcon: SvgPicture.asset(movimentacoesIcon),
+            label: 'Movimentações',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: _onItemTapped,
       ),
     );
   }
