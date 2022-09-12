@@ -88,6 +88,7 @@ class _WalletScreenState extends State<WalletScreen> {
                       image: btc,
                       hideWallet: hideWallet,
                     ),
+                    const Divider(),
                     CriptoItem(
                       abbreviation: 'ETC',
                       name: 'Ethereum',
@@ -96,6 +97,7 @@ class _WalletScreenState extends State<WalletScreen> {
                       image: eth,
                       hideWallet: hideWallet,
                     ),
+                    const Divider(),
                     CriptoItem(
                       abbreviation: 'LTC',
                       name: 'Litecoin',

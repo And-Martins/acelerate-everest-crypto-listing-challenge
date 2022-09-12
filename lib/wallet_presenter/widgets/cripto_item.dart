@@ -26,6 +26,7 @@ class CriptoItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: () {},
       leading: CircleAvatar(backgroundImage: AssetImage(image)),
       title: Text(
         abbreviation,
