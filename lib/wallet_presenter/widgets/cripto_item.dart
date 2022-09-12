@@ -25,70 +25,77 @@ class CriptoItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      onTap: () {},
-      leading: CircleAvatar(backgroundImage: AssetImage(image)),
-      title: Text(
-        abbreviation,
-        style: GoogleFonts.sourceSansPro(
-          fontWeight: FontWeight.w500,
-          fontSize: 20,
+    return Column(
+      children: [
+        const Divider(
+          thickness: 1,
         ),
-      ),
-      subtitle: Text(
-        name,
-        style: GoogleFonts.sourceSansPro(
-          fontSize: 15,
-          color: const Color.fromRGBO(117, 118, 128, 1),
-        ),
-      ),
-      trailing: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Expanded(
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Visibility(
-                  visible: hideWallet,
-                  replacement: Text(
-                    "R\$ ${format.format(valueReais)}",
-                    style: GoogleFonts.sourceSansPro(
-                      fontSize: 19,
-                      fontWeight: FontWeight.w400,
+        ListTile(
+          onTap: () {},
+          leading: CircleAvatar(backgroundImage: AssetImage(image)),
+          title: Text(
+            abbreviation,
+            style: GoogleFonts.sourceSansPro(
+              fontWeight: FontWeight.w500,
+              fontSize: 20,
+            ),
+          ),
+          subtitle: Text(
+            name,
+            style: GoogleFonts.sourceSansPro(
+              fontSize: 15,
+              color: const Color.fromRGBO(117, 118, 128, 1),
+            ),
+          ),
+          trailing: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Expanded(
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Visibility(
+                      visible: hideWallet,
+                      replacement: Text(
+                        "R\$ ${format.format(valueReais)}",
+                        style: GoogleFonts.sourceSansPro(
+                          fontSize: 19,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      child: Container(
+                        color: Colors.grey,
+                        width: MediaQuery.of(context).size.width - 320.5,
+                        height: 13,
+                      ),
                     ),
-                  ),
-                  child: Container(
-                    color: Colors.grey,
-                    width: MediaQuery.of(context).size.width - 320.5,
-                    height: 13,
+                    const Icon(
+                      Icons.keyboard_arrow_right_outlined,
+                      size: 30,
+                    )
+                  ],
+                ),
+              ),
+              Visibility(
+                visible: hideWallet,
+                replacement: Text(
+                  "$valueCripto $abbreviation",
+                  style: GoogleFonts.sourceSansPro(
+                    fontSize: 15,
+                    color: const Color.fromRGBO(117, 118, 128, 1),
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
-                const Icon(
-                  Icons.keyboard_arrow_right_outlined,
-                  size: 30,
-                )
-              ],
-            ),
-          ),
-          Visibility(
-            visible: hideWallet,
-            replacement: Text(
-              "$valueCripto $abbreviation",
-              style: GoogleFonts.sourceSansPro(
-                fontSize: 15,
-                color: const Color.fromRGBO(117, 118, 128, 1),
-                fontWeight: FontWeight.w400,
+                child: Container(
+                  color: Colors.grey,
+                  width: MediaQuery.of(context).size.width - 355.5,
+                  height: 18.8,
+                ),
               ),
-            ),
-            child: Container(
-              color: Colors.grey,
-              width: MediaQuery.of(context).size.width - 355.5,
-              height: 18.8,
-            ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
