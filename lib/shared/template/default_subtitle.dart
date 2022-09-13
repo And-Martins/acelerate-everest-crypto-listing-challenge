@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SubtitleWallet extends StatelessWidget {
+class DefaultSubtitle extends StatelessWidget {
   final String message;
-  const SubtitleWallet(
+  const DefaultSubtitle(
     this.message, {
     Key? key,
   }) : super(key: key);

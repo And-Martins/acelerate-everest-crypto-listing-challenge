@@ -1,3 +1,4 @@
+import 'package:crypto_listing/shared/template/default_subtitle.dart';
 import 'package:crypto_listing/shared/template/default_title.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -16,16 +17,20 @@ class DetailScreen extends StatefulHookConsumerWidget {
 class _DetailScreenState extends ConsumerState<DetailScreen> {
   @override
   Widget build(BuildContext context) {
-    final String criptoName = ref.watch(criptoNameProvides);
+    final String criptoName = ref.watch(criptoNameProvider);
+    final String criptoAbrev = ref.watch(criptoAbrevProvider);
+    final String criptoImage = ref.watch(criptoImageProvider);
 
     return Scaffold(
       appBar: AppBar(
+        shadowColor: Colors.white,
+        elevation: 1,
         title: Text(
           "Detalhes",
           style: GoogleFonts.sourceSansPro(
-            fontSize: 19,
+            fontSize: 23,
             color: Colors.black,
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.w600,
           ),
         ),
         backgroundColor: Colors.white,
@@ -36,7 +41,27 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            DefaultTitle(title: criptoName, color: Colors.black),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                DefaultTitle(title: criptoName, color: Colors.black),
+                CircleAvatar(
+                  backgroundImage: AssetImage(criptoImage),
+                  radius: 25,
+                ),
+              ],
+            ),
+            DefaultSubtitle(criptoAbrev),
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Text(
+                "R\$ 100.745,00",
+                style: GoogleFonts.montserrat(
+                    fontSize: 32,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black),
+              ),
+            ),
             AspectRatio(
               aspectRatio: 16 / 9,
               child: Padding(

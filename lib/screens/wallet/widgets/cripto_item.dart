@@ -33,7 +33,10 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
         ),
         ListTile(
           onTap: () {
-            ref.watch(criptoNameProvides.state).state = criptoModel.name;
+            ref.watch(criptoNameProvider.state).state = criptoModel.name;
+            ref.watch(criptoAbrevProvider.state).state =
+                criptoModel.abbreviation;
+            ref.watch(criptoImageProvider.state).state = criptoModel.image;
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) {

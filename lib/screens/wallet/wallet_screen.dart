@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import '../../core/asset.dart';
 import '../../shared/template/navbar_wallet.dart';
 import 'widgets/hide_button.dart';
-import 'widgets/subtitle_wallet.dart';
+import '../../shared/template/default_subtitle.dart';
 import 'widgets/total_value.dart';
 
 class WalletScreen extends StatefulWidget {
@@ -66,16 +66,13 @@ class _WalletScreenState extends State<WalletScreen> {
                   title: 'Cripto',
                   color: Color.fromRGBO(224, 43, 87, 1),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(right: 15),
-                  child: HideButton(),
-                ),
+                HideButton(),
               ],
             ),
             const TotalValue(
               totalReais: 14798,
             ),
-            const SubtitleWallet('Valor total de moedas'),
+            const DefaultSubtitle('Valor total de moedas'),
             Expanded(
               child: ListView.builder(
                 itemBuilder: (context, index) {
