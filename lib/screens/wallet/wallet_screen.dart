@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../../core/asset.dart';
 import '../../shared/template/navbar_wallet.dart';
 import 'widgets/hide_button.dart';
-import 'widgets/message_wallet.dart';
+import 'widgets/subtitle_wallet.dart';
 import 'widgets/title_wallet.dart';
 import 'widgets/total_value.dart';
 
@@ -72,7 +72,7 @@ class _WalletScreenState extends State<WalletScreen> {
             const TotalValue(
               totalReais: 14798,
             ),
-            const MessageWallet('Valor total de moedas'),
+            const SubtitleWallet('Valor total de moedas'),
             Expanded(
               child: ListView.builder(
                 itemBuilder: (context, index) {
