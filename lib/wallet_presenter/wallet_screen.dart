@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import 'package:crypto_listing/utils/asset.dart';
+import '../utils/asset.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'widgets/cripto_item.dart';
+import 'widgets/hide_button.dart';
 import 'widgets/message_wallet.dart';
 import 'widgets/title_wallet.dart';
 import 'widgets/total_value.dart';
@@ -109,26 +110,6 @@ class _WalletScreenState extends ConsumerState<WalletScreen> {
         selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
       ),
-    );
-  }
-}
-
-class HideButton extends HookConsumerWidget {
-  const HideButton({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    bool hideValue = ref.watch(hideWalletStateProvider);
-
-    return IconButton(
-      onPressed: () {
-        ref.read(hideWalletStateProvider.state).state = !hideValue;
-      },
-      icon: hideValue
-          ? const Icon(Icons.remove_red_eye_outlined)
-          : const Icon(Icons.remove_red_eye),
     );
   }
 }

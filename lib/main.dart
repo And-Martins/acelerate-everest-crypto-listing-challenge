@@ -1,4 +1,4 @@
-import 'package:crypto_listing/wallet_presenter/wallet_screen.dart';
+import 'wallet_presenter/wallet_screen.dart';
 
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
