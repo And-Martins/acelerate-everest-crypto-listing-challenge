@@ -1,3 +1,4 @@
+import '../../shared/template/default_title.dart';
 import 'widgets/cripto_item.dart';
 import '../../use_cases/models/cripto_model.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,6 @@ import '../../core/asset.dart';
 import '../../shared/template/navbar_wallet.dart';
 import 'widgets/hide_button.dart';
 import 'widgets/subtitle_wallet.dart';
-import 'widgets/title_wallet.dart';
 import 'widgets/total_value.dart';
 
 class WalletScreen extends StatefulWidget {
@@ -62,7 +62,10 @@ class _WalletScreenState extends State<WalletScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [
-                TitleWallet('Cripto'),
+                DefaultTitle(
+                  title: 'Cripto',
+                  color: Color.fromRGBO(224, 43, 87, 1),
+                ),
                 Padding(
                   padding: EdgeInsets.only(right: 15),
                   child: HideButton(),
