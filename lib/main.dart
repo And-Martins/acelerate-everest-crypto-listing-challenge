@@ -1,4 +1,4 @@
-import 'wallet_presenter/wallet_screen.dart';
+import 'screens/wallet/wallet_screen.dart';
 
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const WalletScreen(),
+      home: WalletScreen(),
     );
   }
 }

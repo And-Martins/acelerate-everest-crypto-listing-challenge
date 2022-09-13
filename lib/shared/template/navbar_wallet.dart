@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../utils/asset.dart';
+import '../../core/asset.dart';
 
 class NavbarWallet extends StatelessWidget {
   final int selectedIndex;

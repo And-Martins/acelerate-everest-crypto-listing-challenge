@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../wallet_screen.dart';
+import '../../../shared/template/wallet_providers.dart';
 
 class HideButton extends HookConsumerWidget {
   const HideButton({
@@ -17,7 +17,7 @@ class HideButton extends HookConsumerWidget {
         ref.read(hideWalletStateProvider.state).state = !hideValue;
       },
       icon: hideValue
-          ? const Icon(Icons.remove_red_eye_outlined)
+          ? const Icon(Icons.visibility_off)
           : const Icon(Icons.remove_red_eye),
     );
   }
