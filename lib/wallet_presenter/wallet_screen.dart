@@ -2,21 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:crypto_listing/utils/asset.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'widgets/cripto_item.dart';
 import 'widgets/message_wallet.dart';
 import 'widgets/title_wallet.dart';
 import 'widgets/total_value.dart';
 
-class WalletScreen extends StatefulWidget {
+final hideWalletStateProvider = StateProvider((ref) => true);
+
+class WalletScreen extends StatefulHookConsumerWidget {
   const WalletScreen({Key? key}) : super(key: key);
 
   @override
-  State<WalletScreen> createState() => _WalletScreenState();
+  ConsumerState<WalletScreen> createState() => _WalletScreenState();
 }
 
-class _WalletScreenState extends State<WalletScreen> {
-  bool hideWallet = true;
+class _WalletScreenState extends ConsumerState<WalletScreen> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -29,6 +31,7 @@ class _WalletScreenState extends State<WalletScreen> {
 
   @override
   Widget build(BuildContext context) {
+    bool hideWallet = ref.watch(hideWalletStateProvider);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(right: 10.0, left: 10.0, top: 50),
@@ -37,20 +40,11 @@ class _WalletScreenState extends State<WalletScreen> {
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const TitleWallet('Cripto'),
+              children: const [
+                TitleWallet('Cripto'),
                 Padding(
-                  padding: const EdgeInsets.only(right: 15),
-                  child: IconButton(
-                    onPressed: () {
-                      hideWallet
-                          ? setState(() => hideWallet = false)
-                          : setState(() => hideWallet = true);
-                    },
-                    icon: hideWallet
-                        ? const Icon(Icons.remove_red_eye_outlined)
-                        : const Icon(Icons.remove_red_eye),
-                  ),
+                  padding: EdgeInsets.only(right: 15),
+                  child: HideButton(),
                 ),
               ],
             ),
@@ -115,6 +109,26 @@ class _WalletScreenState extends State<WalletScreen> {
         selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
       ),
+    );
+  }
+}
+
+class HideButton extends HookConsumerWidget {
+  const HideButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    bool hideValue = ref.watch(hideWalletStateProvider);
+
+    return IconButton(
+      onPressed: () {
+        ref.read(hideWalletStateProvider.state).state = !hideValue;
+      },
+      icon: hideValue
+          ? const Icon(Icons.remove_red_eye_outlined)
+          : const Icon(Icons.remove_red_eye),
     );
   }
 }
