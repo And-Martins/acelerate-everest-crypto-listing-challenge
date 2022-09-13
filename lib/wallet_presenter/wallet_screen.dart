@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../utils/asset.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -7,6 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'widgets/cripto_item.dart';
 import 'widgets/hide_button.dart';
 import 'widgets/message_wallet.dart';
+import 'widgets/navbar_wallet.dart';
 import 'widgets/title_wallet.dart';
 import 'widgets/total_value.dart';
 
@@ -20,12 +20,12 @@ class WalletScreen extends StatefulHookConsumerWidget {
 }
 
 class _WalletScreenState extends ConsumerState<WalletScreen> {
-  int _selectedIndex = 0;
+  late int selectedIndex = 0;
 
-  void _onItemTapped(int index) {
+  void onItemTapped(int index) {
     setState(
       () {
-        _selectedIndex = index;
+        selectedIndex = index;
       },
     );
   }
@@ -87,28 +87,9 @@ class _WalletScreenState extends ConsumerState<WalletScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              portifolioIcon,
-              color: Colors.grey,
-            ),
-            activeIcon: SvgPicture.asset(portifolioIcon),
-            label: 'Portifólio',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              movimentacoesIcon,
-              color: Colors.grey,
-            ),
-            activeIcon: SvgPicture.asset(movimentacoesIcon),
-            label: 'Movimentações',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
-        onTap: _onItemTapped,
+      bottomNavigationBar: NavbarWallet(
+        selectedIndex: selectedIndex,
+        onItemTapped: onItemTapped,
       ),
     );
   }
