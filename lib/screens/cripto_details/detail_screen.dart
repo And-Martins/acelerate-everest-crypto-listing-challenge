@@ -46,7 +46,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  DefaultTitle(title: criptoName, color: Colors.black),
+                  DefaultTitle(title: criptoName),
                   CircleAvatar(
                     backgroundImage: AssetImage(criptoImage),
                     radius: 25,
