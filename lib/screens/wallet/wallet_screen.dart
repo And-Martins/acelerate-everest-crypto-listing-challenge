@@ -1,9 +1,9 @@
-import 'package:crypto_listing/screens/movements/movements_screen.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../shared/template/navbar_wallet.dart';
 import 'package:flutter/material.dart';
 
+import '../cripto_movements/movements_screen.dart';
 import 'widgets/wallet_body.dart';
 
 class WalletScreen extends StatefulHookConsumerWidget {
