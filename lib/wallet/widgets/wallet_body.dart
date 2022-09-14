@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/asset.dart';
-import '../../../shared/template/default_subtitle.dart';
-import '../../../shared/template/default_title.dart';
-import '../../../use_cases/models/cripto_model.dart';
+import '../../shared/models/cripto_model.dart';
+import '../../shared/widgets/default_subtitle.dart';
+import '../../shared/widgets/default_title.dart';
 import 'cripto_item.dart';
 import 'hide_button.dart';
 import 'total_value.dart';

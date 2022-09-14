@@ -1,14 +1,14 @@
 import 'package:decimal/decimal.dart';
 import 'package:decimal/intl.dart';
 
-import '../../../shared/template/number_formatter.dart';
-import '../../../shared/template/wallet_providers.dart';
-import '../../../use_cases/models/cripto_model.dart';
+import '../../shared/models/cripto_model.dart';
+import '../../shared/providers/wallet_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../cripto_details/detail_screen.dart';
+import '../../shared/widgets/number_formatter.dart';
 
 class CriptoItem extends StatefulHookConsumerWidget {
   final CriptoModel criptoModel;

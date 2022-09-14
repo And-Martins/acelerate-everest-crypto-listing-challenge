@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../shared/template/default_title.dart';
+import '../shared/widgets/default_title.dart';
 import 'widgets/filter_option_container.dart';
 
 class ConvertScreen extends StatelessWidget {

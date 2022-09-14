@@ -1,7 +1,7 @@
-import 'screens/wallet/wallet_screen.dart';
-
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import 'wallet/view/wallet_screen.dart';
 
 void main() {
   runApp(

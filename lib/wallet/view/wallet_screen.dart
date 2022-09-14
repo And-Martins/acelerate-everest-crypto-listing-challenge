@@ -1,10 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../shared/template/navbar_wallet.dart';
-import 'package:flutter/material.dart';
-
-import '../cripto_movements/movements_screen.dart';
-import 'widgets/wallet_body.dart';
+import '../../cripto_movements/movements_screen.dart';
+import '../../shared/widgets/navbar_wallet.dart';
+import '../widgets/wallet_body.dart';
 
 class WalletScreen extends StatefulHookConsumerWidget {
   const WalletScreen({Key? key}) : super(key: key);

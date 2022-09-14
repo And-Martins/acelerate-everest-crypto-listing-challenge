@@ -1,14 +1,14 @@
-import 'package:crypto_listing/shared/template/default_subtitle.dart';
-import 'package:crypto_listing/shared/template/default_title.dart';
-import 'package:crypto_listing/shared/template/number_formatter.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../shared/template/default_appbar.dart';
-import '../../shared/template/wallet_providers.dart';
+import '../shared/providers/wallet_providers.dart';
 import '../cripto_convert/convert_screen.dart';
+import '../shared/widgets/default_appbar.dart';
+import '../shared/widgets/default_subtitle.dart';
+import '../shared/widgets/default_title.dart';
+import '../shared/widgets/number_formatter.dart';
 import 'widgets/item_detail.dart';
 
 class DetailScreen extends StatefulHookConsumerWidget {

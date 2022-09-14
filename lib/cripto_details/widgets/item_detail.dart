@@ -3,7 +3,7 @@ import 'package:decimal/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../shared/template/number_formatter.dart';
+import '../../shared/widgets/number_formatter.dart';
 
 class ItemDetail extends StatelessWidget {
   const ItemDetail({
