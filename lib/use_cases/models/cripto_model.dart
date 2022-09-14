@@ -1,15 +1,19 @@
 class CriptoModel {
   final String abbreviation;
   final String name;
-  final double valueReais;
-  final double valueCripto;
+  final double valueWalletCripto;
+  final double valueQtdWalletCripto;
   final String image;
+  final double cotacao;
+  final double variacao;
 
   CriptoModel({
     required this.abbreviation,
     required this.name,
-    required this.valueReais,
-    required this.valueCripto,
+    required this.valueWalletCripto,
+    required this.valueQtdWalletCripto,
     required this.image,
+    required this.cotacao,
+    required this.variacao,
   });
 }

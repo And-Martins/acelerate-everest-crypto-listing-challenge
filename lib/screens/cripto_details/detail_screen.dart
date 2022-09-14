@@ -1,11 +1,13 @@
 import 'package:crypto_listing/shared/template/default_subtitle.dart';
 import 'package:crypto_listing/shared/template/default_title.dart';
+import 'package:crypto_listing/shared/template/number_formatter.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../shared/template/wallet_providers.dart';
+import 'widgets/item_detail.dart';
 
 class DetailScreen extends StatefulHookConsumerWidget {
   const DetailScreen({Key? key}) : super(key: key);
@@ -20,6 +22,11 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
     final String criptoName = ref.watch(criptoNameProvider);
     final String criptoAbrev = ref.watch(criptoAbrevProvider);
     final String criptoImage = ref.watch(criptoImageProvider);
+    final double criptoCotacao = ref.watch(criptoCotacaoProvider);
+    final double criptoVariacao = ref.watch(criptoVariacaoProvider);
+    final double criptoValueWalletReais =
+        ref.watch(criptoValueWalletReaisProvider);
+    final double criptoQtdWallet = ref.watch(criptoQtdWalletCriptoProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -55,7 +62,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
             Padding(
               padding: const EdgeInsets.only(top: 10),
               child: Text(
-                "R\$ 100.745,00",
+                "R\$ ${formatReais.format(criptoCotacao)}",
                 style: GoogleFonts.montserrat(
                     fontSize: 32,
                     fontWeight: FontWeight.w600,
@@ -110,6 +117,42 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
                   ),
                 ),
               ),
+            ),
+            ItemDetail(
+              opc: 1,
+              criptoAbrev: criptoAbrev,
+              criptoCotacao: criptoCotacao,
+              criptoVariacao: criptoVariacao,
+              criptoValueWalletReais: criptoValueWalletReais,
+              criptoQtdWallet: criptoQtdWallet,
+              text: "Preço atual",
+            ),
+            ItemDetail(
+              opc: 2,
+              criptoAbrev: criptoAbrev,
+              criptoCotacao: criptoCotacao,
+              criptoVariacao: criptoVariacao,
+              criptoValueWalletReais: criptoValueWalletReais,
+              criptoQtdWallet: criptoQtdWallet,
+              text: "Variação 24H",
+            ),
+            ItemDetail(
+              opc: 3,
+              criptoAbrev: criptoAbrev,
+              criptoCotacao: criptoCotacao,
+              criptoVariacao: criptoVariacao,
+              criptoValueWalletReais: criptoValueWalletReais,
+              criptoQtdWallet: criptoQtdWallet,
+              text: "Quantidade",
+            ),
+            ItemDetail(
+              opc: 4,
+              criptoAbrev: criptoAbrev,
+              criptoCotacao: criptoCotacao,
+              criptoVariacao: criptoVariacao,
+              criptoValueWalletReais: criptoValueWalletReais,
+              criptoQtdWallet: criptoQtdWallet,
+              text: "Valor",
             ),
           ],
         ),

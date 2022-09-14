@@ -1,9 +1,12 @@
+import 'package:decimal/decimal.dart';
+import 'package:decimal/intl.dart';
+
+import '../../../shared/template/number_formatter.dart';
 import '../../../shared/template/wallet_providers.dart';
 import '../../../use_cases/models/cripto_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:intl/intl.dart';
 
 import '../../cripto_details/detail_screen.dart';
 
@@ -20,12 +23,16 @@ class CriptoItem extends StatefulHookConsumerWidget {
 }
 
 class _CriptoItemState extends ConsumerState<CriptoItem> {
-  var format = NumberFormat('#,###.00#', 'pt_BR');
-
   @override
   Widget build(BuildContext context) {
     final bool hideWallet = ref.watch(hideWalletStateProvider);
     CriptoModel criptoModel = widget.criptoModel;
+
+    var criptoValueWalletReais =
+        Decimal.parse(criptoModel.valueWalletCripto.toString());
+    var criptoValueQtdWallet =
+        Decimal.parse(criptoModel.valueQtdWalletCripto.toString());
+
     return Column(
       children: [
         const Divider(
@@ -37,6 +44,13 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
             ref.watch(criptoAbrevProvider.state).state =
                 criptoModel.abbreviation;
             ref.watch(criptoImageProvider.state).state = criptoModel.image;
+            ref.watch(criptoCotacaoProvider.state).state = criptoModel.cotacao;
+            ref.watch(criptoVariacaoProvider.state).state =
+                criptoModel.variacao;
+            ref.watch(criptoValueWalletReaisProvider.state).state =
+                criptoModel.valueWalletCripto;
+            ref.watch(criptoQtdWalletCriptoProvider.state).state =
+                criptoModel.valueQtdWalletCripto;
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) {
@@ -70,7 +84,7 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
                     Visibility(
                       visible: hideWallet,
                       replacement: Text(
-                        "R\$ ${format.format(criptoModel.valueReais)}",
+                        "R\$ ${formatReais.format(DecimalIntl(criptoValueWalletReais))}",
                         style: GoogleFonts.sourceSansPro(
                           fontSize: 19,
                           fontWeight: FontWeight.w400,
@@ -92,7 +106,7 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
               Visibility(
                 visible: hideWallet,
                 replacement: Text(
-                  "${criptoModel.valueCripto} ${criptoModel.abbreviation}",
+                  "${formatCriptoAbrev.format(DecimalIntl(criptoValueQtdWallet))} ${criptoModel.abbreviation}",
                   style: GoogleFonts.sourceSansPro(
                     fontSize: 15,
                     color: const Color.fromRGBO(117, 118, 128, 1),

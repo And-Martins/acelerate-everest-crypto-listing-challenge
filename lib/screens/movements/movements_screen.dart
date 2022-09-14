@@ -13,9 +13,9 @@ class MovementsScreen extends StatelessWidget {
         title: Text(
           "Movimentações",
           style: GoogleFonts.sourceSansPro(
-            fontSize: 23,
+            fontSize: 30,
             color: Colors.black,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w700,
           ),
         ),
         backgroundColor: Colors.white,
