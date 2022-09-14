@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../shared/widgets/default_appbar.dart';
+import '../../shared/widgets/default_appbar.dart';
 
 class MovementsScreen extends StatelessWidget {
   const MovementsScreen({Key? key}) : super(key: key);

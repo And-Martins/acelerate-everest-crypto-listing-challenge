@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../cripto_movements/movements_screen.dart';
+import '../../cripto_movements/view/movements_screen.dart';
 import '../../shared/widgets/navbar_wallet.dart';
 import '../widgets/wallet_body.dart';
 

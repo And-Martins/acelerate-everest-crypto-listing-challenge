@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../shared/widgets/default_title.dart';
-import 'widgets/filter_option_container.dart';
+import '../../shared/widgets/default_title.dart';
+import '../widgets/filter_option_container.dart';
 
 class ConvertScreen extends StatelessWidget {
   const ConvertScreen({Key? key}) : super(key: key);
