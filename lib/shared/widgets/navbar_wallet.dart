@@ -19,10 +19,13 @@ class _NavbarWalletState extends State<NavbarWallet> {
   void onItemTapped(int selectedIndex) {
     setState(
       () {
-        if (selectedIndex == 0) {
-          Navigator.pushNamed(context, '/wallet');
-        } else {
-          Navigator.pushNamed(context, '/criptoMoviments');
+        switch (selectedIndex) {
+          case 0:
+            Navigator.pushNamed(context, '/wallet');
+            break;
+          case 1:
+            Navigator.pushNamed(context, '/criptoMoviments');
+            break;
         }
       },
     );
