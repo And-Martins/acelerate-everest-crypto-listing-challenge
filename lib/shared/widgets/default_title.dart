@@ -3,17 +3,25 @@ import 'package:google_fonts/google_fonts.dart';
 
 class DefaultTitle extends StatelessWidget {
   final String title;
+  final double titleSize;
+  final Color color;
 
-  const DefaultTitle(this.title, {Key? key}) : super(key: key);
+  const DefaultTitle({
+    Key? key,
+    required this.title,
+    this.titleSize = 32,
+    this.color = Colors.black,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Text(
       title,
       style: GoogleFonts.montserrat(
-          fontSize: 32,
-          fontWeight: FontWeight.w800,
-          color: const Color.fromRGBO(224, 43, 87, 1)),
+        fontSize: titleSize,
+        fontWeight: FontWeight.w800,
+        color: color,
+      ),
     );
   }
 }

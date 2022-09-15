@@ -1,11 +1,11 @@
-import 'hide_button.dart';
-import '../../shared/widgets/default_title.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/asset.dart';
 import '../../shared/models/cripto_model.dart';
-import 'cripto_item.dart';
 import '../../shared/widgets/default_subtitle.dart';
+import '../../shared/widgets/default_title.dart';
+import 'cripto_item.dart';
+import 'hide_button.dart';
 import 'total_value.dart';
 
 class WalletBody extends StatelessWidget {
@@ -17,23 +17,29 @@ class WalletBody extends StatelessWidget {
     CriptoModel(
       abbreviation: 'BTC',
       name: 'Bitcoin',
-      valueReais: 6557,
-      valueCripto: 0.65,
+      valueWalletCripto: 6557,
+      valueQtdWalletCripto: 0.65554321,
       image: btcImage,
+      cotacao: 104572.44,
+      variacao: -0.5,
     ),
     CriptoModel(
       abbreviation: 'ETC',
       name: 'Ethereum',
-      valueReais: 7996,
-      valueCripto: 0.94,
+      valueWalletCripto: 7996,
+      valueQtdWalletCripto: 0.94,
       image: ethImage,
+      cotacao: 8254.17,
+      variacao: 1.20,
     ),
     CriptoModel(
       abbreviation: 'LTC',
       name: 'Litecoin',
-      valueReais: 245,
-      valueCripto: 0.82,
+      valueWalletCripto: 245,
+      valueQtdWalletCripto: 0.82,
       image: ltcImage,
+      cotacao: 312.06,
+      variacao: 5,
     ),
   ];
 
@@ -47,11 +53,11 @@ class WalletBody extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: const [
-              DefaultTitle('Cripto'),
-              Padding(
-                padding: EdgeInsets.only(right: 15),
-                child: HideButton(),
+              DefaultTitle(
+                title: 'Cripto',
+                color: Color.fromRGBO(224, 43, 87, 1),
               ),
+              HideButton(),
             ],
           ),
           const TotalValue(

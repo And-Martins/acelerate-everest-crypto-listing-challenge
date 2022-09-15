@@ -1,4 +1,4 @@
-import 'wallet/view/wallet_screen.dart';
+import 'package:crypto_listing/core/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -18,7 +18,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.pink,
       ),
-      home: const WalletScreen(),
+      initialRoute: '/',
+      routes: routesNavigation,
     );
   }
 }
