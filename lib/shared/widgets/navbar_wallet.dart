@@ -21,16 +21,28 @@ class NavbarWallet extends StatelessWidget {
           icon: SvgPicture.asset(
             portifolioIcon,
             color: Colors.grey,
+            width: 20,
+            height: 20,
           ),
-          activeIcon: SvgPicture.asset(portifolioIcon),
+          activeIcon: SvgPicture.asset(
+            portifolioIcon,
+            width: 23,
+            height: 23,
+          ),
           label: 'Portifólio',
         ),
         BottomNavigationBarItem(
           icon: SvgPicture.asset(
             movimentacoesIcon,
             color: Colors.grey,
+            width: 20,
+            height: 20,
           ),
-          activeIcon: SvgPicture.asset(movimentacoesIcon),
+          activeIcon: SvgPicture.asset(
+            movimentacoesIcon,
+            width: 23,
+            height: 23,
+          ),
           label: 'Movimentações',
         ),
       ],
