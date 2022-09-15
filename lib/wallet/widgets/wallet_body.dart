@@ -1,11 +1,11 @@
+import 'hide_button.dart';
+import '../../shared/widgets/default_title.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/asset.dart';
+import '../../core/asset.dart';
 import '../../shared/models/cripto_model.dart';
-import '../../shared/widgets/default_subtitle.dart';
-import '../../shared/widgets/default_title.dart';
 import 'cripto_item.dart';
-import 'hide_button.dart';
+import '../../shared/widgets/default_subtitle.dart';
 import 'total_value.dart';
 
 class WalletBody extends StatelessWidget {

@@ -1,7 +1,6 @@
+import '../../shared/providers/wallet_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-import '../../shared/providers/wallet_providers.dart';
 
 class HideButton extends HookConsumerWidget {
   const HideButton({
