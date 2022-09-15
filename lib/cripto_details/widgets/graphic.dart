@@ -1,6 +1,8 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
+import '../../list_cripto_currency.dart';
+
 class Graphic extends StatelessWidget {
   const Graphic({
     Key? key,
@@ -8,6 +10,7 @@ class Graphic extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<FlSpot> teste = listCriptoCurrency();
     return AspectRatio(
       aspectRatio: 16 / 9,
       child: Padding(
@@ -16,35 +19,39 @@ class Graphic extends StatelessWidget {
           LineChartData(
             lineBarsData: [
               LineChartBarData(
-                  barWidth: 3.5,
-                  color: const Color.fromRGBO(224, 43, 87, 1),
-                  dotData: FlDotData(show: false),
-                  spots: [
-                    const FlSpot(0, 0),
-                    const FlSpot(2, 2),
-                    const FlSpot(3, 3),
-                    const FlSpot(5, 2),
-                    const FlSpot(6, 4),
-                    const FlSpot(7, 5),
-                    const FlSpot(8, 5),
-                    const FlSpot(9, 6),
-                    const FlSpot(10, 9),
-                  ])
+                barWidth: 3.5,
+                color: const Color.fromRGBO(224, 43, 87, 1),
+                dotData: FlDotData(show: false),
+                spots: [
+                  teste[0],
+                  teste[1],
+                  teste[2],
+                  teste[3],
+                  teste[4],
+                  teste[5],
+                  teste[6],
+                  teste[7],
+                  teste[8],
+                  teste[9],
+                  teste[10],
+                ],
+              ),
             ],
             betweenBarsData: [],
             titlesData: FlTitlesData(show: false),
             extraLinesData: ExtraLinesData(),
-            lineTouchData: LineTouchData(),
+            lineTouchData: LineTouchData(enabled: true),
             rangeAnnotations: RangeAnnotations(),
             showingTooltipIndicators: [],
             gridData: FlGridData(show: false),
             borderData: FlBorderData(
-                border: const Border(
-              bottom: BorderSide(
-                width: 3,
-                color: Color.fromRGBO(227, 228, 235, 1),
+              border: const Border(
+                bottom: BorderSide(
+                  width: 3,
+                  color: Color.fromRGBO(227, 228, 235, 1),
+                ),
               ),
-            )),
+            ),
             minX: 0,
             maxX: 10,
             baselineX: 3,
@@ -52,7 +59,7 @@ class Graphic extends StatelessWidget {
             maxY: 15,
             baselineY: 3,
             clipData: FlClipData.none(),
-            backgroundColor: Colors.white,
+            backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
           ),
         ),
       ),

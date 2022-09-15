@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../list_cripto_currency.dart';
 import '../../shared/models/cripto_model.dart';
 import '../../shared/providers/wallet_providers.dart';
 import '../../shared/widgets/number_formatter.dart';
@@ -38,6 +39,7 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
         ),
         ListTile(
           onTap: () {
+            listCriptoCurrency();
             ref.watch(criptoNameProvider.state).state = criptoModel.name;
             ref.watch(criptoAbrevProvider.state).state =
                 criptoModel.abbreviation;

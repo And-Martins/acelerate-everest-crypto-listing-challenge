@@ -1,7 +1,7 @@
 import 'package:crypto_listing/shared/widgets/default_title.dart';
 import 'package:flutter/material.dart';
 
-import '../../shared/widgets/navbar_wallet.dart';
+import '../../shared/widgets/default_navbar.dart';
 
 class MovementsScreen extends StatelessWidget {
   const MovementsScreen({Key? key}) : super(key: key);
@@ -17,7 +17,7 @@ class MovementsScreen extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: const NavbarWallet(
+      bottomNavigationBar: const DefaultNavbar(
         selectedIndex: 1,
       ),
     );

@@ -3,19 +3,19 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../core/asset.dart';
 
-class NavbarWallet extends StatefulWidget {
+class DefaultNavbar extends StatefulWidget {
   final int selectedIndex;
 
-  const NavbarWallet({
+  const DefaultNavbar({
     Key? key,
     required this.selectedIndex,
   }) : super(key: key);
 
   @override
-  State<NavbarWallet> createState() => _NavbarWalletState();
+  State<DefaultNavbar> createState() => _DefaultNavbarState();
 }
 
-class _NavbarWalletState extends State<NavbarWallet> {
+class _DefaultNavbarState extends State<DefaultNavbar> {
   void onItemTapped(int selectedIndex) {
     setState(
       () {

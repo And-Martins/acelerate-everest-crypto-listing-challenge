@@ -2,7 +2,7 @@ import 'package:crypto_listing/wallet/widgets/wallet_body.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../shared/widgets/navbar_wallet.dart';
+import '../../shared/widgets/default_navbar.dart';
 
 class WalletScreen extends StatefulHookConsumerWidget {
   const WalletScreen({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class _WalletScreenState extends ConsumerState<WalletScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: WalletBody(),
-      bottomNavigationBar: const NavbarWallet(
+      bottomNavigationBar: const DefaultNavbar(
         selectedIndex: 0,
       ),
     );
