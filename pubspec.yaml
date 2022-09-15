@@ -37,7 +37,9 @@ dependencies:
   google_fonts: ^3.0.1
   flutter_svg: ^1.1.5
   intl: ^0.17.0
-  graphic: ^0.10.6
+  fl_chart: ^0.55.1
+  hooks_riverpod: ^1.0.4
+  decimal: ^2.3.0
 
 
 dev_dependencies:

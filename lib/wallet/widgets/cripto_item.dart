@@ -1,52 +1,56 @@
+import '../../shared/providers/wallet_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
-class CriptoItem extends StatefulWidget {
-  final String abbreviation;
-  final String name;
-  final double valueReais;
-  final double valueCripto;
-  final String image;
+import '../../cripto_details/detail_screen.dart';
+import '../../shared/models/cripto_model.dart';
+
+class CriptoItem extends StatefulHookConsumerWidget {
+  final CriptoModel criptoModel;
 
   const CriptoItem({
+    required this.criptoModel,
     Key? key,
-    required this.abbreviation,
-    required this.name,
-    required this.valueReais,
-    required this.valueCripto,
-    required this.image,
-    required this.hideWallet,
   }) : super(key: key);
 
-  final bool hideWallet;
-
   @override
-  State<CriptoItem> createState() => _CriptoItemState();
+  ConsumerState<CriptoItem> createState() => _CriptoItemState();
 }
 
-class _CriptoItemState extends State<CriptoItem> {
+class _CriptoItemState extends ConsumerState<CriptoItem> {
   var format = NumberFormat('#,###.00#', 'pt_BR');
 
   @override
   Widget build(BuildContext context) {
+    final bool hideWallet = ref.watch(hideWalletStateProvider);
+    CriptoModel criptoModel = widget.criptoModel;
     return Column(
       children: [
         const Divider(
           thickness: 1,
         ),
         ListTile(
-          onTap: () {},
-          leading: CircleAvatar(backgroundImage: AssetImage(widget.image)),
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return const DetailScreen();
+                },
+              ),
+            );
+          },
+          leading: CircleAvatar(backgroundImage: AssetImage(criptoModel.image)),
           title: Text(
-            widget.abbreviation,
+            criptoModel.abbreviation,
             style: GoogleFonts.sourceSansPro(
               fontWeight: FontWeight.w500,
               fontSize: 20,
             ),
           ),
           subtitle: Text(
-            widget.name,
+            criptoModel.name,
             style: GoogleFonts.sourceSansPro(
               fontSize: 15,
               color: const Color.fromRGBO(117, 118, 128, 1),
@@ -60,9 +64,9 @@ class _CriptoItemState extends State<CriptoItem> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Visibility(
-                      visible: widget.hideWallet,
+                      visible: hideWallet,
                       replacement: Text(
-                        "R\$ ${format.format(widget.valueReais)}",
+                        "R\$ ${format.format(criptoModel.valueReais)}",
                         style: GoogleFonts.sourceSansPro(
                           fontSize: 19,
                           fontWeight: FontWeight.w400,
@@ -82,9 +86,9 @@ class _CriptoItemState extends State<CriptoItem> {
                 ),
               ),
               Visibility(
-                visible: widget.hideWallet,
+                visible: hideWallet,
                 replacement: Text(
-                  "${widget.valueCripto} ${widget.abbreviation}",
+                  "${criptoModel.valueCripto} ${criptoModel.abbreviation}",
                   style: GoogleFonts.sourceSansPro(
                     fontSize: 15,
                     color: const Color.fromRGBO(117, 118, 128, 1),
