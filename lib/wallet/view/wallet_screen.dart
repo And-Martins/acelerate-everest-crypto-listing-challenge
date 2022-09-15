@@ -14,6 +14,7 @@ class WalletScreen extends StatefulHookConsumerWidget {
 
 class _WalletScreenState extends ConsumerState<WalletScreen> {
   late int selectedIndex = 0;
+
   final List<Widget> telas = [
     WalletBody(),
     const MovementsScreen(),

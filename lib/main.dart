@@ -1,3 +1,4 @@
+import 'cripto_movements/view/movements_screen.dart';
 import 'wallet/view/wallet_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -18,7 +19,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.pink,
       ),
-      home: const WalletScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const WalletScreen(),
+        '/criptoMoviments': (context) => const MovementsScreen(),
+      },
+      // home: const WalletScreen(),
     );
   }
 }
