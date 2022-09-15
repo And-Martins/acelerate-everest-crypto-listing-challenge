@@ -1,6 +1,7 @@
+import 'package:crypto_listing/shared/widgets/default_title.dart';
 import 'package:flutter/material.dart';
 
-import '../../shared/widgets/default_appbar.dart';
+import '../../shared/widgets/navbar_wallet.dart';
 
 class MovementsScreen extends StatelessWidget {
   const MovementsScreen({Key? key}) : super(key: key);
@@ -8,12 +9,17 @@ class MovementsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: DefaultAppbar(
-        title: "Movimentações",
-        titleSize: 30,
-        appBar: AppBar(),
+      body: Column(
+        children: const [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 25),
+            child: DefaultTitle(title: "Movimentações"),
+          ),
+        ],
       ),
-      body: Container(),
+      bottomNavigationBar: const NavbarWallet(
+        selectedIndex: 1,
+      ),
     );
   }
 }
