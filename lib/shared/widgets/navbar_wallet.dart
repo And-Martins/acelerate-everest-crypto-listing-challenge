@@ -21,10 +21,10 @@ class _NavbarWalletState extends State<NavbarWallet> {
       () {
         switch (selectedIndex) {
           case 0:
-            Navigator.pushNamed(context, '/wallet');
+            Navigator.pushReplacementNamed(context, '/wallet');
             break;
           case 1:
-            Navigator.pushNamed(context, '/criptoMoviments');
+            Navigator.pushReplacementNamed(context, '/criptoMoviments');
             break;
         }
       },
