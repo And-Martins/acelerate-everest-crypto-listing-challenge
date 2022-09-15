@@ -1,14 +1,12 @@
 import 'package:decimal/decimal.dart';
 import 'package:decimal/intl.dart';
-
-import '../../cripto_details/view/detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../shared/models/cripto_model.dart';
+import '../../shared/providers/wallet_providers.dart';
 import '../../shared/widgets/number_formatter.dart';
-import '../../shared/widgets/wallet_providers.dart';
 
 class CriptoItem extends StatefulHookConsumerWidget {
   final CriptoModel criptoModel;
@@ -51,13 +49,13 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
                 criptoModel.valueWalletCripto;
             ref.watch(criptoQtdWalletCriptoProvider.state).state =
                 criptoModel.valueQtdWalletCripto;
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) {
-                  return const DetailScreen();
-                },
-              ),
-            );
+            // Navigator.of(context).push(
+            //   MaterialPageRoute(
+            //     builder: (context) {
+            //       return const DetailScreen();
+            //     },
+            //   ),
+            // );
           },
           leading: CircleAvatar(backgroundImage: AssetImage(criptoModel.image)),
           title: Text(
