@@ -60,9 +60,7 @@ class WalletBody extends StatelessWidget {
               HideButton(),
             ],
           ),
-          const TotalValue(
-            totalReais: 14798,
-          ),
+          const TotalValue(totalReais: 14798),
           const DefaultSubtitle('Valor total de moedas'),
           Expanded(
             child: ListView.builder(

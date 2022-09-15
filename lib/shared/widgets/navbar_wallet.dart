@@ -23,6 +23,7 @@ class _NavbarWalletState extends State<NavbarWallet> {
           case 0:
             Navigator.pushReplacementNamed(context, '/wallet');
             break;
+
           case 1:
             Navigator.pushReplacementNamed(context, '/criptoMoviments');
             break;

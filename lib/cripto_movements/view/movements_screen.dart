@@ -12,7 +12,7 @@ class MovementsScreen extends StatelessWidget {
       body: Column(
         children: const [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 25),
+            padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 55),
             child: DefaultTitle(title: "Movimentações"),
           ),
         ],
