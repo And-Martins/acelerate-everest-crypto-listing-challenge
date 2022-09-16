@@ -27,64 +27,70 @@ class _GraphicState extends ConsumerState<Graphic> {
       initState();
     }
 
-    return AspectRatio(
-      aspectRatio: 16 / 9,
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: LineChart(
-          LineChartData(
-            lineBarsData: [
-              LineChartBarData(
-                barWidth: 3.5,
-                color: const Color.fromRGBO(224, 43, 87, 1),
-                dotData: FlDotData(show: false),
-                isStrokeCapRound: true,
-                spots: widget.defineSpot,
-              ),
-            ],
-            betweenBarsData: [],
-            titlesData: FlTitlesData(show: false),
-            extraLinesData: ExtraLinesData(),
-            lineTouchData: LineTouchData(
-              touchTooltipData: LineTouchTooltipData(
-                fitInsideHorizontally: true,
-                tooltipBgColor: Colors.grey,
-                tooltipPadding: const EdgeInsets.symmetric(
-                  horizontal: 6,
-                  vertical: 5,
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) =>
+          AspectRatio(
+        aspectRatio: 16 / 9,
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: LineChart(
+            LineChartData(
+              lineBarsData: [
+                LineChartBarData(
+                  barWidth: 3.5,
+                  color: const Color.fromRGBO(224, 43, 87, 1),
+                  dotData: FlDotData(show: false),
+                  isStrokeCapRound: true,
+                  spots: widget.defineSpot,
                 ),
-                tooltipRoundedRadius: 15,
-                getTooltipItems: (touchedSpots) {
-                  return touchedSpots.map((touchedSpot) {
-                    changeValue(touchedSpot.y);
-                    return LineTooltipItem(
-                      "R\$ ${formatReais.format(touchedSpot.y)}",
-                      const TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    );
-                  }).toList();
+              ],
+              betweenBarsData: [],
+              titlesData: FlTitlesData(show: false),
+              extraLinesData: ExtraLinesData(),
+              lineTouchData: LineTouchData(
+                touchCallback: (FlTouchEvent event, lineTouchResponse) {
+                  setState(() {});
                 },
-              ),
-            ),
-            rangeAnnotations: RangeAnnotations(),
-            gridData: FlGridData(show: false),
-            borderData: FlBorderData(
-              border: const Border(
-                bottom: BorderSide(
-                  width: 3,
-                  color: Color.fromRGBO(227, 228, 235, 1),
+                touchTooltipData: LineTouchTooltipData(
+                  fitInsideHorizontally: true,
+                  tooltipBgColor: Colors.grey,
+                  tooltipPadding: const EdgeInsets.symmetric(
+                    horizontal: 6,
+                    vertical: 5,
+                  ),
+                  tooltipRoundedRadius: 15,
+                  getTooltipItems: (touchedSpots) {
+                    return touchedSpots.map((touchedSpot) {
+                      changeValue(touchedSpot.y);
+                      return LineTooltipItem(
+                        "R\$ ${formatReais.format(touchedSpot.y)}",
+                        const TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      );
+                    }).toList();
+                  },
                 ),
               ),
+              rangeAnnotations: RangeAnnotations(),
+              gridData: FlGridData(show: false),
+              borderData: FlBorderData(
+                border: const Border(
+                  bottom: BorderSide(
+                    width: 3,
+                    color: Color.fromRGBO(227, 228, 235, 1),
+                  ),
+                ),
+              ),
+              minX: widget.days - 1,
+              maxX: -0.2,
+              baselineX: 3,
+              minY: 0,
+              maxY: 103612.60,
+              clipData: FlClipData.all(),
             ),
-            minX: widget.days - 1,
-            maxX: -0.2,
-            baselineX: 3,
-            minY: 0,
-            maxY: 103612.60,
-            clipData: FlClipData.all(),
           ),
         ),
       ),
