@@ -1,8 +1,11 @@
-import 'package:crypto_listing/shared/widgets/number_formatter.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class Graphic extends StatelessWidget {
+import '../../shared/providers/wallet_providers.dart';
+import '../../shared/widgets/number_formatter.dart';
+
+class Graphic extends StatefulHookConsumerWidget {
   final List<FlSpot> defineSpot;
   final double days;
 
@@ -13,7 +16,17 @@ class Graphic extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  ConsumerState<Graphic> createState() => _GraphicState();
+}
+
+class _GraphicState extends ConsumerState<Graphic> {
+  @override
   Widget build(BuildContext context) {
+    void changeValue(double newValue) async {
+      ref.watch(criptoCotacaoProvider.state).state = newValue;
+      initState();
+    }
+
     return AspectRatio(
       aspectRatio: 16 / 9,
       child: Padding(
@@ -26,7 +39,7 @@ class Graphic extends StatelessWidget {
                 color: const Color.fromRGBO(224, 43, 87, 1),
                 dotData: FlDotData(show: false),
                 isStrokeCapRound: true,
-                spots: defineSpot,
+                spots: widget.defineSpot,
               ),
             ],
             betweenBarsData: [],
@@ -43,6 +56,7 @@ class Graphic extends StatelessWidget {
                 tooltipRoundedRadius: 15,
                 getTooltipItems: (touchedSpots) {
                   return touchedSpots.map((touchedSpot) {
+                    changeValue(touchedSpot.y);
                     return LineTooltipItem(
                       "R\$ ${formatReais.format(touchedSpot.y)}",
                       const TextStyle(
@@ -65,7 +79,7 @@ class Graphic extends StatelessWidget {
                 ),
               ),
             ),
-            minX: days - 1,
+            minX: widget.days - 1,
             maxX: -0.2,
             baselineX: 3,
             minY: 0,

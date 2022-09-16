@@ -22,6 +22,11 @@ class DetailScreen extends StatefulHookConsumerWidget {
 
 class _DetailScreenState extends ConsumerState<DetailScreen> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final String criptoName = ref.watch(criptoNameProvider);
     final String criptoAbrev = ref.watch(criptoAbrevProvider);
