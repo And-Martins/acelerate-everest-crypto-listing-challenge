@@ -1,3 +1,4 @@
+import 'package:crypto_listing/shared/widgets/number_formatter.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -31,9 +32,30 @@ class Graphic extends StatelessWidget {
             betweenBarsData: [],
             titlesData: FlTitlesData(show: false),
             extraLinesData: ExtraLinesData(),
-            lineTouchData: LineTouchData(enabled: true),
+            lineTouchData: LineTouchData(
+              touchTooltipData: LineTouchTooltipData(
+                fitInsideHorizontally: true,
+                tooltipBgColor: Colors.grey,
+                tooltipPadding: const EdgeInsets.symmetric(
+                  horizontal: 6,
+                  vertical: 5,
+                ),
+                tooltipRoundedRadius: 15,
+                getTooltipItems: (touchedSpots) {
+                  return touchedSpots.map((touchedSpot) {
+                    return LineTooltipItem(
+                      "R\$ ${formatReais.format(touchedSpot.y)}",
+                      const TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    );
+                  }).toList();
+                },
+              ),
+            ),
             rangeAnnotations: RangeAnnotations(),
-            showingTooltipIndicators: [],
             gridData: FlGridData(show: false),
             borderData: FlBorderData(
               border: const Border(
@@ -43,14 +65,12 @@ class Graphic extends StatelessWidget {
                 ),
               ),
             ),
-            minX: 0,
-            maxX: days - 1,
+            minX: days - 1,
+            maxX: 0,
             baselineX: 3,
             minY: 0,
-            maxY: 100,
-            baselineY: 3,
-            clipData: FlClipData.none(),
-            backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
+            maxY: 103612.60,
+            clipData: FlClipData.all(),
           ),
         ),
       ),

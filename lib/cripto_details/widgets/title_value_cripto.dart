@@ -18,7 +18,10 @@ class TitleValorCripto extends StatelessWidget {
       child: Text(
         "R\$ ${formatReais.format(criptoCotacao)}",
         style: GoogleFonts.montserrat(
-            fontSize: 32, fontWeight: FontWeight.w600, color: Colors.black),
+          fontSize: 32,
+          fontWeight: FontWeight.w600,
+          color: Colors.black,
+        ),
       ),
     );
   }

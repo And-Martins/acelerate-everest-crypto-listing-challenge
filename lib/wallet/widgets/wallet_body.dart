@@ -20,7 +20,7 @@ class WalletBody extends StatelessWidget {
       valueWalletCripto: 6557,
       valueQtdWalletCripto: 0.65554321,
       image: btcImage,
-      cotacao: 104572.44,
+      cotacao: 103612.60,
       variacao: -0.5,
     ),
     CriptoModel(
