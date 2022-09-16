@@ -32,6 +32,10 @@ List<FlSpot> listCriptoCurrencyChangeDay(double dias) {
   return newSpots;
 }
 
+FlSpot actualCriptoCurrency() {
+  return spots[0];
+}
+
 void cleanListCriptoCurrency() {
   spots = [];
 }

@@ -31,12 +31,13 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
     final String criptoName = ref.watch(criptoNameProvider);
     final String criptoAbrev = ref.watch(criptoAbrevProvider);
     final String criptoImage = ref.watch(criptoImageProvider);
-    final double criptoCotacao = ref.watch(criptoCotacaoProvider);
+    late double criptoCotacao = ref.watch(criptoCotacaoProvider);
     final double criptoVariacao = ref.watch(criptoVariacaoProvider);
     final double criptoValueWalletReais =
         ref.watch(criptoValueWalletReaisProvider);
     final double criptoQtdWallet = ref.watch(criptoQtdWalletCriptoProvider);
     final double criptoDays = ref.watch(criptoDaysProvider);
+    final double criptoActualCurrency = ref.watch(criptoActualCurrencyProvider);
 
     return Scaffold(
       appBar: DefaultAppbar(
@@ -92,7 +93,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
               ItemDetail(
                 opc: 1,
                 criptoAbrev: criptoAbrev,
-                criptoCotacao: criptoCotacao,
+                criptoCotacao: criptoActualCurrency,
                 criptoVariacao: criptoVariacao,
                 criptoValueWalletReais: criptoValueWalletReais,
                 criptoQtdWallet: criptoQtdWallet,
@@ -101,7 +102,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
               ItemDetail(
                 opc: 2,
                 criptoAbrev: criptoAbrev,
-                criptoCotacao: criptoCotacao,
+                criptoCotacao: criptoActualCurrency,
                 criptoVariacao: criptoVariacao,
                 criptoValueWalletReais: criptoValueWalletReais,
                 criptoQtdWallet: criptoQtdWallet,
@@ -110,7 +111,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
               ItemDetail(
                 opc: 3,
                 criptoAbrev: criptoAbrev,
-                criptoCotacao: criptoCotacao,
+                criptoCotacao: criptoActualCurrency,
                 criptoVariacao: criptoVariacao,
                 criptoValueWalletReais: criptoValueWalletReais,
                 criptoQtdWallet: criptoQtdWallet,
@@ -119,7 +120,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
               ItemDetail(
                 opc: 4,
                 criptoAbrev: criptoAbrev,
-                criptoCotacao: criptoCotacao,
+                criptoCotacao: criptoActualCurrency,
                 criptoVariacao: criptoVariacao,
                 criptoValueWalletReais: criptoValueWalletReais,
                 criptoQtdWallet: criptoQtdWallet,

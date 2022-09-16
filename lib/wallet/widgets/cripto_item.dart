@@ -43,11 +43,14 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
           onTap: () {
             cleanListCriptoCurrency();
             listCriptoCurrency();
+            ref.watch(criptoActualCurrencyProvider.state).state =
+                actualCriptoCurrency().y;
             ref.watch(criptoNameProvider.state).state = criptoModel.name;
             ref.watch(criptoAbrevProvider.state).state =
                 criptoModel.abbreviation;
             ref.watch(criptoImageProvider.state).state = criptoModel.image;
-            ref.watch(criptoCotacaoProvider.state).state = criptoModel.cotacao;
+            ref.watch(criptoCotacaoProvider.state).state =
+                actualCriptoCurrency().y;
             ref.watch(criptoVariacaoProvider.state).state =
                 criptoModel.variacao;
             ref.watch(criptoValueWalletReaisProvider.state).state =

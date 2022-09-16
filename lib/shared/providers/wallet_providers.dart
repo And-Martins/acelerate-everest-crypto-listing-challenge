@@ -9,3 +9,4 @@ final criptoVariacaoProvider = StateProvider((ref) => 00.0);
 final criptoValueWalletReaisProvider = StateProvider((ref) => 00.0);
 final criptoQtdWalletCriptoProvider = StateProvider((ref) => 00.0);
 final criptoDaysProvider = StateProvider((ref) => 5.0);
+final criptoActualCurrencyProvider = StateProvider((ref) => 0.0);
