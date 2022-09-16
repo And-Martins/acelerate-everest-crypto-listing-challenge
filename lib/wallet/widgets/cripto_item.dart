@@ -32,96 +32,101 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
     var criptoValueQtdWallet =
         Decimal.parse(criptoModel.valueQtdWalletCripto.toString());
 
-    return Column(
-      children: [
-        const Divider(
-          thickness: 1,
-        ),
-        ListTile(
-          onTap: () {
-            ref.watch(criptoNameProvider.state).state = criptoModel.name;
-            ref.watch(criptoAbrevProvider.state).state =
-                criptoModel.abbreviation;
-            ref.watch(criptoImageProvider.state).state = criptoModel.image;
-            ref.watch(criptoCotacaoProvider.state).state = criptoModel.cotacao;
-            ref.watch(criptoVariacaoProvider.state).state =
-                criptoModel.variacao;
-            ref.watch(criptoValueWalletReaisProvider.state).state =
-                criptoModel.valueWalletCripto;
-            ref.watch(criptoQtdWalletCriptoProvider.state).state =
-                criptoModel.valueQtdWalletCripto;
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) {
-                  return const DetailScreen();
-                },
+    return SizedBox(
+      height: 90,
+      child: Column(
+        children: [
+          const Divider(
+            thickness: 1,
+          ),
+          ListTile(
+            onTap: () {
+              ref.watch(criptoNameProvider.state).state = criptoModel.name;
+              ref.watch(criptoAbrevProvider.state).state =
+                  criptoModel.abbreviation;
+              ref.watch(criptoImageProvider.state).state = criptoModel.image;
+              ref.watch(criptoCotacaoProvider.state).state =
+                  criptoModel.cotacao;
+              ref.watch(criptoVariacaoProvider.state).state =
+                  criptoModel.variacao;
+              ref.watch(criptoValueWalletReaisProvider.state).state =
+                  criptoModel.valueWalletCripto;
+              ref.watch(criptoQtdWalletCriptoProvider.state).state =
+                  criptoModel.valueQtdWalletCripto;
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const DetailScreen();
+                  },
+                ),
+              );
+            },
+            leading:
+                CircleAvatar(backgroundImage: AssetImage(criptoModel.image)),
+            title: Text(
+              criptoModel.abbreviation,
+              style: GoogleFonts.sourceSansPro(
+                fontWeight: FontWeight.w500,
+                fontSize: 20,
               ),
-            );
-          },
-          leading: CircleAvatar(backgroundImage: AssetImage(criptoModel.image)),
-          title: Text(
-            criptoModel.abbreviation,
-            style: GoogleFonts.sourceSansPro(
-              fontWeight: FontWeight.w500,
-              fontSize: 20,
             ),
-          ),
-          subtitle: Text(
-            criptoModel.name,
-            style: GoogleFonts.sourceSansPro(
-              fontSize: 15,
-              color: const Color.fromRGBO(117, 118, 128, 1),
+            subtitle: Text(
+              criptoModel.name,
+              style: GoogleFonts.sourceSansPro(
+                fontSize: 15,
+                color: const Color.fromRGBO(117, 118, 128, 1),
+              ),
             ),
-          ),
-          trailing: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Expanded(
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Visibility(
-                      visible: hideWallet,
-                      replacement: Text(
-                        "R\$ ${formatReais.format(DecimalIntl(criptoValueWalletReais))}",
-                        style: GoogleFonts.sourceSansPro(
-                          fontSize: 19,
-                          fontWeight: FontWeight.w400,
+            trailing: Column(
+              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Visibility(
+                        visible: hideWallet,
+                        replacement: Text(
+                          "R\$ ${formatReais.format(DecimalIntl(criptoValueWalletReais))}",
+                          style: GoogleFonts.sourceSansPro(
+                            fontSize: 19,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        child: Container(
+                          color: Colors.grey,
+                          width: MediaQuery.of(context).size.width - 320.5,
+                          height: 13,
                         ),
                       ),
-                      child: Container(
-                        color: Colors.grey,
-                        width: MediaQuery.of(context).size.width - 320.5,
-                        height: 13,
-                      ),
-                    ),
-                    const Icon(
-                      Icons.keyboard_arrow_right_outlined,
-                      size: 30,
-                    )
-                  ],
-                ),
-              ),
-              Visibility(
-                visible: hideWallet,
-                replacement: Text(
-                  "${formatCriptoAbrev.format(DecimalIntl(criptoValueQtdWallet))} ${criptoModel.abbreviation}",
-                  style: GoogleFonts.sourceSansPro(
-                    fontSize: 15,
-                    color: const Color.fromRGBO(117, 118, 128, 1),
-                    fontWeight: FontWeight.w400,
+                      const Icon(
+                        Icons.keyboard_arrow_right_outlined,
+                        size: 30,
+                      )
+                    ],
                   ),
                 ),
-                child: Container(
-                  color: Colors.grey,
-                  width: MediaQuery.of(context).size.width - 355.5,
-                  height: 18.8,
+                Visibility(
+                  visible: hideWallet,
+                  replacement: Text(
+                    "${formatCriptoAbrev.format(DecimalIntl(criptoValueQtdWallet))} ${criptoModel.abbreviation}",
+                    style: GoogleFonts.sourceSansPro(
+                      fontSize: 15,
+                      color: const Color.fromRGBO(117, 118, 128, 1),
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  child: Container(
+                    color: Colors.grey,
+                    width: MediaQuery.of(context).size.width - 355.5,
+                    height: 18.8,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
