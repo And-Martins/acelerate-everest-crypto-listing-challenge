@@ -14,9 +14,9 @@ class WalletScreen extends StatefulHookConsumerWidget {
 class _WalletScreenState extends ConsumerState<WalletScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: WalletBody(),
-      bottomNavigationBar: const DefaultNavbar(
+      bottomNavigationBar: DefaultNavbar(
         selectedIndex: 0,
       ),
     );
