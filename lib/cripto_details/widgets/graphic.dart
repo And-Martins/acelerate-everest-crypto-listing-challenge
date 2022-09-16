@@ -66,7 +66,7 @@ class Graphic extends StatelessWidget {
               ),
             ),
             minX: days - 1,
-            maxX: 0,
+            maxX: -0.2,
             baselineX: 3,
             minY: 0,
             maxY: 103612.60,
