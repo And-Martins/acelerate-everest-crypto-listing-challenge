@@ -1,16 +1,18 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-import '../../list_cripto_currency.dart';
-
 class Graphic extends StatelessWidget {
+  final List<FlSpot> defineSpot;
+  final double days;
+
   const Graphic({
     Key? key,
+    required this.defineSpot,
+    required this.days,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    List<FlSpot> teste = listCriptoCurrency();
     return AspectRatio(
       aspectRatio: 16 / 9,
       child: Padding(
@@ -22,19 +24,8 @@ class Graphic extends StatelessWidget {
                 barWidth: 3.5,
                 color: const Color.fromRGBO(224, 43, 87, 1),
                 dotData: FlDotData(show: false),
-                spots: [
-                  teste[0],
-                  teste[1],
-                  teste[2],
-                  teste[3],
-                  teste[4],
-                  teste[5],
-                  teste[6],
-                  teste[7],
-                  teste[8],
-                  teste[9],
-                  teste[10],
-                ],
+                isStrokeCapRound: true,
+                spots: defineSpot,
               ),
             ],
             betweenBarsData: [],
@@ -53,10 +44,10 @@ class Graphic extends StatelessWidget {
               ),
             ),
             minX: 0,
-            maxX: 10,
+            maxX: days - 1,
             baselineX: 3,
             minY: 0,
-            maxY: 15,
+            maxY: 100,
             baselineY: 3,
             clipData: FlClipData.none(),
             backgroundColor: const Color.fromRGBO(255, 255, 255, 1),

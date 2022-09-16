@@ -1,18 +1,24 @@
+import 'package:crypto_listing/shared/providers/wallet_providers.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class ButtonDay extends StatefulWidget {
+import '../../list_cripto_currency.dart';
+
+class ButtonDay extends StatefulHookConsumerWidget {
   final String text;
+  final double days;
 
   const ButtonDay({
     Key? key,
     required this.text,
+    required this.days,
   }) : super(key: key);
 
   @override
-  State<ButtonDay> createState() => _ButtonDayState();
+  ConsumerState<ButtonDay> createState() => _ButtonDayState();
 }
 
-class _ButtonDayState extends State<ButtonDay> {
+class _ButtonDayState extends ConsumerState<ButtonDay> {
   @override
   Widget build(BuildContext context) {
     Color colorChange = const Color.fromRGBO(250, 250, 250, 1);
@@ -28,7 +34,11 @@ class _ButtonDayState extends State<ButtonDay> {
             ),
           ),
         ),
-        onPressed: () {},
+        onPressed: () {
+          listCriptoCurrencyChangeDay(
+              ref.watch(criptoDaysProvider.state).state = widget.days);
+          setState(() {});
+        },
         child: Text(
           widget.text,
           textAlign: TextAlign.center,

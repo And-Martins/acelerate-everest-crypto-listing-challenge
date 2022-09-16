@@ -1,5 +1,6 @@
 import 'package:decimal/decimal.dart';
 import 'package:decimal/intl.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -26,6 +27,7 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
   Widget build(BuildContext context) {
     final bool hideWallet = ref.watch(hideWalletStateProvider);
     CriptoModel criptoModel = widget.criptoModel;
+    List<FlSpot> criptoCurrentList = [];
 
     var criptoValueWalletReais =
         Decimal.parse(criptoModel.valueWalletCripto.toString());
@@ -39,6 +41,7 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
         ),
         ListTile(
           onTap: () {
+            cleanListCriptoCurrency();
             listCriptoCurrency();
             ref.watch(criptoNameProvider.state).state = criptoModel.name;
             ref.watch(criptoAbrevProvider.state).state =
@@ -51,7 +54,8 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
                 criptoModel.valueWalletCripto;
             ref.watch(criptoQtdWalletCriptoProvider.state).state =
                 criptoModel.valueQtdWalletCripto;
-            Navigator.pushNamed(context, '/criptoDetails');
+            Navigator.pushNamed(context, '/criptoDetails',
+                arguments: criptoCurrentList);
           },
           leading: CircleAvatar(backgroundImage: AssetImage(criptoModel.image)),
           title: Text(

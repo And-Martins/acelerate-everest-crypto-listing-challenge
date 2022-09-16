@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../list_cripto_currency.dart';
 import '../../shared/providers/wallet_providers.dart';
 import '../../shared/widgets/default_appbar.dart';
 import '../../shared/widgets/default_big_button.dart';
@@ -30,6 +31,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
     final double criptoValueWalletReais =
         ref.watch(criptoValueWalletReaisProvider);
     final double criptoQtdWallet = ref.watch(criptoQtdWalletCriptoProvider);
+    final double criptoDays = ref.watch(criptoDaysProvider);
 
     return Scaffold(
       appBar: DefaultAppbar(
@@ -53,24 +55,32 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
               ),
               DefaultSubtitle(criptoAbrev),
               TitleValorCripto(criptoCotacao: criptoCotacao),
-              const Graphic(),
+              Graphic(
+                defineSpot: listCriptoCurrency(),
+                days: criptoDays,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: const [
                   ButtonDay(
                     text: "5D",
+                    days: 5,
                   ),
                   ButtonDay(
                     text: "15D",
+                    days: 15,
                   ),
                   ButtonDay(
                     text: "30D",
+                    days: 30,
                   ),
                   ButtonDay(
                     text: "45D",
+                    days: 45,
                   ),
                   ButtonDay(
                     text: "90D",
+                    days: 90,
                   ),
                 ],
               ),
