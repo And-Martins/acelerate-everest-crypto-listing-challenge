@@ -21,6 +21,7 @@ class ButtonDay extends StatefulHookConsumerWidget {
 class _ButtonDayState extends ConsumerState<ButtonDay> {
   @override
   Widget build(BuildContext context) {
+    final double criptoVariacao = ref.watch(criptoVariacaoProvider);
     Color colorChange = const Color.fromRGBO(250, 250, 250, 1);
     return SizedBox(
       width: 61,
@@ -37,6 +38,13 @@ class _ButtonDayState extends ConsumerState<ButtonDay> {
         onPressed: () {
           listCriptoCurrencyChangeDay(
               ref.watch(criptoDaysProvider.state).state = widget.days);
+          if (widget.days / 10 > criptoVariacao) {
+            ref.watch(criptoVariacaoProvider.state).state =
+                ((widget.days / 10) + criptoVariacao);
+          } else {
+            ref.watch(criptoVariacaoProvider.state).state =
+                ((widget.days / 10) - criptoVariacao);
+          }
           setState(() {});
         },
         child: Text(
