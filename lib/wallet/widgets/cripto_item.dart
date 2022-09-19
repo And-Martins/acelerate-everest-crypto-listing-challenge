@@ -1,10 +1,11 @@
 import 'package:decimal/decimal.dart';
 import 'package:decimal/intl.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../cripto_details/view/detail_screen.dart';
+import '../../list_cripto_currency.dart';
 import '../../shared/models/cripto_model.dart';
 import '../../shared/providers/wallet_providers.dart';
 import '../../shared/widgets/number_formatter.dart';
@@ -26,6 +27,7 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
   Widget build(BuildContext context) {
     final bool hideWallet = ref.watch(hideWalletStateProvider);
     CriptoModel criptoModel = widget.criptoModel;
+    List<FlSpot> criptoCurrentList = [];
 
     var criptoValueWalletReais =
         Decimal.parse(criptoModel.valueWalletCripto.toString());
@@ -41,25 +43,24 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
           ),
           ListTile(
             onTap: () {
+              cleanListCriptoCurrency();
+              listCriptoCurrency();
+              ref.watch(criptoActualCurrencyProvider.state).state =
+                  actualCriptoCurrency().y;
               ref.watch(criptoNameProvider.state).state = criptoModel.name;
               ref.watch(criptoAbrevProvider.state).state =
                   criptoModel.abbreviation;
               ref.watch(criptoImageProvider.state).state = criptoModel.image;
               ref.watch(criptoCotacaoProvider.state).state =
-                  criptoModel.cotacao;
+                  actualCriptoCurrency().y;
               ref.watch(criptoVariacaoProvider.state).state =
                   criptoModel.variacao;
               ref.watch(criptoValueWalletReaisProvider.state).state =
                   criptoModel.valueWalletCripto;
               ref.watch(criptoQtdWalletCriptoProvider.state).state =
                   criptoModel.valueQtdWalletCripto;
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) {
-                    return const DetailScreen();
-                  },
-                ),
-              );
+              Navigator.pushNamed(context, '/criptoDetails',
+                  arguments: criptoCurrentList);
             },
             leading:
                 CircleAvatar(backgroundImage: AssetImage(criptoModel.image)),
@@ -78,7 +79,6 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
               ),
             ),
             trailing: Column(
-              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Expanded(
                   child: Row(

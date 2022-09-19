@@ -3,15 +3,34 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../core/asset.dart';
 
-class NavbarWallet extends StatelessWidget {
+class DefaultNavbar extends StatefulWidget {
   final int selectedIndex;
-  final void Function(int) onItemTapped;
 
-  const NavbarWallet({
+  const DefaultNavbar({
     Key? key,
     required this.selectedIndex,
-    required this.onItemTapped,
   }) : super(key: key);
+
+  @override
+  State<DefaultNavbar> createState() => _DefaultNavbarState();
+}
+
+class _DefaultNavbarState extends State<DefaultNavbar> {
+  void onItemTapped(int selectedIndex) {
+    setState(
+      () {
+        switch (selectedIndex) {
+          case 0:
+            Navigator.pushReplacementNamed(context, '/wallet');
+            break;
+
+          case 1:
+            Navigator.pushReplacementNamed(context, '/criptoMoviments');
+            break;
+        }
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +65,7 @@ class NavbarWallet extends StatelessWidget {
           label: 'Movimentações',
         ),
       ],
-      currentIndex: selectedIndex,
+      currentIndex: widget.selectedIndex,
       selectedItemColor: Colors.amber[800],
       onTap: onItemTapped,
     );

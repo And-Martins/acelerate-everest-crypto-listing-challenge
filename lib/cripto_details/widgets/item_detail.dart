@@ -71,7 +71,7 @@ class ItemDetail extends StatelessWidget {
                                 ),
                               )
                             : Text(
-                                "$variacao%",
+                                "+$variacao%",
                                 style: GoogleFonts.sourceSansPro(
                                   fontSize: 19,
                                   color: Colors.green.shade800,
