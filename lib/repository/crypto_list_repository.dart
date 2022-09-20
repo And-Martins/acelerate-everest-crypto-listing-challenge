@@ -9,7 +9,7 @@ class CryptoListRepository {
     List<CryptoListModel> cryptos = [];
 
     final response =
-        await dio.get('https://api.coinbase.com/v2/assets/prices?base=BRL');
+        await dio.get('http://api.coinbase.com/v2/assets/prices?base=BRL');
     cryptos = List.from(
       response.data.map((cryptos) {
         return CryptoListModel.fromMap(cryptos);
