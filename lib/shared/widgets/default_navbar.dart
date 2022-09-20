@@ -1,3 +1,4 @@
+import 'package:crypto_listing/core/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -21,11 +22,19 @@ class _DefaultNavbarState extends State<DefaultNavbar> {
       () {
         switch (selectedIndex) {
           case 0:
-            Navigator.pushReplacementNamed(context, '/wallet');
+            Navigator.pushReplacement(context, PageRouteBuilder(
+              pageBuilder: (context, animation, secondaryAnimation) {
+                return routesNavigation['/wallet']!(context);
+              },
+            ));
             break;
 
           case 1:
-            Navigator.pushReplacementNamed(context, '/criptoMoviments');
+            Navigator.pushReplacement(context, PageRouteBuilder(
+              pageBuilder: (context, animation, secondaryAnimation) {
+                return routesNavigation['/criptoMoviments']!(context);
+              },
+            ));
             break;
         }
       },
