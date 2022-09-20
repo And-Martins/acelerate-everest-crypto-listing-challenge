@@ -7,9 +7,9 @@ import '../../list_cripto_currency.dart';
 
 class ButtonDay extends StatefulHookConsumerWidget {
   final String text;
-  late double days;
+  final double days;
 
-  ButtonDay({
+  const ButtonDay({
     Key? key,
     required this.text,
     required this.days,
@@ -40,7 +40,6 @@ class _ButtonDayState extends ConsumerState<ButtonDay> {
         onPressed: () {
           listCriptoCurrencyChangeDay(
               ref.watch(criptoDaysProvider.state).state = widget.days);
-          print(widget.days);
           if (widget.days / 10 > criptoVariacao) {
             ref.watch(criptoVariacaoProvider.state).state =
                 ((widget.days / 10) + criptoVariacao);

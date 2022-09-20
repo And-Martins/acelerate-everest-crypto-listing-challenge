@@ -67,7 +67,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: [
+                children: const [
                   ButtonDay(
                     text: "5D",
                     days: 5,
