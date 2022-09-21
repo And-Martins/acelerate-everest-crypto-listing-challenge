@@ -28,7 +28,7 @@ class ItemDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var cotacao = Decimal.parse(criptoCotacao.toString());
-    double variacao = criptoVariacao;
+    var variacao = Decimal.parse(criptoVariacao.toString());
     var criptoQtd = Decimal.parse(criptoQtdWallet.toString());
     var criptoValueReais = Decimal.parse(criptoValueWalletReais.toString());
 
@@ -61,9 +61,9 @@ class ItemDetail extends StatelessWidget {
                         ),
                       )
                     : opc == 2
-                        ? variacao <= 0.00
+                        ? variacao <= Decimal.zero
                             ? Text(
-                                "$variacao%",
+                                "${formatReais.format(DecimalIntl(variacao))}%",
                                 style: GoogleFonts.sourceSansPro(
                                   fontSize: 19,
                                   color: Colors.red.shade800,
@@ -71,7 +71,7 @@ class ItemDetail extends StatelessWidget {
                                 ),
                               )
                             : Text(
-                                "+$variacao%",
+                                "+${formatCriptoAbrev.format(DecimalIntl(variacao))} %",
                                 style: GoogleFonts.sourceSansPro(
                                   fontSize: 19,
                                   color: Colors.green.shade800,

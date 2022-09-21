@@ -1,13 +1,13 @@
 import 'dart:convert';
 
-class ListCryptoModel {
+class CryptoModel {
   final String id;
   final String symbol;
   final String name;
   final String image;
   final int currentPrice;
   final double marketCapChangePercentage24h;
-  ListCryptoModel({
+  CryptoModel({
     required this.id,
     required this.symbol,
     required this.name,
@@ -16,7 +16,7 @@ class ListCryptoModel {
     required this.marketCapChangePercentage24h,
   });
 
-  ListCryptoModel copyWith({
+  CryptoModel copyWith({
     String? id,
     String? symbol,
     String? name,
@@ -24,7 +24,7 @@ class ListCryptoModel {
     int? currentPrice,
     double? marketCapChangePercentage24h,
   }) {
-    return ListCryptoModel(
+    return CryptoModel(
       id: id ?? this.id,
       symbol: symbol ?? this.symbol,
       name: name ?? this.name,
@@ -49,8 +49,8 @@ class ListCryptoModel {
     return result;
   }
 
-  factory ListCryptoModel.fromMap(Map<String, dynamic> map) {
-    return ListCryptoModel(
+  factory CryptoModel.fromMap(Map<String, dynamic> map) {
+    return CryptoModel(
       id: map['id'] ?? '',
       symbol: map['symbol'] ?? '',
       name: map['name'] ?? '',
@@ -63,8 +63,8 @@ class ListCryptoModel {
 
   String toJson() => json.encode(toMap());
 
-  factory ListCryptoModel.fromJson(String source) =>
-      ListCryptoModel.fromMap(json.decode(source));
+  factory CryptoModel.fromJson(String source) =>
+      CryptoModel.fromMap(json.decode(source));
 
   @override
   String toString() {
@@ -75,7 +75,7 @@ class ListCryptoModel {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is ListCryptoModel &&
+    return other is CryptoModel &&
         other.id == id &&
         other.symbol == symbol &&
         other.name == name &&

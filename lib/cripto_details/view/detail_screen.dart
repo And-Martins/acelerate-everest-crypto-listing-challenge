@@ -59,7 +59,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
                   CriptoIcon(criptoImage: criptoImage),
                 ],
               ),
-              DefaultSubtitle(criptoAbrev),
+              DefaultSubtitle(criptoAbrev.toUpperCase()),
               TitleValorCripto(criptoCotacao: criptoCotacao),
               Graphic(
                 defineSpot: listCriptoCurrency(),

@@ -6,16 +6,19 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../list_cripto_currency.dart';
-import '../../shared/models/cripto_model.dart';
+import '../../shared/models/list_crypto_model.dart';
+import '../../shared/models/wallet_model.dart';
 import '../../shared/providers/wallet_providers.dart';
 import '../../shared/widgets/number_formatter.dart';
 
 class CriptoItem extends StatefulHookConsumerWidget {
-  final CriptoModel criptoModel;
+  final CryptoModel cryptoModel;
+  final WalletModel walletModel;
 
   const CriptoItem({
-    required this.criptoModel,
     Key? key,
+    required this.cryptoModel,
+    required this.walletModel,
   }) : super(key: key);
 
   @override
@@ -26,13 +29,15 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
   @override
   Widget build(BuildContext context) {
     final bool hideWallet = ref.watch(hideWalletStateProvider);
-    CriptoModel criptoModel = widget.criptoModel;
+    CryptoModel cryptoModel = widget.cryptoModel;
+    WalletModel walletModel = widget.walletModel;
     List<FlSpot> criptoCurrentList = [];
 
-    var criptoValueWalletReais =
-        Decimal.parse(criptoModel.valueWalletCripto.toString());
+    var criptoValueWalletReais = Decimal.parse(
+        (cryptoModel.currentPrice * walletModel.quantityCoin).toString());
+
     var criptoValueQtdWallet =
-        Decimal.parse(criptoModel.valueQtdWalletCripto.toString());
+        Decimal.parse(walletModel.quantityCoin.toString());
 
     return SizedBox(
       height: 90,
@@ -46,33 +51,30 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
               cleanListCriptoCurrency();
               listCriptoCurrency();
               ref.watch(criptoActualCurrencyProvider.state).state =
-                  actualCriptoCurrency().y;
-              ref.watch(criptoNameProvider.state).state = criptoModel.name;
-              ref.watch(criptoAbrevProvider.state).state =
-                  criptoModel.abbreviation;
-              ref.watch(criptoImageProvider.state).state = criptoModel.image;
+                  double.parse(cryptoModel.currentPrice.toString());
+              ref.watch(criptoNameProvider.state).state = cryptoModel.name;
+              ref.watch(criptoAbrevProvider.state).state = cryptoModel.symbol;
+              ref.watch(criptoImageProvider.state).state = cryptoModel.image;
               ref.watch(criptoCotacaoProvider.state).state =
                   actualCriptoCurrency().y;
               ref.watch(criptoVariacaoProvider.state).state =
-                  criptoModel.variacao;
-              ref.watch(criptoValueWalletReaisProvider.state).state =
-                  criptoModel.valueWalletCripto;
-              ref.watch(criptoQtdWalletCriptoProvider.state).state =
-                  criptoModel.valueQtdWalletCripto;
+                  cryptoModel.marketCapChangePercentage24h;
+              ref.watch(criptoValueWalletReaisProvider.state).state = 2.0000;
+              ref.watch(criptoQtdWalletCriptoProvider.state).state = 6557;
               Navigator.pushNamed(context, '/criptoDetails',
                   arguments: criptoCurrentList);
             },
             leading:
-                CircleAvatar(backgroundImage: AssetImage(criptoModel.image)),
+                CircleAvatar(backgroundImage: NetworkImage(cryptoModel.image)),
             title: Text(
-              criptoModel.abbreviation,
+              cryptoModel.symbol.toUpperCase(),
               style: GoogleFonts.sourceSansPro(
                 fontWeight: FontWeight.w500,
                 fontSize: 20,
               ),
             ),
             subtitle: Text(
-              criptoModel.name,
+              cryptoModel.name,
               style: GoogleFonts.sourceSansPro(
                 fontSize: 15,
                 color: const Color.fromRGBO(117, 118, 128, 1),
@@ -109,7 +111,7 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
                 Visibility(
                   visible: hideWallet,
                   replacement: Text(
-                    "${formatCriptoAbrev.format(DecimalIntl(criptoValueQtdWallet))} ${criptoModel.abbreviation}",
+                    "${formatCriptoAbrev.format(DecimalIntl(criptoValueQtdWallet))} ${cryptoModel.symbol.toUpperCase()}",
                     style: GoogleFonts.sourceSansPro(
                       fontSize: 15,
                       color: const Color.fromRGBO(117, 118, 128, 1),

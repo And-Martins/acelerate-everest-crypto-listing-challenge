@@ -2,7 +2,7 @@ import 'package:crypto_listing/list_cripto_api/list_crypto_repository.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-import '../../list_cripto_api/list_crypto_model.dart';
+import '../../shared/models/list_crypto_model.dart';
 import '../../shared/widgets/default_navbar.dart';
 
 class MovementsScreen extends StatefulWidget {
@@ -14,7 +14,7 @@ class MovementsScreen extends StatefulWidget {
 
 class _MovementsScreenState extends State<MovementsScreen> {
   ListCryptoRepository repository = ListCryptoRepository(Dio());
-  late Future<List<ListCryptoModel>> cryptos;
+  late Future<List<CryptoModel>> cryptos;
 
   @override
   void initState() {
@@ -27,12 +27,12 @@ class _MovementsScreenState extends State<MovementsScreen> {
     return Scaffold(
       body: FutureBuilder(
         future: cryptos,
-        builder: (context, AsyncSnapshot<List<ListCryptoModel>> snapshot) {
+        builder: (context, AsyncSnapshot<List<CryptoModel>> snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
-                ListCryptoModel listCryptoModel = snapshot.data![index];
+                CryptoModel listCryptoModel = snapshot.data![index];
                 return Column(
                   children: [
                     Text(listCryptoModel.name),
