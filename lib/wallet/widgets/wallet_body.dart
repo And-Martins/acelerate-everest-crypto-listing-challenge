@@ -6,7 +6,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 import '../../shared/models/list_crypto_model.dart';
-import '../../list_cripto_api/list_crypto_repository.dart';
+import '../../shared/repository/list_crypto_repository.dart';
 import '../../shared/widgets/default_subtitle.dart';
 import '../../shared/widgets/default_title.dart';
 import 'hide_button.dart';

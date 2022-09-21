@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-import '../shared/models/list_crypto_model.dart';
+import '../models/list_crypto_model.dart';
 
 class ListCryptoRepository {
   final Dio dio;

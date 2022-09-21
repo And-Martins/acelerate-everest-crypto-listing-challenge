@@ -60,7 +60,8 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
               ref.watch(criptoVariacaoProvider.state).state =
                   cryptoModel.marketCapChangePercentage24h;
               ref.watch(criptoValueWalletReaisProvider.state).state = 2.0000;
-              ref.watch(criptoQtdWalletCriptoProvider.state).state = 6557;
+              ref.watch(criptoQtdWalletCriptoProvider.state).state =
+                  walletModel.quantityCoin;
               Navigator.pushNamed(context, '/criptoDetails',
                   arguments: criptoCurrentList);
             },

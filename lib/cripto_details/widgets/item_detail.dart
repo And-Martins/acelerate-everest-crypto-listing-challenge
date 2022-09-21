@@ -53,6 +53,7 @@ class ItemDetail extends StatelessWidget {
                   ),
                 ),
                 opc == 1
+                    //TODO: valores de 0.30 não aparecem corretaente
                     ? Text(
                         "R\$ ${formatReais.format(DecimalIntl(cotacao))}",
                         style: GoogleFonts.sourceSansPro(

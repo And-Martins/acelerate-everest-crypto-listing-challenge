@@ -1,4 +1,4 @@
-import 'package:crypto_listing/list_cripto_api/list_crypto_repository.dart';
+import 'package:crypto_listing/shared/repository/list_crypto_repository.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
