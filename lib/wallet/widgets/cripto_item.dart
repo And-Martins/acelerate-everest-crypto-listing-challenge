@@ -1,4 +1,3 @@
-import 'package:crypto_listing/wallet/model/crypto_view_data.dart';
 import 'package:decimal/decimal.dart';
 import 'package:decimal/intl.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -10,6 +9,7 @@ import '../../list_cripto_currency.dart';
 import '../../shared/models/wallet_model.dart';
 import '../../shared/providers/wallet_providers.dart';
 import '../../shared/widgets/number_formatter.dart';
+import '../model/crypto_list/crypto_view_data.dart';
 
 class CriptoItem extends StatefulHookConsumerWidget {
   final CryptoViewData cryptoData;

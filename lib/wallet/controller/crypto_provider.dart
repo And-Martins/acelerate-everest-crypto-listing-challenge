@@ -1,9 +1,11 @@
 import 'package:crypto_listing/shared/utils/providers/provider.dart';
 import 'package:crypto_listing/wallet/repository/get_list/crypto_repo.dart';
-import 'package:crypto_listing/wallet/usecases/crypto_usecase.dart';
+import 'package:decimal/decimal.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../endpoint/cryptos_list_endpoint.dart';
+import '../usecases/crypto_list/crypto_usecase.dart';
+import '../usecases/wallet_amount/amount_usecase.dart';
 
 final getCryptoEndPointProvider = StateProvider(
   (ref) => CryptoEndpoint(
@@ -23,6 +25,16 @@ final getCryptoUseCaseProvider = StateProvider(
   ),
 );
 
+final getTotalWalletAmountUseCaseProvider = StateProvider(
+  (ref) => AmountUsecase(
+    ref.watch(getCryptoRepoProvider),
+  ),
+);
+
 final listCryptoProvider = FutureProvider(
   (ref) => ref.watch(getCryptoUseCaseProvider).execute(),
+);
+
+final getTotalWalletValue = FutureProvider.family<Decimal, List<double>>(
+  (ref, args) => ref.watch(getTotalWalletAmountUseCaseProvider).execute(args),
 );

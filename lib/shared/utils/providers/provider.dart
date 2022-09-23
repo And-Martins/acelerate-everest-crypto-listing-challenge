@@ -4,3 +4,5 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 final dioProvider = Provider(
   (ref) => Dio(),
 );
+
+final totalValueAmountProvider = StateNotifierProvider<UserAmountProvider, (create)
