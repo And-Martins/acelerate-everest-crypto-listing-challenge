@@ -7,6 +7,7 @@ import '../../shared/widgets/default_appbar.dart';
 import '../../shared/widgets/default_big_button.dart';
 import '../../shared/widgets/default_subtitle.dart';
 import '../../shared/widgets/default_title.dart';
+import '../model/responses/detail_response.dart';
 import '../widgets/button_day.dart';
 import '../widgets/cripto_icon.dart';
 import '../widgets/graphic.dart';
@@ -28,6 +29,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final Future<DetailResponse> detailResponse;
     final String criptoName = ref.watch(criptoNameProvider);
     final String criptoAbrev = ref.watch(criptoAbrevProvider);
     final String criptoImage = ref.watch(criptoImageProvider);
