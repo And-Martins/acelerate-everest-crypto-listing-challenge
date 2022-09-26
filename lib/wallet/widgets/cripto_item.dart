@@ -35,9 +35,9 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
     WalletModel walletModel = widget.walletModel;
     List<FlSpot> criptoCurrentList = [];
 
-    var criptoValueWalletReais = Decimal.parse((cryptoData.currentPrice *
-            Decimal.parse(walletModel.quantityCoin.toString()))
-        .toString());
+    var criptoValueWalletReais =
+        (double.parse(cryptoData.currentPrice.toString()) *
+            walletModel.quantityCoin);
 
     var criptoValueQtdWallet =
         Decimal.parse(walletModel.quantityCoin.toString());
@@ -64,7 +64,8 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
                   actualCriptoCurrency().y;
               ref.watch(criptoVariacaoProvider.state).state =
                   cryptoData.marketCapChangePercentage24h;
-              ref.watch(criptoValueWalletReaisProvider.state).state = 2.0000;
+              ref.watch(criptoValueWalletReaisProvider.state).state =
+                  criptoValueWalletReais;
               ref.watch(criptoQtdWalletCriptoProvider.state).state =
                   walletModel.quantityCoin;
               Navigator.pushNamed(context, '/criptoDetails',
@@ -95,7 +96,7 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
                       Visibility(
                         visible: hideWallet,
                         replacement: Text(
-                          "R\$ ${formatReais.format(DecimalIntl(criptoValueWalletReais))}",
+                          "R\$ ${formatReais.format(criptoValueWalletReais)}",
                           style: GoogleFonts.sourceSansPro(
                             fontSize: 19,
                             fontWeight: FontWeight.w400,
