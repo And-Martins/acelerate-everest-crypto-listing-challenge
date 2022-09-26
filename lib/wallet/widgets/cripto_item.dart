@@ -51,13 +51,12 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
           ),
           ListTile(
             onTap: () {
-              // cryptoDetail = repository.getDetail(widget.cryptoModel.id);
-              // print(cryptoDetail);
               cleanListCriptoCurrency();
               listCriptoCurrency();
               ref.watch(criptoActualCurrencyProvider.state).state =
                   double.parse(cryptoData.currentPrice.toString());
               ref.watch(criptoNameProvider.state).state = cryptoData.name;
+              ref.watch(cryptoIdProvider.state).state = cryptoData.id;
               ref.watch(criptoAbrevProvider.state).state = cryptoData.symbol;
               ref.watch(criptoImageProvider.state).state = cryptoData.image;
               ref.watch(criptoCotacaoProvider.state).state =

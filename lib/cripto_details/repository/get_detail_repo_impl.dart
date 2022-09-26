@@ -3,9 +3,9 @@ import 'package:crypto_listing/cripto_details/model/responses/detail_response.da
 
 import 'i_get_detail_repo.dart';
 
-class GetDetailRepoImpl implements IGetDetailRepo {
+class GetDetailRepo implements IGetDetailRepo {
   final IGetDetailEndpoint _endpoint;
-  GetDetailRepoImpl(
+  GetDetailRepo(
     this._endpoint,
   );
 

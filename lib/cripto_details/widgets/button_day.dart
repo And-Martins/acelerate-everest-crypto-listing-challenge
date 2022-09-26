@@ -40,13 +40,6 @@ class _ButtonDayState extends ConsumerState<ButtonDay> {
         onPressed: () {
           listCriptoCurrencyChangeDay(
               ref.watch(criptoDaysProvider.state).state = widget.days);
-          if (widget.days / 10 > criptoVariacao) {
-            ref.watch(criptoVariacaoProvider.state).state =
-                ((widget.days / 10) + criptoVariacao);
-          } else {
-            ref.watch(criptoVariacaoProvider.state).state =
-                ((widget.days / 10) - criptoVariacao);
-          }
 
           setState(() {});
         },

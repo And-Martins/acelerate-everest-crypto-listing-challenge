@@ -15,7 +15,7 @@ class MovementsScreen extends StatefulWidget {
 
 class _MovementsScreenState extends State<MovementsScreen> {
   GetDetailUsecase usecase =
-      GetDetailUsecase(GetDetailRepoImpl(GetDetailEndpoint(Dio())));
+      GetDetailUsecase(GetDetailRepo(GetDetailEndpoint(Dio())));
   late Future<Response> cryptos;
 
   @override
