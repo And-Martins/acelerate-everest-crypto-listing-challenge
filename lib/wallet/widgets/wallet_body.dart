@@ -21,21 +21,6 @@ class WalletBody extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final scrollController = ScrollController();
 
-    List<double> quantityCoin = [
-      0.65554321,
-      0.94,
-      0.82,
-      1.0,
-      0.03,
-      0.25,
-      1.8,
-      0.8978,
-      0.74,
-      0.80
-    ];
-
-    double totalValue = 0.0;
-
     return SafeArea(
       child: Column(
         children: [
@@ -85,13 +70,13 @@ class WalletBody extends HookConsumerWidget {
                           snapshot.data!.cryptoViewDataList[index];
 
                       final WalletModel walletModel = WalletModel(
-                        quantityCoin: quantityCoin[index],
+                        quantityCoin:
+                            ref.watch(totalValueAmountProvider)[index],
                         valueWalletCoin: snapshot
                             .data!.cryptoViewDataList[index].currentPrice,
                         idCoin: cryptoData.symbol,
                       );
 
-                      //   //TODO: Fazer valor retornar ao iniciar;
                       //   totalValue = double.parse(
                       //       (cryptoModel.currentPrice * walletModel.quantityCoin)
                       //           .toString());
