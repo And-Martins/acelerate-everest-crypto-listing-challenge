@@ -12,7 +12,12 @@ class DefaultBigButton extends StatelessWidget {
       height: 55,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(backgroundColor: Colors.pink),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(
+            context,
+            '/convert',
+          );
+        },
         child: const Text(
           "Converter moeda",
           style: TextStyle(
