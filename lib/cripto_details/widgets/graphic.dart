@@ -1,3 +1,4 @@
+import 'package:decimal/decimal.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -7,7 +8,7 @@ import '../../shared/widgets/number_formatter.dart';
 
 class Graphic extends StatefulHookConsumerWidget {
   final List<FlSpot> defineSpot;
-  final double days;
+  final int days;
 
   const Graphic({
     Key? key,
@@ -20,11 +21,13 @@ class Graphic extends StatefulHookConsumerWidget {
 }
 
 class _GraphicState extends ConsumerState<Graphic> {
+  late List<FlSpot> spotsList;
+
   @override
   Widget build(BuildContext context) {
-    void changeValue(double newValue) async {
-      ref.watch(criptoCotacaoProvider.state).state = newValue;
-      initState();
+    void changeValue(Decimal newValue) {
+      ref.watch(criptoCotacaoProvider.state).state =
+          Decimal.parse(newValue.toString());
     }
 
     return LayoutBuilder(
@@ -41,7 +44,8 @@ class _GraphicState extends ConsumerState<Graphic> {
                   color: const Color.fromRGBO(224, 43, 87, 1),
                   dotData: FlDotData(show: false),
                   isStrokeCapRound: true,
-                  spots: widget.defineSpot,
+                  spots: widget.defineSpot
+                      .sublist(0, ref.watch(criptoDaysProvider)),
                 ),
               ],
               betweenBarsData: [],
@@ -49,7 +53,28 @@ class _GraphicState extends ConsumerState<Graphic> {
               extraLinesData: ExtraLinesData(),
               lineTouchData: LineTouchData(
                 touchCallback: (FlTouchEvent event, lineTouchResponse) {
-                  setState(() {});
+                  if (!event.isInterestedForInteractions) {
+                    setState(() {
+                      changeValue(
+                          Decimal.parse(widget.defineSpot.last.y.toString()));
+                    });
+                  }
+                  setState(
+                    () {
+                      if (lineTouchResponse?.lineBarSpots?.first.spotIndex !=
+                          null) {
+                        changeValue(
+                          Decimal.parse(
+                            widget
+                                .defineSpot[lineTouchResponse!
+                                    .lineBarSpots!.first.spotIndex]
+                                .y
+                                .toString(),
+                          ),
+                        );
+                      }
+                    },
+                  );
                 },
                 touchTooltipData: LineTouchTooltipData(
                   fitInsideHorizontally: true,
@@ -61,7 +86,7 @@ class _GraphicState extends ConsumerState<Graphic> {
                   tooltipRoundedRadius: 15,
                   getTooltipItems: (touchedSpots) {
                     return touchedSpots.map((touchedSpot) {
-                      changeValue(touchedSpot.y);
+                      // changeValue(touchedSpot.y);
                       return LineTooltipItem(
                         "R\$ ${formatReais.format(touchedSpot.y)}",
                         const TextStyle(
@@ -84,11 +109,11 @@ class _GraphicState extends ConsumerState<Graphic> {
                   ),
                 ),
               ),
-              minX: widget.days - 1,
-              maxX: -0.2,
-              baselineX: 3,
-              minY: 0,
-              maxY: 103612.60,
+              // minX: widget.days - 1,
+              // maxX: -0.2,
+              // baselineX: 3,
+              // minY: 0,
+              // maxY: 103612.60,
               clipData: FlClipData.all(),
             ),
           ),
