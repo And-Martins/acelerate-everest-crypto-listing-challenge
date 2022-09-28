@@ -3,13 +3,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:crypto_listing/shared/providers/wallet_providers.dart';
 
-import '../../list_cripto_currency.dart';
-
 class ButtonDay extends StatefulHookConsumerWidget {
   final String text;
-  final double days;
+  late int days;
 
-  const ButtonDay({
+  ButtonDay({
     Key? key,
     required this.text,
     required this.days,
@@ -23,7 +21,7 @@ class _ButtonDayState extends ConsumerState<ButtonDay> {
   @override
   Widget build(BuildContext context) {
     final double criptoVariacao = ref.watch(criptoVariacaoProvider);
-    final double criptoDaySelected = ref.watch(criptoDaysProvider);
+    final int criptoDaySelected = ref.watch(criptoDaysProvider);
     return SizedBox(
       width: 61,
       height: 35,
@@ -38,8 +36,15 @@ class _ButtonDayState extends ConsumerState<ButtonDay> {
           ),
         ),
         onPressed: () {
-          listCriptoCurrencyChangeDay(
-              ref.watch(criptoDaysProvider.state).state = widget.days);
+          ref.watch(criptoDaysProvider.state).state = widget.days;
+          // print(widget.days);
+          // if (widget.days / 10 > criptoVariacao) {
+          //   ref.watch(criptoVariacaoProvider.state).state =
+          //       ((widget.days / 10) + criptoVariacao);
+          // } else {
+          //   ref.watch(criptoVariacaoProvider.state).state =
+          //       ((widget.days / 10) - criptoVariacao);
+          // }
 
           setState(() {});
         },

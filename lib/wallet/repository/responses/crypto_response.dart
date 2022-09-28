@@ -43,9 +43,4 @@ class CryptoResponse {
           map['price_change_percentage_24h']?.toDouble() ?? 0.0,
     );
   }
-
-  factory CryptoResponse.fromJson(Map<String, dynamic> json) =>
-      _$CriptoResponseFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CriptoResponseToJson(this);
 }

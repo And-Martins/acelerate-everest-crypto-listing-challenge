@@ -1,7 +1,7 @@
-class DetailViewData {
+class DetailListViewData {
   List<List<double>> prices;
 
-  DetailViewData({
+  DetailListViewData({
     required this.prices,
   });
 }

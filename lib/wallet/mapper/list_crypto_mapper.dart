@@ -1,8 +1,8 @@
-import 'package:crypto_listing/wallet/repository/responses/crypto_response.dart';
 import 'package:decimal/decimal.dart';
 
-import '../../model/crypto_list/crypto_list_view_data.dart';
-import '../../model/crypto_list/crypto_view_data.dart';
+import '../model/crypto_list_view_data.dart';
+import '../model/crypto_view_data.dart';
+import '../repository/responses/crypto_response.dart';
 
 extension ListCryptoMapper on List<CryptoResponse> {
   CryptoListViewData toViewData() {

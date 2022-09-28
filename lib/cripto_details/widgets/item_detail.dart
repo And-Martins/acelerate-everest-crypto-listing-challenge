@@ -28,7 +28,7 @@ class ItemDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var cotacao = Decimal.parse(criptoCotacao.toString());
-    var variacao = Decimal.parse(criptoVariacao.toString());
+    double variacao = criptoVariacao;
     var criptoQtd = Decimal.parse(criptoQtdWallet.toString());
     var criptoValueReais = Decimal.parse(criptoValueWalletReais.toString());
 
@@ -53,7 +53,6 @@ class ItemDetail extends StatelessWidget {
                   ),
                 ),
                 opc == 1
-                    //TODO: valores de 0.30 não aparecem corretaente
                     ? Text(
                         "R\$ ${formatReais.format(DecimalIntl(cotacao))}",
                         style: GoogleFonts.sourceSansPro(
@@ -62,9 +61,9 @@ class ItemDetail extends StatelessWidget {
                         ),
                       )
                     : opc == 2
-                        ? variacao <= Decimal.zero
+                        ? variacao <= 0.00
                             ? Text(
-                                "${formatReais.format(DecimalIntl(variacao))}%",
+                                "$variacao%",
                                 style: GoogleFonts.sourceSansPro(
                                   fontSize: 19,
                                   color: Colors.red.shade800,
@@ -72,7 +71,7 @@ class ItemDetail extends StatelessWidget {
                                 ),
                               )
                             : Text(
-                                "+${formatCriptoAbrev.format(DecimalIntl(variacao))} %",
+                                "+$variacao%",
                                 style: GoogleFonts.sourceSansPro(
                                   fontSize: 19,
                                   color: Colors.green.shade800,
@@ -81,7 +80,7 @@ class ItemDetail extends StatelessWidget {
                               )
                         : opc == 3
                             ? Text(
-                                "${formatCriptoCompleto.format(DecimalIntl(criptoQtd))} ${criptoAbrev.toUpperCase()}",
+                                "${formatCriptoCompleto.format(DecimalIntl(criptoQtd))} $criptoAbrev",
                                 style: GoogleFonts.sourceSansPro(
                                   fontSize: 19,
                                   color: Colors.grey.shade800,

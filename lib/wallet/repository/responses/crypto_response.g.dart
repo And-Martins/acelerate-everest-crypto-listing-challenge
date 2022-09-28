@@ -6,7 +6,7 @@ part of 'crypto_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CryptoResponse _$CriptoResponseFromJson(Map<String, dynamic> json) =>
+CryptoResponse _$CryptoResponseFromJson(Map<String, dynamic> json) =>
     CryptoResponse(
       id: json['id'] as String,
       symbol: json['symbol'] as String,
@@ -14,15 +14,15 @@ CryptoResponse _$CriptoResponseFromJson(Map<String, dynamic> json) =>
       image: json['image'] as String,
       currentPrice: (json['currentPrice'] as num).toDouble(),
       marketCapChangePercentage24h:
-          (json['priceChangePercentage24h'] as num).toDouble(),
+          (json['marketCapChangePercentage24h'] as num).toDouble(),
     );
 
-Map<String, dynamic> _$CriptoResponseToJson(CryptoResponse instance) =>
+Map<String, dynamic> _$CryptoResponseToJson(CryptoResponse instance) =>
     <String, dynamic>{
       'id': instance.id,
       'symbol': instance.symbol,
       'name': instance.name,
       'image': instance.image,
       'currentPrice': instance.currentPrice,
-      'priceChangePercentage24h': instance.marketCapChangePercentage24h,
+      'marketCapChangePercentage24h': instance.marketCapChangePercentage24h,
     };

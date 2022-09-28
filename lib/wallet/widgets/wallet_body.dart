@@ -1,13 +1,15 @@
-import 'package:crypto_listing/wallet/controller/crypto_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../core/asset.dart';
+import '../../shared/models/cripto_model.dart';
 import '../../shared/models/wallet_model.dart';
-import '../../shared/utils/providers/provider.dart';
+import '../../shared/providers/wallet_providers.dart';
 import '../../shared/widgets/default_subtitle.dart';
 import '../../shared/widgets/default_title.dart';
-import '../model/crypto_list/crypto_list_view_data.dart';
-import '../model/crypto_list/crypto_view_data.dart';
+import '../controller/crypto_provider.dart';
+import '../model/crypto_list_view_data.dart';
+import '../model/crypto_view_data.dart';
 import 'cripto_item.dart';
 import 'hide_button.dart';
 import 'total_value.dart';
@@ -18,20 +20,20 @@ class WalletBody extends StatefulHookConsumerWidget {
   }) : super(key: key);
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _WalletBodyState();
+  ConsumerState<WalletBody> createState() => _WalletBodyState();
 }
 
 class _WalletBodyState extends ConsumerState<WalletBody> {
   final scrollController = ScrollController();
+
+  void onListen() {
+    setState(() {});
+  }
+
   @override
   void initState() {
     scrollController.addListener(onListen);
     super.initState();
-  }
-
-  void onListen() {
-    print(scrollController.offset);
-    setState(() {});
   }
 
   @override
@@ -40,12 +42,95 @@ class _WalletBodyState extends ConsumerState<WalletBody> {
     super.dispose();
   }
 
+  final List<CriptoModel> criptoModelList = [
+    CriptoModel(
+      abbreviation: 'BTC',
+      name: 'Bitcoin',
+      valueWalletCripto: 6557,
+      valueQtdWalletCripto: 0.65554321,
+      image: btcImage,
+      cotacao: 103612.60,
+      variacao: -0.5,
+    ),
+    CriptoModel(
+      abbreviation: 'ETC',
+      name: 'Ethereum',
+      valueWalletCripto: 7996,
+      valueQtdWalletCripto: 0.94,
+      image: ethImage,
+      cotacao: 8254.17,
+      variacao: 1.20,
+    ),
+    CriptoModel(
+      abbreviation: 'LTC',
+      name: 'Litecoin',
+      valueWalletCripto: 245,
+      valueQtdWalletCripto: 0.82,
+      image: ltcImage,
+      cotacao: 312.06,
+      variacao: 5,
+    ),
+    CriptoModel(
+      abbreviation: 'BTC',
+      name: 'Bitcoin',
+      valueWalletCripto: 6557,
+      valueQtdWalletCripto: 0.65554321,
+      image: btcImage,
+      cotacao: 103612.60,
+      variacao: -0.5,
+    ),
+    CriptoModel(
+      abbreviation: 'ETC',
+      name: 'Ethereum',
+      valueWalletCripto: 7996,
+      valueQtdWalletCripto: 0.94,
+      image: ethImage,
+      cotacao: 8254.17,
+      variacao: 1.20,
+    ),
+    CriptoModel(
+      abbreviation: 'LTC',
+      name: 'Litecoin',
+      valueWalletCripto: 245,
+      valueQtdWalletCripto: 0.82,
+      image: ltcImage,
+      cotacao: 312.06,
+      variacao: 5,
+    ),
+    CriptoModel(
+      abbreviation: 'BTC',
+      name: 'Bitcoin',
+      valueWalletCripto: 6557,
+      valueQtdWalletCripto: 0.65554321,
+      image: btcImage,
+      cotacao: 103612.60,
+      variacao: -0.5,
+    ),
+    CriptoModel(
+      abbreviation: 'ETC',
+      name: 'Ethereum',
+      valueWalletCripto: 7996,
+      valueQtdWalletCripto: 0.94,
+      image: ethImage,
+      cotacao: 8254.17,
+      variacao: 1.20,
+    ),
+    CriptoModel(
+      abbreviation: 'LTC',
+      name: 'Litecoin',
+      valueWalletCripto: 245,
+      valueQtdWalletCripto: 0.82,
+      image: ltcImage,
+      cotacao: 312.06,
+      variacao: 5,
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    final scrollController = ScrollController();
-
     return SafeArea(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 15),
@@ -100,29 +185,27 @@ class _WalletBodyState extends ConsumerState<WalletBody> {
                         idCoin: cryptoData.symbol,
                       );
 
-                      final itemPositionOffset = index * 150;
+                      final itemPositionOffset = index * 90;
                       final difference =
                           scrollController.offset - itemPositionOffset;
                       final percent = 1 - (difference / 45);
                       double opacity = percent;
-                      // double scale = percent;
+                      double scale = percent;
                       if (opacity > 1.0) opacity = 1.0;
                       if (opacity < 0.0) opacity = 0.0;
 
-                      // if (percent > 1.0) scale = 1.0;
+                      if (percent > 1.0) scale = 1.0;
                       {
                         return Opacity(
                           opacity: opacity,
-                          child:
-                              // Transform(
-                              //   alignment: Alignment.center,
-                              //   transform: Matrix4.identity()..scale(scale, 1.0),
-                              //   child:
-                              CriptoItem(
-                            cryptoData: cryptoData,
-                            walletModel: walletModel,
+                          child: Transform(
+                            alignment: Alignment.center,
+                            transform: Matrix4.identity()..scale(scale, 1.0),
+                            child: CriptoItem(
+                              cryptoData: cryptoData,
+                              walletModel: walletModel,
+                            ),
                           ),
-                          // ),
                         );
                       }
                     },
@@ -138,4 +221,3 @@ class _WalletBodyState extends ConsumerState<WalletBody> {
     );
   }
 }
-// class WalletBodyState extends ConsumerState<WalletBody> {

@@ -7,6 +7,7 @@ class CryptoViewData {
   final String image;
   final Decimal currentPrice;
   final double marketCapChangePercentage24h;
+
   CryptoViewData({
     required this.id,
     required this.symbol,
@@ -15,8 +16,4 @@ class CryptoViewData {
     required this.currentPrice,
     required this.marketCapChangePercentage24h,
   });
-
-  // Decimal userModeny(totalValueWallet) {
-  //   return currentPrice * totalValueWallet;
-  // }
 }

@@ -5,11 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../list_cripto_currency.dart';
 import '../../shared/models/wallet_model.dart';
 import '../../shared/providers/wallet_providers.dart';
 import '../../shared/widgets/number_formatter.dart';
-import '../model/crypto_list/crypto_view_data.dart';
+import '../model/crypto_view_data.dart';
 
 class CriptoItem extends StatefulHookConsumerWidget {
   final CryptoViewData cryptoData;
@@ -28,8 +27,6 @@ class CriptoItem extends StatefulHookConsumerWidget {
 class _CriptoItemState extends ConsumerState<CriptoItem> {
   @override
   Widget build(BuildContext context) {
-// ;    CryptoDetailsRepository repository = CryptoDetailsRepository(Dio());
-    // late Future<List<CryptoDetailModel>> cryptoDetail;
     final bool hideWallet = ref.watch(hideWalletStateProvider);
     CryptoViewData cryptoData = widget.cryptoData;
     WalletModel walletModel = widget.walletModel;
@@ -51,8 +48,6 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
           ),
           ListTile(
             onTap: () {
-              cleanListCriptoCurrency();
-              listCriptoCurrency();
               ref.watch(criptoActualCurrencyProvider.state).state =
                   double.parse(cryptoData.currentPrice.toString());
               ref.watch(criptoNameProvider.state).state = cryptoData.name;
@@ -60,7 +55,7 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
               ref.watch(criptoAbrevProvider.state).state = cryptoData.symbol;
               ref.watch(criptoImageProvider.state).state = cryptoData.image;
               ref.watch(criptoCotacaoProvider.state).state =
-                  actualCriptoCurrency().y;
+                  cryptoData.currentPrice;
               ref.watch(criptoVariacaoProvider.state).state =
                   cryptoData.marketCapChangePercentage24h;
               ref.watch(criptoValueWalletReaisProvider.state).state =

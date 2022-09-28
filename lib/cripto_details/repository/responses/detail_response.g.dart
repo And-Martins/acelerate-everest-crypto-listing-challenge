@@ -9,8 +9,7 @@ part of 'detail_response.dart';
 DetailResponse _$DetailResponseFromJson(Map<String, dynamic> json) =>
     DetailResponse(
       prices: (json['prices'] as List<dynamic>)
-          .map((e) =>
-              (e as List<dynamic>).map((e) => (e as num).toDouble()).toList())
+          .map((e) => (e as num).toDouble())
           .toList(),
     );
 

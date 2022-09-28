@@ -1,10 +1,10 @@
-import 'package:crypto_listing/cripto_details/repository/get_detail_repo_impl.dart';
-import 'package:crypto_listing/cripto_details/usecases/get_detail_usecase.dart';
-import 'package:crypto_listing/shared/utils/providers/provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../shared/providers/wallet_providers.dart';
 import '../endpoint/get_detail_endpoint.dart';
-import '../model/detail_view_data.dart';
+import '../model/detail_list_view_data.dart';
+import '../repository/get_detail_repo.dart';
+import '../usecases/get_detail_usecase.dart';
 
 final getDetailEndpointProvider = StateProvider(
   (ref) => GetDetailEndpoint(
@@ -24,6 +24,6 @@ final getDetailUsecaseProvider = StateProvider(
   ),
 );
 
-final getDetailProvider = FutureProvider.family<DetailViewData, String>(
+final getDetailProvider = FutureProvider.family<DetailListViewData, String>(
   (ref, id) => ref.watch(getDetailUsecaseProvider).execute(id),
 );

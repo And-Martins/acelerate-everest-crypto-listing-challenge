@@ -1,10 +1,8 @@
-import 'package:crypto_listing/wallet/endpoint/i_crypto_list_endpoint.dart';
-import 'package:crypto_listing/wallet/repository/get_list/i_crypto_repo.dart';
-
+import '../../endpoint/crypto_list_endpoint.dart';
 import '../responses/crypto_response.dart';
 
-class CryptoRepo implements ICryptoRepo {
-  final ICryptoListEndpoint _endpoint;
+class CryptoRepo {
+  final CryptoEndpoint _endpoint;
 
   CryptoRepo(this._endpoint);
 
