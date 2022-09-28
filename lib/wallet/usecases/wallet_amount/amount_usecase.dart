@@ -1,4 +1,4 @@
-import 'package:crypto_listing/wallet/mapper/list_crypto_mapper.dart';
+import '../../mapper/list_crypto_mapper.dart';
 import 'package:decimal/decimal.dart';
 
 import '../../model/crypto_list_view_data.dart';
@@ -11,7 +11,6 @@ class AmountUsecase {
     this._repo,
   );
 
-  @override
   Future<Decimal> execute(List<double> userAmountsCripto) async {
     var response = await _repo.getCryptoList();
     Decimal walletTotalValue = Decimal.parse('0');

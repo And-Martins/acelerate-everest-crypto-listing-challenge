@@ -4,7 +4,6 @@ class GetDetailEndpoint {
   final Dio _dio;
   GetDetailEndpoint(this._dio);
 
-  @override
   Future<Response> getCryptoDetailList(String id) {
     return _dio.get(
       '/coins/$id/market_chart',

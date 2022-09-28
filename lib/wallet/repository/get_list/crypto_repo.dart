@@ -6,7 +6,6 @@ class CryptoRepo {
 
   CryptoRepo(this._endpoint);
 
-  @override
   Future<List<CryptoResponse>> getCryptoList() async {
     final result = await _endpoint.getCryptoList();
     return List<CryptoResponse>.from(

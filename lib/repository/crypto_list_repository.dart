@@ -1,4 +1,4 @@
-import 'package:crypto_listing/shared/models/crypto_list_model.dart';
+import '../shared/models/crypto_list_model.dart';
 import 'package:dio/dio.dart';
 
 class CryptoListRepository {

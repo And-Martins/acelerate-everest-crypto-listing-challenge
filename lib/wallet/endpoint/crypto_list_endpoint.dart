@@ -4,7 +4,6 @@ class CryptoEndpoint {
   final Dio _dio;
   CryptoEndpoint(this._dio);
 
-  @override
   Future<Response> getCryptoList() {
     return _dio.get(
       '/coins/markets?',

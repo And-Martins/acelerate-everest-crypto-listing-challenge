@@ -1,4 +1,4 @@
-import 'package:crypto_listing/shared/providers/total_amount_provider.dart';
+import 'total_amount_provider.dart';
 import 'package:decimal/decimal.dart';
 import 'package:dio/dio.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
