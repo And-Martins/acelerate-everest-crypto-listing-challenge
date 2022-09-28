@@ -2,7 +2,7 @@ import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../shared/providers/wallet_providers.dart';
+import '../../shared/providers/providers.dart';
 import '../../shared/widgets/default_appbar.dart';
 import '../widgets/detail_body.dart';
 

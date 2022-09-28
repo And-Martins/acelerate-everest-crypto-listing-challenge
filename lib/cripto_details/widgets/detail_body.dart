@@ -5,7 +5,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../shared/providers/wallet_providers.dart';
+import '../../shared/providers/providers.dart';
 import '../../shared/widgets/default_big_button.dart';
 import '../../shared/widgets/default_subtitle.dart';
 import '../../shared/widgets/default_title.dart';
@@ -141,10 +141,12 @@ class _WalletBodyState extends ConsumerState<DetailBody> {
                     criptoQtdWallet: widget.criptoQtdWallet,
                     text: "Valor",
                   ),
-                  const Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 8.0, vertical: 15.0),
-                    child: DefaultBigButton(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 15.0),
+                    child: DefaultBigButton(
+                        cryptoQtdWallet: widget.criptoQtdWallet,
+                        criptoAbrev: widget.criptoAbrev),
                   ),
                 ],
               ),

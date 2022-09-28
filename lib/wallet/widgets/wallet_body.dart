@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../shared/models/wallet_model.dart';
-import '../../shared/providers/wallet_providers.dart';
+import '../../shared/providers/providers.dart';
 import '../../shared/widgets/default_subtitle.dart';
 import '../../shared/widgets/default_title.dart';
 import '../controller/crypto_provider.dart';
