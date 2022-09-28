@@ -82,7 +82,7 @@ class _WalletBodyState extends ConsumerState<DetailBody> {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
+                    children: const [
                       ButtonDay(
                         text: "5D",
                         days: 5,
@@ -106,7 +106,7 @@ class _WalletBodyState extends ConsumerState<DetailBody> {
                     ],
                   ),
                   ItemDetail(
-                    opc: 1,
+                    option: 1,
                     criptoAbrev: widget.criptoAbrev,
                     criptoCotacao: widget.criptoActualCurrency,
                     criptoVariacao: widget.criptoVariacao,
@@ -115,7 +115,7 @@ class _WalletBodyState extends ConsumerState<DetailBody> {
                     text: "Preço atual",
                   ),
                   ItemDetail(
-                    opc: 2,
+                    option: 2,
                     criptoAbrev: widget.criptoAbrev,
                     criptoCotacao: widget.criptoActualCurrency,
                     criptoVariacao: widget.criptoVariacao,
@@ -124,7 +124,7 @@ class _WalletBodyState extends ConsumerState<DetailBody> {
                     text: "Variação 24H",
                   ),
                   ItemDetail(
-                    opc: 3,
+                    option: 3,
                     criptoAbrev: widget.criptoAbrev,
                     criptoCotacao: widget.criptoActualCurrency,
                     criptoVariacao: widget.criptoVariacao,
@@ -133,7 +133,7 @@ class _WalletBodyState extends ConsumerState<DetailBody> {
                     text: "Quantidade",
                   ),
                   ItemDetail(
-                    opc: 4,
+                    option: 4,
                     criptoAbrev: widget.criptoAbrev,
                     criptoCotacao: widget.criptoActualCurrency,
                     criptoVariacao: widget.criptoVariacao,
