@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../core/asset.dart';
-import '../../shared/models/cripto_model.dart';
 import '../../shared/models/wallet_model.dart';
 import '../../shared/providers/wallet_providers.dart';
 import '../../shared/widgets/default_subtitle.dart';
@@ -41,90 +39,6 @@ class _WalletBodyState extends ConsumerState<WalletBody> {
     scrollController.removeListener(onListen);
     super.dispose();
   }
-
-  final List<CriptoModel> criptoModelList = [
-    CriptoModel(
-      abbreviation: 'BTC',
-      name: 'Bitcoin',
-      valueWalletCripto: 6557,
-      valueQtdWalletCripto: 0.65554321,
-      image: btcImage,
-      cotacao: 103612.60,
-      variacao: -0.5,
-    ),
-    CriptoModel(
-      abbreviation: 'ETC',
-      name: 'Ethereum',
-      valueWalletCripto: 7996,
-      valueQtdWalletCripto: 0.94,
-      image: ethImage,
-      cotacao: 8254.17,
-      variacao: 1.20,
-    ),
-    CriptoModel(
-      abbreviation: 'LTC',
-      name: 'Litecoin',
-      valueWalletCripto: 245,
-      valueQtdWalletCripto: 0.82,
-      image: ltcImage,
-      cotacao: 312.06,
-      variacao: 5,
-    ),
-    CriptoModel(
-      abbreviation: 'BTC',
-      name: 'Bitcoin',
-      valueWalletCripto: 6557,
-      valueQtdWalletCripto: 0.65554321,
-      image: btcImage,
-      cotacao: 103612.60,
-      variacao: -0.5,
-    ),
-    CriptoModel(
-      abbreviation: 'ETC',
-      name: 'Ethereum',
-      valueWalletCripto: 7996,
-      valueQtdWalletCripto: 0.94,
-      image: ethImage,
-      cotacao: 8254.17,
-      variacao: 1.20,
-    ),
-    CriptoModel(
-      abbreviation: 'LTC',
-      name: 'Litecoin',
-      valueWalletCripto: 245,
-      valueQtdWalletCripto: 0.82,
-      image: ltcImage,
-      cotacao: 312.06,
-      variacao: 5,
-    ),
-    CriptoModel(
-      abbreviation: 'BTC',
-      name: 'Bitcoin',
-      valueWalletCripto: 6557,
-      valueQtdWalletCripto: 0.65554321,
-      image: btcImage,
-      cotacao: 103612.60,
-      variacao: -0.5,
-    ),
-    CriptoModel(
-      abbreviation: 'ETC',
-      name: 'Ethereum',
-      valueWalletCripto: 7996,
-      valueQtdWalletCripto: 0.94,
-      image: ethImage,
-      cotacao: 8254.17,
-      variacao: 1.20,
-    ),
-    CriptoModel(
-      abbreviation: 'LTC',
-      name: 'Litecoin',
-      valueWalletCripto: 245,
-      valueQtdWalletCripto: 0.82,
-      image: ltcImage,
-      cotacao: 312.06,
-      variacao: 5,
-    ),
-  ];
 
   @override
   Widget build(BuildContext context) {
