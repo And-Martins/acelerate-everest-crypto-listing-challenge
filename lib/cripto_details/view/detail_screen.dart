@@ -79,7 +79,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
+                      children: const [
                         ButtonDay(
                           text: "5D",
                           days: 5,
@@ -103,7 +103,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
                       ],
                     ),
                     ItemDetail(
-                      opc: 1,
+                      option: 1,
                       criptoAbrev: criptoAbrev,
                       criptoCotacao: criptoActualCurrency,
                       criptoVariacao: criptoVariacao,
@@ -112,7 +112,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
                       text: "Preço atual",
                     ),
                     ItemDetail(
-                      opc: 2,
+                      option: 2,
                       criptoAbrev: criptoAbrev,
                       criptoCotacao: criptoActualCurrency,
                       criptoVariacao: criptoVariacao,
@@ -121,7 +121,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
                       text: "Variação 24H",
                     ),
                     ItemDetail(
-                      opc: 3,
+                      option: 3,
                       criptoAbrev: criptoAbrev,
                       criptoCotacao: criptoActualCurrency,
                       criptoVariacao: criptoVariacao,
@@ -130,7 +130,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
                       text: "Quantidade",
                     ),
                     ItemDetail(
-                      opc: 4,
+                      option: 4,
                       criptoAbrev: criptoAbrev,
                       criptoCotacao: criptoActualCurrency,
                       criptoVariacao: criptoVariacao,

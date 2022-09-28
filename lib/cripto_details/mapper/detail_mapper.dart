@@ -7,7 +7,6 @@ extension DetailMapper on DetailResponse {
     for (int i = 0; i < prices.length; i++) {
       temp.add([
         prices[i],
-        // prices[90 - i],
       ]);
     }
     return DetailListViewData(

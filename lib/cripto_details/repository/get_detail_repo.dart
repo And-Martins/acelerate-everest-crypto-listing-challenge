@@ -1,4 +1,4 @@
-import 'package:crypto_listing/cripto_details/repository/responses/detail_response.dart';
+import 'responses/detail_response.dart';
 
 import '../endpoint/get_detail_endpoint.dart';
 
@@ -7,7 +7,6 @@ class GetDetailRepo {
 
   GetDetailRepo(this._endpoint);
 
-  @override
   Future<DetailResponse> getDetailList(String id) async {
     final result = await _endpoint.getCryptoDetailList(id);
     List<double> detailList = result.data!['prices']!

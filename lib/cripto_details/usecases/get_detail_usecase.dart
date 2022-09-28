@@ -1,4 +1,4 @@
-import 'package:crypto_listing/cripto_details/mapper/detail_mapper.dart';
+import '../mapper/detail_mapper.dart';
 
 import '../model/detail_list_view_data.dart';
 import '../repository/get_detail_repo.dart';
@@ -9,7 +9,6 @@ class GetDetailUsecase {
 
   GetDetailUsecase(this._repo);
 
-  @override
   Future<DetailListViewData> execute(String id) async {
     DetailResponse response = await _repo.getDetailList(id);
     return response.toViewData();

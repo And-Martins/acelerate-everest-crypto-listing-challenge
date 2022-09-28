@@ -1,4 +1,4 @@
-import 'package:crypto_listing/wallet/repository/get_list/crypto_repo.dart';
+import '../repository/get_list/crypto_repo.dart';
 import 'package:decimal/decimal.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

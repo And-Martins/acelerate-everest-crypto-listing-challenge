@@ -11,7 +11,7 @@ class DefaultBigButton extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       height: 55,
       child: ElevatedButton(
-        style: ElevatedButton.styleFrom(primary: Colors.pink),
+        style: ElevatedButton.styleFrom(backgroundColor: Colors.pink),
         onPressed: () {},
         child: const Text(
           "Converter moeda",
