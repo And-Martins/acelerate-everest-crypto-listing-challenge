@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../core/asset.dart';
-import '../../shared/models/cripto_model.dart';
+import '../../shared/models/wallet_model.dart';
+import '../../shared/providers/wallet_providers.dart';
 import '../../shared/widgets/default_subtitle.dart';
 import '../../shared/widgets/default_title.dart';
+import '../controller/crypto_provider.dart';
+import '../model/crypto_list_view_data.dart';
+import '../model/crypto_view_data.dart';
 import 'cripto_item.dart';
 import 'hide_button.dart';
 import 'total_value.dart';
 
-class WalletBody extends StatefulWidget {
+class WalletBody extends StatefulHookConsumerWidget {
   const WalletBody({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<WalletBody> createState() => _WalletBodyState();
+  ConsumerState<WalletBody> createState() => _WalletBodyState();
 }
 
-class _WalletBodyState extends State<WalletBody> {
+class _WalletBodyState extends ConsumerState<WalletBody> {
   final scrollController = ScrollController();
 
   void onListen() {
@@ -36,137 +40,94 @@ class _WalletBodyState extends State<WalletBody> {
     super.dispose();
   }
 
-  final List<CriptoModel> criptoModelList = [
-    CriptoModel(
-      abbreviation: 'BTC',
-      name: 'Bitcoin',
-      valueWalletCripto: 6557,
-      valueQtdWalletCripto: 0.65554321,
-      image: btcImage,
-      cotacao: 103612.60,
-      variacao: -0.5,
-    ),
-    CriptoModel(
-      abbreviation: 'ETC',
-      name: 'Ethereum',
-      valueWalletCripto: 7996,
-      valueQtdWalletCripto: 0.94,
-      image: ethImage,
-      cotacao: 8254.17,
-      variacao: 1.20,
-    ),
-    CriptoModel(
-      abbreviation: 'LTC',
-      name: 'Litecoin',
-      valueWalletCripto: 245,
-      valueQtdWalletCripto: 0.82,
-      image: ltcImage,
-      cotacao: 312.06,
-      variacao: 5,
-    ),
-    CriptoModel(
-      abbreviation: 'BTC',
-      name: 'Bitcoin',
-      valueWalletCripto: 6557,
-      valueQtdWalletCripto: 0.65554321,
-      image: btcImage,
-      cotacao: 103612.60,
-      variacao: -0.5,
-    ),
-    CriptoModel(
-      abbreviation: 'ETC',
-      name: 'Ethereum',
-      valueWalletCripto: 7996,
-      valueQtdWalletCripto: 0.94,
-      image: ethImage,
-      cotacao: 8254.17,
-      variacao: 1.20,
-    ),
-    CriptoModel(
-      abbreviation: 'LTC',
-      name: 'Litecoin',
-      valueWalletCripto: 245,
-      valueQtdWalletCripto: 0.82,
-      image: ltcImage,
-      cotacao: 312.06,
-      variacao: 5,
-    ),
-    CriptoModel(
-      abbreviation: 'BTC',
-      name: 'Bitcoin',
-      valueWalletCripto: 6557,
-      valueQtdWalletCripto: 0.65554321,
-      image: btcImage,
-      cotacao: 103612.60,
-      variacao: -0.5,
-    ),
-    CriptoModel(
-      abbreviation: 'ETC',
-      name: 'Ethereum',
-      valueWalletCripto: 7996,
-      valueQtdWalletCripto: 0.94,
-      image: ethImage,
-      cotacao: 8254.17,
-      variacao: 1.20,
-    ),
-    CriptoModel(
-      abbreviation: 'LTC',
-      name: 'Litecoin',
-      valueWalletCripto: 245,
-      valueQtdWalletCripto: 0.82,
-      image: ltcImage,
-      cotacao: 312.06,
-      variacao: 5,
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 10.0, left: 10.0, top: 50),
+    return SafeArea(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              DefaultTitle(
-                title: 'Cripto',
-                color: Color.fromRGBO(224, 43, 87, 1),
-              ),
-              HideButton(),
-            ],
-          ),
-          const TotalValue(totalReais: 14798),
-          const DefaultSubtitle('Valor total de moedas'),
-          Expanded(
-            child: ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              controller: scrollController,
-              itemBuilder: (context, index) {
-                final itemPositionOffset = index * 90;
-                final difference = scrollController.offset - itemPositionOffset;
-                final percent = 1 - (difference / 45);
-                double opacity = percent;
-                double scale = percent;
-                if (opacity > 1.0) opacity = 1.0;
-                if (opacity < 0.0) opacity = 0.0;
-
-                if (percent > 1.0) scale = 1.0;
-                {
-                  return Opacity(
-                    opacity: opacity,
-                    child: Transform(
-                      alignment: Alignment.center,
-                      transform: Matrix4.identity()..scale(scale, 1.0),
-                      child: CriptoItem(
-                        criptoModel: criptoModelList[index],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 15),
+            child: FutureBuilder(
+              future: ref.watch(
+                  getTotalWalletValue(ref.watch(totalValueAmountProvider))
+                      .future),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          DefaultTitle(
+                            title: 'Cripto',
+                            color: Color.fromRGBO(224, 43, 87, 1),
+                          ),
+                          HideButton(),
+                        ],
                       ),
-                    ),
+                      TotalValue(
+                          totalReais: double.parse(snapshot.data!.toString())),
+                      const DefaultSubtitle('Valor total de moedas'),
+                    ],
                   );
+                } else {
+                  return const Center(child: CircularProgressIndicator());
                 }
               },
-              itemCount: criptoModelList.length,
+            ),
+          ),
+          Expanded(
+            child: FutureBuilder(
+              future: ref.watch(listCryptoProvider.future),
+              builder: (context, AsyncSnapshot<CryptoListViewData> snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                    physics: const BouncingScrollPhysics(),
+                    controller: scrollController,
+                    itemCount: snapshot.data!.cryptoViewDataList.length,
+                    itemBuilder: (context, index) {
+                      CryptoViewData cryptoData =
+                          snapshot.data!.cryptoViewDataList[index];
+
+                      final WalletModel walletModel = WalletModel(
+                        quantityCoin:
+                            ref.watch(totalValueAmountProvider)[index],
+                        valueWalletCoin: snapshot
+                            .data!.cryptoViewDataList[index].currentPrice,
+                        idCoin: cryptoData.symbol,
+                      );
+
+                      final itemPositionOffset = index * 90;
+                      final difference =
+                          scrollController.offset - itemPositionOffset;
+                      final percent = 1 - (difference / 45);
+                      double opacity = percent;
+                      double scale = percent;
+                      if (opacity > 1.0) opacity = 1.0;
+                      if (opacity < 0.0) opacity = 0.0;
+
+                      if (percent > 1.0) scale = 1.0;
+                      {
+                        return Opacity(
+                          opacity: opacity,
+                          child: Transform(
+                            alignment: Alignment.center,
+                            transform: Matrix4.identity()..scale(scale, 1.0),
+                            child: CriptoItem(
+                              cryptoData: cryptoData,
+                              walletModel: walletModel,
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                  );
+                } else {
+                  return const Center(child: CircularProgressIndicator());
+                }
+              },
             ),
           ),
         ],

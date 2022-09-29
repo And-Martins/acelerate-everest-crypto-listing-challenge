@@ -14,7 +14,7 @@ class ItemDetail extends StatelessWidget {
     required this.criptoQtdWallet,
     required this.criptoValueWalletReais,
     required this.text,
-    required this.opc,
+    required this.option,
   }) : super(key: key);
 
   final String criptoAbrev;
@@ -23,7 +23,7 @@ class ItemDetail extends StatelessWidget {
   final double criptoQtdWallet;
   final double criptoValueWalletReais;
   final String text;
-  final int opc;
+  final int option;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,7 @@ class ItemDetail extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                opc == 1
+                option == 1
                     ? Text(
                         "R\$ ${formatReais.format(DecimalIntl(cotacao))}",
                         style: GoogleFonts.sourceSansPro(
@@ -60,7 +60,7 @@ class ItemDetail extends StatelessWidget {
                           color: Colors.grey.shade800,
                         ),
                       )
-                    : opc == 2
+                    : option == 2
                         ? variacao <= 0.00
                             ? Text(
                                 "$variacao%",
@@ -78,7 +78,7 @@ class ItemDetail extends StatelessWidget {
                                   fontWeight: FontWeight.w700,
                                 ),
                               )
-                        : opc == 3
+                        : option == 3
                             ? Text(
                                 "${formatCriptoCompleto.format(DecimalIntl(criptoQtd))} $criptoAbrev",
                                 style: GoogleFonts.sourceSansPro(
@@ -86,7 +86,7 @@ class ItemDetail extends StatelessWidget {
                                   color: Colors.grey.shade800,
                                 ),
                               )
-                            : opc == 4
+                            : option == 4
                                 ? Text(
                                     "R\$ ${formatReais.format(DecimalIntl(criptoValueReais))}",
                                     style: GoogleFonts.sourceSansPro(
