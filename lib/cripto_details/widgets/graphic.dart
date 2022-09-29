@@ -86,7 +86,6 @@ class _GraphicState extends ConsumerState<Graphic> {
                   tooltipRoundedRadius: 15,
                   getTooltipItems: (touchedSpots) {
                     return touchedSpots.map((touchedSpot) {
-                      // changeValue(touchedSpot.y);
                       return LineTooltipItem(
                         "R\$ ${formatReais.format(touchedSpot.y)}",
                         const TextStyle(
@@ -109,7 +108,7 @@ class _GraphicState extends ConsumerState<Graphic> {
                   ),
                 ),
               ),
-              clipData: FlClipData.all(),
+              // clipData: FlClipData.vertical(),
             ),
           ),
         ),

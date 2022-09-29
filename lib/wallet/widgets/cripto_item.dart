@@ -62,8 +62,9 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
                   criptoValueWalletReais;
               ref.watch(criptoQtdWalletCriptoProvider.state).state =
                   walletModel.quantityCoin;
-              Navigator.pushNamed(context, '/criptoDetails',
-                  arguments: criptoCurrentList);
+              Navigator.pushNamed(
+                context, '/criptoDetails',
+              );
             },
             leading:
                 CircleAvatar(backgroundImage: NetworkImage(cryptoData.image)),

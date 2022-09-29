@@ -145,8 +145,10 @@ class _WalletBodyState extends ConsumerState<DetailBody> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 8.0, vertical: 15.0),
                     child: DefaultBigButton(
-                        cryptoQtdWallet: widget.criptoQtdWallet,
-                        criptoAbrev: widget.criptoAbrev),
+                      cryptoQtdWallet: widget.criptoQtdWallet,
+                      criptoAbrev: widget.criptoAbrev,
+                      criptoImg: widget.criptoImage,
+                    ),
                   ),
                 ],
               ),
