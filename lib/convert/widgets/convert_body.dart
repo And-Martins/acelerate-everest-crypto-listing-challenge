@@ -29,6 +29,8 @@ class _ConvertScreenState extends ConsumerState<ConvertBody> {
       listCrypto.add(crypto);
     }
 
+    CryptoViewData dropdownValue = listCrypto.first;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -58,36 +60,29 @@ class _ConvertScreenState extends ConsumerState<ConvertBody> {
           ),
         ),
         DropdownButton<CryptoViewData>(
-          items: listCrypto.map<DropdownMenuItem<CryptoViewData>>(
-            (CryptoViewData cryptoItem) {
-              return DropdownMenuItem<CryptoViewData>(
-                value: cryptoItem,
-                child: Row(
-                  children: [
-                    Image.network(
-                      ref.watch(fromCryptoConvertImg.state).state,
-                      scale: 12,
-                    ),
-                    const SizedBox(width: 4),
-                    Text(ref
-                        .watch(fromCryptoConvertAbrev.state)
-                        .state
-                        .toUpperCase()),
-                  ],
-                ),
-              );
-            },
-          ).toList(),
-          onChanged: (CryptoViewData? cryptoItemSelected) {
+          value: dropdownValue,
+          icon: const Icon(Icons.arrow_downward),
+          onChanged: (CryptoViewData? cryptoItem) {
             setState(() {
-              cryptoItemSelected = cryptoItemSelected;
-              ref.watch(fromCryptoConvertAbrev.state).state =
-                  cryptoItemSelected!.symbol;
-              ref.watch(fromCryptoConvertImg.state).state =
-                  cryptoItemSelected!.image;
+              dropdownValue = cryptoItem!;
             });
-            print(cryptoItemSelected!.name);
           },
+          items: listCrypto.map<DropdownMenuItem<CryptoViewData>>(
+              (CryptoViewData cryptoItem) {
+            return DropdownMenuItem<CryptoViewData>(
+              value: cryptoItem,
+              child: Row(
+                children: [
+                  Image.network(
+                    cryptoItem.image,
+                    scale: 12,
+                  ),
+                  const SizedBox(width: 4),
+                  Text(cryptoItem.symbol.toUpperCase()),
+                ],
+              ),
+            );
+          }).toList(),
         ),
       ],
     );

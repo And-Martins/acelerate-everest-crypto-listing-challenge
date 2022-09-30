@@ -1,6 +1,5 @@
 import 'package:decimal/decimal.dart';
 import 'package:decimal/intl.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -30,7 +29,6 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
     final bool hideWallet = ref.watch(hideWalletStateProvider);
     CryptoViewData cryptoData = widget.cryptoData;
     WalletModel walletModel = widget.walletModel;
-    List<FlSpot> criptoCurrentList = [];
 
     var criptoValueWalletReais =
         (double.parse(cryptoData.currentPrice.toString()) *
@@ -63,7 +61,8 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
               ref.watch(criptoQtdWalletCriptoProvider.state).state =
                   walletModel.quantityCoin;
               Navigator.pushNamed(
-                context, '/criptoDetails',
+                context,
+                '/criptoDetails',
               );
             },
             leading:
