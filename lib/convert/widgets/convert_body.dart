@@ -71,6 +71,12 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: TextFormField(
+            style: GoogleFonts.montserrat(
+              fontSize: 35,
+              color: const Color.fromRGBO(149, 151, 166, 1),
+              fontWeight: FontWeight.w500,
+            ),
+            keyboardType: TextInputType.number,
             cursorHeight: 35,
             decoration: InputDecoration(
               hintText:
@@ -82,6 +88,63 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
               ),
             ),
           ),
+        ),
+        const Padding(
+          padding: EdgeInsets.only(top: 8.0, right: 310),
+          child: DefaultSubtitle(
+            'R\$ 0,00',
+            strong: 500,
+          ),
+        ),
+       //TODO Substituir esse sizedBox por algo melhor 
+        const SizedBox(height: 200),
+        Column(
+          children: [
+            Divider(
+              color: Colors.grey.shade300,
+              thickness: 2.5,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: DefaultSubtitle(
+                        'Total estimado',
+                        strong: 500,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: DefaultSubtitle(
+                        '0,0000 ${ref.watch(fromCryptoConvertAbrev).toUpperCase()}',
+                        strong: 600,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
+                ),
+                IconButton(
+                  onPressed: () {},
+                  iconSize: 58,
+                  icon: CircleAvatar(
+                    backgroundColor: Colors.grey.shade400,
+                    radius: 40,
+                    child: const Icon(
+                      Icons.arrow_forward,
+                      size: 25,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
         )
       ],
     );
