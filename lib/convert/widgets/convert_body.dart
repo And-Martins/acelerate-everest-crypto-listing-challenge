@@ -2,6 +2,7 @@ import 'package:crypto_listing/convert/widgets/dropdown_crypto.dart';
 import 'package:decimal/decimal.dart';
 import 'package:decimal/intl.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../shared/providers/providers.dart';
@@ -67,6 +68,21 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
             ),
           ],
         ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: TextFormField(
+            cursorHeight: 35,
+            decoration: InputDecoration(
+              hintText:
+                  "${ref.watch(fromCryptoConvertAbrev).toUpperCase()} 0,00",
+              hintStyle: GoogleFonts.montserrat(
+                fontSize: 35,
+                color: const Color.fromRGBO(149, 151, 166, 1),
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+        )
       ],
     );
   }
