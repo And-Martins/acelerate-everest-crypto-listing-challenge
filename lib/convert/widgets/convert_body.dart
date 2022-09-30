@@ -44,7 +44,7 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
                 children: [
                   const DefaultSubtitle('Saldo disponível'),
                   DefaultSubtitle(
-                    "${formatCriptoCompleto.format(DecimalIntl(Decimal.parse(ref.watch(criptoQtdWalletCriptoProvider).toString())))} ${ref.watch(fromCryptoConvertAbrev).toUpperCase()}",
+                    "${formatCriptoAbrev.format(DecimalIntl(Decimal.parse(ref.watch(criptoQtdWalletCriptoProvider).toString())))} ${ref.watch(fromCryptoConvertAbrev).toUpperCase()}",
                     strong: 600,
                   ),
                 ],
@@ -73,15 +73,21 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
               DropdownCrypto(
                 cryptoData: cryptoData,
                 type: "to",
+                fromCrypto: ref.watch(fromCryptoConvertAbrev),
               ),
             ],
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15),
             child: TextFormField(
-              onChanged: (value) {
-                
+              onFieldSubmitted: (value) {
+                if (ref.watch(criptoQtdWalletCriptoProvider) <
+                    double.parse(formFieldController.text)) {
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(limitReachedMessage);
+                }
               },
+              onChanged: (value) {},
               controller: formFieldController,
               style: GoogleFonts.montserrat(
                 fontSize: 30,

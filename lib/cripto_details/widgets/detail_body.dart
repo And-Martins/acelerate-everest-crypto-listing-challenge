@@ -147,7 +147,6 @@ class _WalletBodyState extends ConsumerState<DetailBody> {
                     child: DefaultBigButton(
                       cryptoQtdWallet: widget.criptoQtdWallet,
                       cryptoAbrev: widget.criptoAbrev,
-                      cryptoImg: widget.criptoImage,
                     ),
                   ),
                 ],

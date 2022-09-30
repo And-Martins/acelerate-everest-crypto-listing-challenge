@@ -13,7 +13,7 @@ class DropdownCrypto extends StatefulWidget {
     Key? key,
     required this.cryptoData,
     required this.type,
-    this.fromCrypto = '',
+    required this.fromCrypto,
   }) : super(key: key);
 
   @override
@@ -38,7 +38,16 @@ class _DropdownCryptoState extends State<DropdownCrypto> {
         }
       }
     } else if (widget.type == "to") {
-      dropdownValue = listCrypto.first;
+      for (int index = 0; index <= listCrypto.length; index++) {
+        if (listCrypto[index].symbol == widget.fromCrypto) {
+          if (index < listCrypto.length - 1) {
+            dropdownValue = listCrypto[index + 1];
+          } else {
+            dropdownValue = listCrypto[index - 1];
+          }
+          break;
+        }
+      }
     }
   }
 
