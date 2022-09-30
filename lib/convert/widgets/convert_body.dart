@@ -50,7 +50,23 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
             titleSize: 28,
           ),
         ),
-        DropdownCrypto(cryptoData: cryptoData),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            DropdownCrypto(
+                cryptoData: cryptoData,
+                type: "from",
+                fromCrypto: ref.watch(fromCryptoConvertAbrev)),
+            const Icon(
+              Icons.sync_alt_rounded,
+              color: Colors.red,
+            ),
+            DropdownCrypto(
+              cryptoData: cryptoData,
+              type: "to",
+            ),
+          ],
+        ),
       ],
     );
   }

@@ -6,10 +6,14 @@ import '../../wallet/model/crypto_view_data.dart';
 
 class DropdownCrypto extends StatefulWidget {
   final AsyncValue<CryptoListViewData> cryptoData;
+  final String type;
+  final String fromCrypto;
 
   const DropdownCrypto({
     Key? key,
     required this.cryptoData,
+    required this.type,
+    this.fromCrypto = '',
   }) : super(key: key);
 
   @override
@@ -19,42 +23,66 @@ class DropdownCrypto extends StatefulWidget {
 class _DropdownCryptoState extends State<DropdownCrypto> {
   List<CryptoViewData> listCrypto = [];
   CryptoViewData? dropdownValue;
+
   @override
   void initState() {
     super.initState();
     for (CryptoViewData crypto in widget.cryptoData.value!.cryptoViewDataList) {
       listCrypto.add(crypto);
     }
-
-    dropdownValue = listCrypto.first;
+    if (widget.type == "from") {
+      for (int index = 0; index <= listCrypto.length; index++) {
+        if (listCrypto[index].symbol == widget.fromCrypto) {
+          dropdownValue = listCrypto[index];
+          break;
+        }
+      }
+    } else if (widget.type == "to") {
+      dropdownValue = listCrypto.first;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton<CryptoViewData>(
-      value: dropdownValue,
-      icon: const Icon(Icons.arrow_downward),
-      onChanged: (CryptoViewData? cryptoItem) {
-        setState(() {
-          dropdownValue = cryptoItem!;
-        });
-      },
-      items: listCrypto
-          .map<DropdownMenuItem<CryptoViewData>>((CryptoViewData cryptoItem) {
-        return DropdownMenuItem<CryptoViewData>(
-          value: cryptoItem,
-          child: Row(
-            children: [
-              Image.network(
-                cryptoItem.image,
-                scale: 12,
-              ),
-              const SizedBox(width: 4),
-              Text(cryptoItem.symbol.toUpperCase()),
-            ],
-          ),
-        );
-      }).toList(),
+    return Container(
+      height: 35,
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20.0),
+        border: Border.all(
+          color: Colors.grey.shade300,
+          style: BorderStyle.solid,
+          width: 0.80,
+        ),
+      ),
+      child: DropdownButton<CryptoViewData>(
+        value: dropdownValue,
+        icon: const Icon(
+          Icons.keyboard_arrow_down_rounded,
+          size: 25,
+        ),
+        onChanged: (CryptoViewData? cryptoItem) {
+          setState(() {
+            dropdownValue = cryptoItem!;
+          });
+        },
+        items: listCrypto
+            .map<DropdownMenuItem<CryptoViewData>>((CryptoViewData cryptoItem) {
+          return DropdownMenuItem<CryptoViewData>(
+            value: cryptoItem,
+            child: Row(
+              children: [
+                Image.network(
+                  cryptoItem.image,
+                  scale: 12,
+                ),
+                const SizedBox(width: 4),
+                Text(cryptoItem.symbol.toUpperCase()),
+              ],
+            ),
+          );
+        }).toList(),
+      ),
     );
   }
 }
