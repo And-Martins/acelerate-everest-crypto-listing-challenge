@@ -1,58 +1,72 @@
-import 'package:flutter/material.dart';
+// class DropdownButtonCryptoListConversion extends ConsumerWidget {
+//   final CryptoViewData cryptoProvider;
+//   final void Function(CryptoViewData?) onChangedDropdown;
 
-const List<String> list = <String>['One', 'Two', 'Three', 'Four'];
+//   const DropdownButtonCryptoListConversion({
+//     Key? key,
+//     required this.cryptoProvider,
+//     required this.onChangedDropdown,
+//   }) : super(key: key);
 
-void main() => runApp(const DropdownButtonApp());
+//   @override
+//   Widget build(BuildContext context, WidgetRef ref) {
+//     final cryptoData = ref.watch(cryptoDataProvider);
 
-class DropdownButtonApp extends StatelessWidget {
-  const DropdownButtonApp({super.key});
+//     List<CryptoViewData> listCoins = [];
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: const Text('DropdownButton Sample')),
-        body: const Center(
-          child: DropdownButtonExample(),
-        ),
-      ),
-    );
-  }
-}
+//     for (CryptoViewData crypto in cryptoData.value!.listCryptoViewData) {
+//       listCoins.add(crypto);
+//     }
 
-class DropdownButtonExample extends StatefulWidget {
-  const DropdownButtonExample({super.key});
-
-  @override
-  State<DropdownButtonExample> createState() => _DropdownButtonExampleState();
-}
-
-class _DropdownButtonExampleState extends State<DropdownButtonExample> {
-  String dropdownValue = list.first;
-
-  @override
-  Widget build(BuildContext context) {
-    return DropdownButton<String>(
-      value: dropdownValue,
-      icon: const Icon(Icons.arrow_downward),
-      elevation: 16,
-      style: const TextStyle(color: Colors.deepPurple),
-      underline: Container(
-        height: 2,
-        color: Colors.deepPurpleAccent,
-      ),
-      onChanged: (String? value) {
-        // This is called when the user selects an item.
-        setState(() {
-          dropdownValue = value!;
-        });
-      },
-      items: list.map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
-        );
-      }).toList(),
-    );
-  }
-}
+//     return SizedBox(
+//       height: 32,
+//       width: 92,
+//       child: DropdownButtonFormField(
+//         items: listCoins.map<DropdownMenuItem<CryptoViewData>>(
+//           (CryptoViewData coinValue) {
+//             return DropdownMenuItem(
+//               value: coinValue,
+//               child: Row(
+//                 children: [
+//                   Image.network(
+//                     coinValue.image,
+//                     scale: 13,
+//                   ),
+//                   const SizedBox(width: 4),
+//                   Text(coinValue.symbol.toUpperCase()),
+//                 ],
+//               ),
+//             );
+//           },
+//         ).toList(),
+//         onChanged: onChangedDropdown,
+//         value: cryptoProvider,
+//         style: GoogleFonts.sourceSansPro(
+//           fontSize: 14,
+//           color: Colors.black,
+//         ),
+//         icon: const Icon(
+//           Icons.expand_more,
+//           color: Color.fromRGBO(117, 118, 128, 1),
+//           size: 17,
+//         ),
+//         decoration: InputDecoration(
+//           contentPadding: const EdgeInsets.symmetric(horizontal: 8),
+//           border: OutlineInputBorder(
+//             borderRadius: BorderRadius.circular(32),
+//             borderSide: const BorderSide(
+//               color: Color.fromRGBO(227, 228, 235, 1),
+//             ),
+//           ),
+//           focusedBorder: OutlineInputBorder(
+//             borderRadius: BorderRadius.circular(32),
+//             borderSide: const BorderSide(
+//               color: Color.fromRGBO(224, 43, 87, 1),
+//               width: 1.5,
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }

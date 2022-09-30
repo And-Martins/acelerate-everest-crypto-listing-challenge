@@ -1,4 +1,4 @@
-import 'package:crypto_listing/wallet/model/crypto_view_data.dart';
+import 'package:crypto_listing/convert/widgets/dropdown_crypto.dart';
 import 'package:decimal/decimal.dart';
 import 'package:decimal/intl.dart';
 import 'package:flutter/material.dart';
@@ -15,22 +15,13 @@ class ConvertBody extends StatefulHookConsumerWidget {
   const ConvertBody({Key? key}) : super(key: key);
 
   @override
-  ConsumerState<ConvertBody> createState() => _ConvertScreenState();
+  ConsumerState<ConvertBody> createState() => _ConvertBodyState();
 }
 
-class _ConvertScreenState extends ConsumerState<ConvertBody> {
-  // String dropdownValue = listCrypto.cryptoItem.nome.first;
+class _ConvertBodyState extends ConsumerState<ConvertBody> {
   @override
   Widget build(BuildContext context) {
     final cryptoData = ref.watch(listCryptoProvider);
-    List<CryptoViewData> listCrypto = [];
-
-    for (CryptoViewData crypto in cryptoData.value!.cryptoViewDataList) {
-      listCrypto.add(crypto);
-    }
-
-    CryptoViewData dropdownValue = listCrypto.first;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -59,31 +50,7 @@ class _ConvertScreenState extends ConsumerState<ConvertBody> {
             titleSize: 28,
           ),
         ),
-        DropdownButton<CryptoViewData>(
-          value: dropdownValue,
-          icon: const Icon(Icons.arrow_downward),
-          onChanged: (CryptoViewData? cryptoItem) {
-            setState(() {
-              dropdownValue = cryptoItem!;
-            });
-          },
-          items: listCrypto.map<DropdownMenuItem<CryptoViewData>>(
-              (CryptoViewData cryptoItem) {
-            return DropdownMenuItem<CryptoViewData>(
-              value: cryptoItem,
-              child: Row(
-                children: [
-                  Image.network(
-                    cryptoItem.image,
-                    scale: 12,
-                  ),
-                  const SizedBox(width: 4),
-                  Text(cryptoItem.symbol.toUpperCase()),
-                ],
-              ),
-            );
-          }).toList(),
-        ),
+        DropdownCrypto(cryptoData: cryptoData),
       ],
     );
   }
