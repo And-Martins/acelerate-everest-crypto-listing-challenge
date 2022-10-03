@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../shared/providers/providers.dart';
 import '../../wallet/model/crypto_list_view_data.dart';
 import '../../wallet/model/crypto_view_data.dart';
+import '../controller/providers.dart';
 
 class DropdownCrypto extends StatefulHookConsumerWidget {
   final AsyncValue<CryptoListViewData> cryptoData;
@@ -90,6 +91,8 @@ class _DropdownCryptoState extends ConsumerState<DropdownCrypto> {
               dropdownValue = cryptoItem!;
               ref.watch(cryptoCotacaoProviderTo.state).state =
                   cryptoItem.currentPrice;
+              ref.watch(fromCryptoConvertAbrev.state).state = cryptoItem.symbol;
+              setState(() {});
             }
           });
         },
