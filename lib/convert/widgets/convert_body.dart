@@ -64,9 +64,10 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               DropdownCrypto(
-                  cryptoData: cryptoData,
-                  type: "from",
-                  fromCrypto: ref.watch(fromCryptoConvertAbrev)),
+                cryptoData: cryptoData,
+                type: "from",
+                fromCrypto: ref.watch(fromCryptoConvertAbrev),
+              ),
               const Icon(
                 Icons.sync_alt_rounded,
                 color: Colors.red,
@@ -82,12 +83,12 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
             padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15),
             child: TextFormField(
               onChanged: (value) {
-                // print(cotacaoProvider);
                 if (Decimal.parse(value) > Decimal.parse('0.0')) {
                   ref.watch(transferCryptoConverted.state).state =
                       (Decimal.parse(value) * cotacaoProvider);
                   ref.watch(fieldTransferValue.state).state = value;
-                  setState(() {});
+
+                  // setState(() {});
                 }
               },
               onFieldSubmitted: (value) {
@@ -105,7 +106,9 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
               controller: ref.watch(fieldTransferValue.state).state.isEmpty
                   ? formFieldController
                   : formFieldController
-                ..text = ref.watch(fieldTransferValue.state).state,
+                ..text = ref.watch(fieldTransferValue.state).state
+                ..selection = TextSelection.collapsed(
+                    offset: ref.watch(fieldTransferValue.state).state.length),
               style: GoogleFonts.montserrat(
                 fontSize: 30,
                 color: const Color.fromRGBO(149, 151, 166, 1),
@@ -125,10 +128,15 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 8.0, right: 310),
-            child: DefaultSubtitle(
-              'R\$ ${formatReais.format(DecimalIntl(ref.watch(transferCryptoConverted.state).state))}',
-              strong: 500,
+            padding: const EdgeInsets.only(top: 8.0, left: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                DefaultSubtitle(
+                  'R\$ ${formatReais.format(DecimalIntl(ref.watch(transferCryptoConverted.state).state))}',
+                  strong: 500,
+                ),
+              ],
             ),
           ),
           //TODO Substituir esse sizedBox por algo melhor
