@@ -22,6 +22,7 @@ class ConvertBody extends StatefulHookConsumerWidget {
 class _ConvertBodyState extends ConsumerState<ConvertBody> {
   @override
   Widget build(BuildContext context) {
+    Decimal cotacaoProvider = ref.watch(cryptoCotacaoProvider);
     TextEditingController formFieldController = TextEditingController();
     const limitReachedMessage = SnackBar(
       backgroundColor: Colors.red,
@@ -44,7 +45,7 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
                 children: [
                   const DefaultSubtitle('Saldo disponível'),
                   DefaultSubtitle(
-                    "${formatCriptoAbrev.format(DecimalIntl(Decimal.parse(ref.watch(criptoQtdWalletCriptoProvider).toString())))} ${ref.watch(fromCryptoConvertAbrev).toUpperCase()}",
+                    "${formatCriptoCompleto.format(DecimalIntl(Decimal.parse(ref.watch(cryptoQtdWalletCriptoProvider).toString())))} ${ref.watch(fromCryptoConvertAbrev).toUpperCase()}",
                     strong: 600,
                   ),
                 ],
@@ -80,15 +81,31 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15),
             child: TextFormField(
-              onFieldSubmitted: (value) {
-                if (ref.watch(criptoQtdWalletCriptoProvider) <
-                    double.parse(formFieldController.text)) {
-                  ScaffoldMessenger.of(context)
-                      .showSnackBar(limitReachedMessage);
+              onChanged: (value) {
+                // print(cotacaoProvider);
+                if (Decimal.parse(value) > Decimal.parse('0.0')) {
+                  ref.watch(transferCryptoConverted.state).state =
+                      (Decimal.parse(value) * cotacaoProvider);
+                  ref.watch(fieldTransferValue.state).state = value;
+                  setState(() {});
                 }
               },
-              onChanged: (value) {},
-              controller: formFieldController,
+              onFieldSubmitted: (value) {
+                if (ref.watch(cryptoQtdWalletCriptoProvider) <
+                    double.parse(formFieldController.text.toString())) {
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(limitReachedMessage);
+                } else {
+                  var result = ref.watch(cryptoCotacaoProvider);
+                  ref.watch(transferCryptoConverted.state).state =
+                      Decimal.parse(value) * result;
+                  setState(() {});
+                }
+              },
+              controller: ref.watch(fieldTransferValue.state).state.isEmpty
+                  ? formFieldController
+                  : formFieldController
+                ..text = ref.watch(fieldTransferValue.state).state,
               style: GoogleFonts.montserrat(
                 fontSize: 30,
                 color: const Color.fromRGBO(149, 151, 166, 1),
@@ -107,10 +124,10 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.only(top: 8.0, right: 310),
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0, right: 310),
             child: DefaultSubtitle(
-              'R\$ 0,00',
+              'R\$ ${formatReais.format(DecimalIntl(ref.watch(transferCryptoConverted.state).state))}',
               strong: 500,
             ),
           ),
@@ -149,7 +166,7 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
                   ),
                   IconButton(
                     onPressed: () {
-                      if (ref.watch(criptoQtdWalletCriptoProvider) <
+                      if (ref.watch(cryptoQtdWalletCriptoProvider) <
                           double.parse(formFieldController.text)) {
                         ScaffoldMessenger.of(context)
                             .showSnackBar(limitReachedMessage);

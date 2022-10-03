@@ -1,3 +1,4 @@
+import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -7,10 +8,12 @@ import '../providers/providers.dart';
 class DefaultBigButton extends HookConsumerWidget {
   final double cryptoQtdWallet;
   final String cryptoAbrev;
+  final Decimal cryptoCotacao;
 
   const DefaultBigButton({
-    this.cryptoQtdWallet = 0,
-    this.cryptoAbrev = '',
+    required this.cryptoQtdWallet,
+    required this.cryptoAbrev,
+    required this.cryptoCotacao,
     Key? key,
   }) : super(key: key);
 
@@ -23,8 +26,9 @@ class DefaultBigButton extends HookConsumerWidget {
         style: ElevatedButton.styleFrom(backgroundColor: Colors.pink),
         onPressed: () {
           ref.watch(fromCryptoConvertAbrev.state).state = cryptoAbrev;
-          ref.watch(criptoQtdWalletCriptoProvider.state).state =
+          ref.watch(cryptoQtdWalletCriptoProvider.state).state =
               cryptoQtdWallet;
+          ref.watch(cryptoCotacaoProvider.state).state = cryptoCotacao;
           Navigator.pushNamed(
             context,
             '/convert',

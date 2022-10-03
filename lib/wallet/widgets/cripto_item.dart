@@ -46,19 +46,19 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
           ),
           ListTile(
             onTap: () {
-              ref.watch(criptoActualCurrencyProvider.state).state =
+              ref.watch(cryptoActualCurrencyProvider.state).state =
                   double.parse(cryptoData.currentPrice.toString());
-              ref.watch(criptoNameProvider.state).state = cryptoData.name;
+              ref.watch(cryptoNameProvider.state).state = cryptoData.name;
               ref.watch(cryptoIdProvider.state).state = cryptoData.id;
-              ref.watch(criptoAbrevProvider.state).state = cryptoData.symbol;
-              ref.watch(criptoImageProvider.state).state = cryptoData.image;
-              ref.watch(criptoCotacaoProvider.state).state =
+              ref.watch(cryptoAbrevProvider.state).state = cryptoData.symbol;
+              ref.watch(cryptoImageProvider.state).state = cryptoData.image;
+              ref.watch(cryptoCotacaoProvider.state).state =
                   cryptoData.currentPrice;
-              ref.watch(criptoVariacaoProvider.state).state =
+              ref.watch(cryptoVariacaoProvider.state).state =
                   cryptoData.marketCapChangePercentage24h;
-              ref.watch(criptoValueWalletReaisProvider.state).state =
+              ref.watch(cryptoValueWalletReaisProvider.state).state =
                   criptoValueWalletReais;
-              ref.watch(criptoQtdWalletCriptoProvider.state).state =
+              ref.watch(cryptoQtdWalletCriptoProvider.state).state =
                   walletModel.quantityCoin;
               Navigator.pushNamed(
                 context,

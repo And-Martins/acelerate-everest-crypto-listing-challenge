@@ -26,7 +26,7 @@ class _GraphicState extends ConsumerState<Graphic> {
   @override
   Widget build(BuildContext context) {
     void changeValue(Decimal newValue) {
-      ref.watch(criptoCotacaoProvider.state).state =
+      ref.watch(cryptoCotacaoProvider.state).state =
           Decimal.parse(newValue.toString());
     }
 
@@ -45,7 +45,7 @@ class _GraphicState extends ConsumerState<Graphic> {
                   dotData: FlDotData(show: false),
                   isStrokeCapRound: true,
                   spots: widget.defineSpot
-                      .sublist(0, ref.watch(criptoDaysProvider)),
+                      .sublist(0, ref.watch(cryptoDaysProvider)),
                 ),
               ],
               betweenBarsData: [],

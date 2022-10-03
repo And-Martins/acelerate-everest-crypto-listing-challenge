@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../shared/providers/providers.dart';
 import '../../wallet/model/crypto_list_view_data.dart';
 import '../../wallet/model/crypto_view_data.dart';
 
-class DropdownCrypto extends StatefulWidget {
+class DropdownCrypto extends StatefulHookConsumerWidget {
   final AsyncValue<CryptoListViewData> cryptoData;
   final String type;
   final String fromCrypto;
@@ -17,10 +18,10 @@ class DropdownCrypto extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<DropdownCrypto> createState() => _DropdownCryptoState();
+  ConsumerState<DropdownCrypto> createState() => _DropdownCryptoState();
 }
 
-class _DropdownCryptoState extends State<DropdownCrypto> {
+class _DropdownCryptoState extends ConsumerState<DropdownCrypto> {
   List<CryptoViewData> listCrypto = [];
   CryptoViewData? dropdownValue;
 
@@ -34,6 +35,8 @@ class _DropdownCryptoState extends State<DropdownCrypto> {
       for (int index = 0; index <= listCrypto.length; index++) {
         if (listCrypto[index].symbol == widget.fromCrypto) {
           dropdownValue = listCrypto[index];
+          // ref.watch(cryptoCotacaoProviderFrom.state).state =
+          //     listCrypto[index].currentPrice;
           break;
         }
       }
@@ -42,8 +45,12 @@ class _DropdownCryptoState extends State<DropdownCrypto> {
         if (listCrypto[index].symbol == widget.fromCrypto) {
           if (index < listCrypto.length - 1) {
             dropdownValue = listCrypto[index + 1];
+            // ref.watch(cryptoCotacaoProviderTo.state).state =
+            //     listCrypto[index + 1].currentPrice;
           } else {
             dropdownValue = listCrypto[index - 1];
+            // ref.watch(cryptoCotacaoProviderTo.state).state =
+            //     listCrypto[index - 1].currentPrice;
           }
           break;
         }
@@ -72,7 +79,18 @@ class _DropdownCryptoState extends State<DropdownCrypto> {
         ),
         onChanged: (CryptoViewData? cryptoItem) {
           setState(() {
-            dropdownValue = cryptoItem!;
+            if (widget.type == "from") {
+              dropdownValue = cryptoItem!;
+              ref.watch(cryptoCotacaoProviderFrom.state).state =
+                  cryptoItem.currentPrice;
+              setState(() {
+                ref.watch(cryptoAbrevProvider.state).state = cryptoItem.symbol;
+              });
+            } else {
+              dropdownValue = cryptoItem!;
+              ref.watch(cryptoCotacaoProviderTo.state).state =
+                  cryptoItem.currentPrice;
+            }
           });
         },
         items: listCrypto

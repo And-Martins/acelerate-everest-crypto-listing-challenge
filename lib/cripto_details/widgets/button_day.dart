@@ -20,7 +20,7 @@ class ButtonDay extends StatefulHookConsumerWidget {
 class _ButtonDayState extends ConsumerState<ButtonDay> {
   @override
   Widget build(BuildContext context) {
-    final int criptoDaySelected = ref.watch(criptoDaysProvider);
+    final int criptoDaySelected = ref.watch(cryptoDaysProvider);
     return SizedBox(
       width: 61,
       height: 35,
@@ -35,7 +35,7 @@ class _ButtonDayState extends ConsumerState<ButtonDay> {
           ),
         ),
         onPressed: () {
-          ref.watch(criptoDaysProvider.state).state = widget.days;
+          ref.watch(cryptoDaysProvider.state).state = widget.days;
 
           setState(() {});
         },
