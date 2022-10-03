@@ -83,13 +83,9 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
             padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15),
             child: TextFormField(
               onChanged: (value) {
-                if (Decimal.parse(value) > Decimal.parse('0.0')) {
-                  ref.watch(transferCryptoConverted.state).state =
-                      (Decimal.parse(value) * cotacaoProvider);
-                  ref.watch(fieldTransferValue.state).state = value;
-
-                  // setState(() {});
-                }
+                ref.watch(transferCryptoConverted.state).state =
+                    (Decimal.parse(value) * cotacaoProvider);
+                ref.watch(fieldTransferValue.state).state = value;
               },
               onFieldSubmitted: (value) {
                 if (ref.watch(cryptoQtdWalletCriptoProvider) <
@@ -165,7 +161,7 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: DefaultSubtitle(
-                          '0,0000 ${ref.watch(fromCryptoConvertAbrev).toUpperCase()}',
+                          '0,0000 ${ref.watch(toCryptoConvertAbrev).toUpperCase()}',
                           strong: 600,
                           color: Colors.black,
                         ),
