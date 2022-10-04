@@ -154,8 +154,17 @@ class _WalletBodyState extends ConsumerState<DetailBody> {
               ),
             );
           } else {
-            return const Center(
-              child: CircularProgressIndicator(),
+            return SizedBox(
+              height: MediaQuery.of(context).size.height - 100,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: const [
+                  Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ],
+              ),
             );
           }
         },
