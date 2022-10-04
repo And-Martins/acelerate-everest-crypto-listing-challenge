@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../shared/providers/providers.dart';
 import '../../wallet/model/crypto_list_view_data.dart';
 import '../../wallet/model/crypto_view_data.dart';
 import '../controller/providers.dart';
@@ -32,6 +31,7 @@ class _DropdownCryptoState extends ConsumerState<DropdownCrypto> {
     for (CryptoViewData crypto in widget.cryptoData.value!.cryptoViewDataList) {
       listCrypto.add(crypto);
     }
+
     if (widget.type == "from") {
       for (int index = 0; index <= listCrypto.length; index++) {
         if (listCrypto[index].symbol == widget.fromCrypto) {
@@ -44,53 +44,16 @@ class _DropdownCryptoState extends ConsumerState<DropdownCrypto> {
         if (listCrypto[index].symbol == widget.fromCrypto) {
           if (index < listCrypto.length - 1) {
             dropdownValue = listCrypto[index + 1];
-            // getToInfo('+', index);
+
             break;
           } else {
             dropdownValue = listCrypto[index - 1];
-            // getToInfo('-', index);
             break;
           }
         }
       }
     }
-  }
-
-  // void getToInfo(String symbol, int index) async {
-  //   if (symbol == '+') {
-  //     // setState(() {
-  //     ref.watch(cryptoCotacaoProviderTo.state).state =
-  //         listCrypto[index + 1].currentPrice;
-  //     ref.watch(toCryptoConvertAbrev.state).state =
-  //         listCrypto[index + 1].symbol;
-  //     print(cryptoCotacaoProviderTo.state);
-  //     print(toCryptoConvertAbrev.state);
-  //     // });
-  //   } else {
-  //     // setState(() {
-  //     ref.watch(cryptoCotacaoProviderTo.state).state =
-  //         listCrypto[index - 1].currentPrice;
-  //     ref.watch(toCryptoConvertAbrev.state).state =
-  //         listCrypto[index - 1].symbol;
-  //     // });
-  //   }
-  // }
-
-  CryptoViewData? getDropdownValue(CryptoViewData? dropdownValue) {
-    if (widget.type == "from") {
-      // setState(() {
-      ref.watch(cryptoCotacaoProviderTo.state).state =
-          dropdownValue!.currentPrice;
-      ref.watch(toCryptoConvertAbrev.state).state = dropdownValue.symbol;
-      // });
-    } else {
-      // setState(() {
-      ref.watch(cryptoCotacaoProviderTo.state).state =
-          dropdownValue!.currentPrice;
-      ref.watch(toCryptoConvertAbrev.state).state = dropdownValue.symbol;
-      // });
-    }
-    return dropdownValue;
+    // ref.watch(toCryptoConvertAbrev.state).state = dropdownValue!.symbol;
   }
 
   @override
@@ -107,32 +70,30 @@ class _DropdownCryptoState extends ConsumerState<DropdownCrypto> {
         ),
       ),
       child: DropdownButton<CryptoViewData>(
-        value: getDropdownValue(dropdownValue),
-        icon: const Icon(
+        value: dropdownValue,
+        icon: Icon(
           Icons.keyboard_arrow_down_rounded,
           size: 25,
+          color: widget.type != "to" ? Colors.transparent : Colors.black,
         ),
         onChanged: (CryptoViewData? cryptoItem) {
-          setState(() {
-            if (widget.type == "from") {
-              dropdownValue = cryptoItem!;
-              setState(() {
-                ref.watch(cryptoCotacaoProviderFrom.state).state =
-                    cryptoItem.currentPrice;
-                ref.watch(cryptoAbrevProvider.state).state = cryptoItem.symbol;
-              });
-            } else {
-              dropdownValue = cryptoItem!;
-              setState(() {
-                ref.watch(cryptoCotacaoProviderTo.state).state =
-                    cryptoItem.currentPrice;
+          setState(
+            () {
+              if (widget.type == "from") {
+                int count = 0;
+                Navigator.of(context).popUntil((_) => count++ >= 2);
+              } else if (widget.type == "to") {
+                dropdownValue = cryptoItem!;
+                ref.watch(toCryptoCotacaoProvider.state).state =
+                    double.parse(cryptoItem.currentPrice.toString());
                 ref.watch(toCryptoConvertAbrev.state).state = cryptoItem.symbol;
-                ref.watch(convertedValue.state).state =
-                    (ref.watch(cryptoCotacaoProviderTo.state).state *
-                        ref.watch(transferCryptoConverted.state).state);
-              });
-            }
-          });
+                ref.watch(resultConvertedValue.state).state =
+                    (ref.watch(transferCryptoConverted.state).state /
+                        ref.watch(toCryptoCotacaoProvider.state).state);
+                print(ref.watch(resultConvertedValue));
+              }
+            },
+          );
         },
         items: listCrypto
             .map<DropdownMenuItem<CryptoViewData>>((CryptoViewData cryptoItem) {

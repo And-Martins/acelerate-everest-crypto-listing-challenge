@@ -22,14 +22,16 @@ class ConvertBody extends StatefulHookConsumerWidget {
 class _ConvertBodyState extends ConsumerState<ConvertBody> {
   @override
   Widget build(BuildContext context) {
-    Decimal cotacaoProvider = ref.watch(cryptoCotacaoProvider);
+    double fromCryptoCotacao = ref.watch(fromCryptoCotacaoProvider);
     TextEditingController formFieldController = TextEditingController();
+
     const limitReachedMessage = SnackBar(
       backgroundColor: Colors.red,
       content: Text('Quantidade inserida é maior que a quantidade disponível!'),
     );
 
     final cryptoData = ref.watch(listCryptoProvider);
+
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Column(
@@ -84,7 +86,7 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
             child: TextFormField(
               onChanged: (value) {
                 ref.watch(transferCryptoConverted.state).state =
-                    (Decimal.parse(value) * cotacaoProvider);
+                    (double.parse(value) * fromCryptoCotacao);
                 ref.watch(fieldTransferValue.state).state = value;
               },
               onFieldSubmitted: (value) {
@@ -93,19 +95,26 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
                   ScaffoldMessenger.of(context)
                       .showSnackBar(limitReachedMessage);
                 } else {
-                  var result = ref.watch(cryptoCotacaoProvider);
-                  ref.watch(transferCryptoConverted.state).state =
-                      Decimal.parse(value) * result;
-                  ref.watch(convertedValue.state).state =
-                      (ref.watch(cryptoCotacaoProviderTo.state).state *
-                          ref.watch(transferCryptoConverted.state).state);
-                  // var teste = ref.watch(convertedValue.state).state;
-                  setState(() {});
+                  // ref.watch(transferCryptoConverted.state).state =
+                  //     Decimal.parse(value) * fromCryptoCotacao;
+                  setState(() {
+                    var teste = ref.watch(transferCryptoConverted.state).state;
+                    var teste2 = ref.watch(toCryptoCotacaoProvider.state).state;
+                    print(teste);
+                    print(teste2);
+                    if (ref.watch(transferCryptoConverted.state).state > 0.0 &&
+                        ref.watch(toCryptoCotacaoProvider.state).state > 0.0) {
+                      // ref.watch(resultConvertedValue.state).state = (ref
+                      //             .watch(transferCryptoConverted.state)
+                      //             .state /
+                      //         ref.watch(toCryptoCotacaoProvider.state).state)
+                      //     .floor();
+                      print(ref.watch(resultConvertedValue.state).state);
+                    }
+                  });
                 }
               },
-              controller: ref.watch(fieldTransferValue.state).state.isEmpty
-                  ? formFieldController
-                  : formFieldController
+              controller: formFieldController
                 ..text = ref.watch(fieldTransferValue.state).state
                 ..selection = TextSelection.collapsed(
                     offset: ref.watch(fieldTransferValue.state).state.length),
@@ -133,13 +142,12 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 DefaultSubtitle(
-                  'R\$ ${formatReais.format(DecimalIntl(ref.watch(transferCryptoConverted.state).state))}',
+                  'R\$ ${formatReais.format(ref.watch(transferCryptoConverted.state).state)}',
                   strong: 500,
                 ),
               ],
             ),
           ),
-          //TODO Substituir esse sizedBox por algo melhor
           const SizedBox(height: 180),
           Column(
             children: [
@@ -165,7 +173,7 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: DefaultSubtitle(
-                          '${formatReais.format(DecimalIntl(ref.watch(convertedValue)))} ${ref.watch(toCryptoConvertAbrev).toUpperCase()}',
+                          '${ref.watch(resultConvertedValue).toStringAsFixed(8)} ${ref.watch(toCryptoConvertAbrev).toUpperCase()}',
                           strong: 600,
                           color: Colors.black,
                         ),

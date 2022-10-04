@@ -28,7 +28,8 @@ class DefaultBigButton extends HookConsumerWidget {
           ref.watch(fromCryptoConvertAbrev.state).state = cryptoAbrev;
           ref.watch(cryptoQtdWalletCriptoProvider.state).state =
               cryptoQtdWallet;
-          ref.watch(cryptoCotacaoProvider.state).state = cryptoCotacao;
+          ref.watch(fromCryptoCotacaoProvider.state).state =
+              double.parse(cryptoCotacao.toString());
           Navigator.pushNamed(
             context,
             '/convert',
