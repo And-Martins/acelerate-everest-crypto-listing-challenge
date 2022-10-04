@@ -36,8 +36,6 @@ class _DropdownCryptoState extends ConsumerState<DropdownCrypto> {
       for (int index = 0; index <= listCrypto.length; index++) {
         if (listCrypto[index].symbol == widget.fromCrypto) {
           dropdownValue = listCrypto[index];
-          // ref.watch(cryptoCotacaoProviderFrom.state).state =
-          //     listCrypto[index].currentPrice;
           break;
         }
       }
@@ -46,18 +44,37 @@ class _DropdownCryptoState extends ConsumerState<DropdownCrypto> {
         if (listCrypto[index].symbol == widget.fromCrypto) {
           if (index < listCrypto.length - 1) {
             dropdownValue = listCrypto[index + 1];
-            // ref.watch(cryptoCotacaoProviderTo.state).state =
-            //     listCrypto[index + 1].currentPrice;
+            // getToInfo('+', index);
+            break;
           } else {
             dropdownValue = listCrypto[index - 1];
-            // ref.watch(cryptoCotacaoProviderTo.state).state =
-            //     listCrypto[index - 1].currentPrice;
+            // getToInfo('-', index);
+            break;
           }
-          break;
         }
       }
     }
   }
+
+  // void getToInfo(String symbol, int index) async {
+  //   if (symbol == '+') {
+  //     // setState(() {
+  //     ref.watch(cryptoCotacaoProviderTo.state).state =
+  //         listCrypto[index + 1].currentPrice;
+  //     ref.watch(toCryptoConvertAbrev.state).state =
+  //         listCrypto[index + 1].symbol;
+  //     print(cryptoCotacaoProviderTo.state);
+  //     print(toCryptoConvertAbrev.state);
+  //     // });
+  //   } else {
+  //     // setState(() {
+  //     ref.watch(cryptoCotacaoProviderTo.state).state =
+  //         listCrypto[index - 1].currentPrice;
+  //     ref.watch(toCryptoConvertAbrev.state).state =
+  //         listCrypto[index - 1].symbol;
+  //     // });
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +108,10 @@ class _DropdownCryptoState extends ConsumerState<DropdownCrypto> {
               dropdownValue = cryptoItem!;
               ref.watch(cryptoCotacaoProviderTo.state).state =
                   cryptoItem.currentPrice;
-              ref.watch(fromCryptoConvertAbrev.state).state = cryptoItem.symbol;
+              ref.watch(toCryptoConvertAbrev.state).state = cryptoItem.symbol;
+              ref.watch(convertedValue.state).state =
+                  (ref.watch(cryptoCotacaoProviderTo.state).state *
+                      ref.watch(transferCryptoConverted.state).state);
               setState(() {});
             }
           });

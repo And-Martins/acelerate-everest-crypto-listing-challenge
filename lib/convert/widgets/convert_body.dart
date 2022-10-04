@@ -96,6 +96,10 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
                   var result = ref.watch(cryptoCotacaoProvider);
                   ref.watch(transferCryptoConverted.state).state =
                       Decimal.parse(value) * result;
+                  ref.watch(convertedValue.state).state =
+                      (ref.watch(cryptoCotacaoProviderTo.state).state *
+                          ref.watch(transferCryptoConverted.state).state);
+                  // var teste = ref.watch(convertedValue.state).state;
                   setState(() {});
                 }
               },
@@ -161,7 +165,7 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: DefaultSubtitle(
-                          '0,0000 ${ref.watch(toCryptoConvertAbrev).toUpperCase()}',
+                          '${formatReais.format(DecimalIntl(ref.watch(convertedValue)))} ${ref.watch(toCryptoConvertAbrev).toUpperCase()}',
                           strong: 600,
                           color: Colors.black,
                         ),
