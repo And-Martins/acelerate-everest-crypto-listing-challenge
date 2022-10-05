@@ -28,32 +28,45 @@ class _DropdownCryptoState extends ConsumerState<DropdownCrypto> {
   @override
   void initState() {
     super.initState();
-    for (CryptoViewData crypto in widget.cryptoData.value!.cryptoViewDataList) {
-      listCrypto.add(crypto);
-    }
-
-    if (widget.type == "from") {
-      for (int index = 0; index <= listCrypto.length; index++) {
-        if (listCrypto[index].symbol == widget.fromCrypto) {
-          dropdownValue = listCrypto[index];
-          break;
-        }
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      for (CryptoViewData crypto
+          in widget.cryptoData.value!.cryptoViewDataList) {
+        listCrypto.add(crypto);
       }
-    } else if (widget.type == "to") {
-      for (int index = 0; index <= listCrypto.length; index++) {
-        if (listCrypto[index].symbol == widget.fromCrypto) {
-          if (index < listCrypto.length - 1) {
-            dropdownValue = listCrypto[index + 1];
 
-            break;
-          } else {
-            dropdownValue = listCrypto[index - 1];
+      if (widget.type == "from") {
+        for (int index = 0; index <= listCrypto.length; index++) {
+          if (listCrypto[index].symbol == widget.fromCrypto) {
+            dropdownValue = listCrypto[index];
+            ref.watch(fromCryptoConvertAbrev.state).state =
+                listCrypto[index].symbol;
+            ref.watch(fromCryptoCotacaoProvider.state).state =
+                double.parse(listCrypto[index].currentPrice.toString());
             break;
           }
         }
+      } else if (widget.type == "to") {
+        for (int index = 0; index <= listCrypto.length; index++) {
+          if (listCrypto[index].symbol == widget.fromCrypto) {
+            if (index < listCrypto.length - 1) {
+              dropdownValue = listCrypto[index + 1];
+              ref.watch(toCryptoConvertAbrev.state).state =
+                  dropdownValue!.symbol;
+              ref.watch(toCryptoCotacaoProvider.state).state =
+                  double.parse(dropdownValue!.currentPrice.toString());
+              break;
+            } else {
+              dropdownValue = listCrypto[index - 1];
+              ref.watch(toCryptoConvertAbrev.state).state =
+                  dropdownValue!.symbol;
+              ref.watch(toCryptoCotacaoProvider.state).state =
+                  double.parse(dropdownValue!.currentPrice.toString());
+              break;
+            }
+          }
+        }
       }
-    }
-    // ref.watch(toCryptoConvertAbrev.state).state = dropdownValue!.symbol;
+    });
   }
 
   @override
