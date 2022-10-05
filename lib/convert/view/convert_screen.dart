@@ -9,15 +9,13 @@ class ConvertScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: DefaultAppbar(
+      appBar: const DefaultAppbar(
         title: "Converter",
         titleSize: 23,
-        appBar: AppBar(),
       ),
       body: const ConvertBody(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-  
         backgroundColor: Colors.pink.shade500,
         child: const Icon(
           Icons.arrow_forward,
