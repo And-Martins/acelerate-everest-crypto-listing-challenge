@@ -28,10 +28,9 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
     final double criptoActualCurrency = ref.watch(cryptoActualCurrencyProvider);
 
     return Scaffold(
-      appBar: DefaultAppbar(
+      appBar: const DefaultAppbar(
         title: "Detalhes",
         titleSize: 23,
-        appBar: AppBar(),
       ),
       body: DetailBody(
           cryptoName: criptoName,

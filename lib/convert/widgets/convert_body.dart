@@ -1,4 +1,3 @@
-import 'dropdown_crypto.dart';
 import 'package:decimal/decimal.dart';
 import 'package:decimal/intl.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +10,7 @@ import '../../shared/widgets/default_title.dart';
 import '../../shared/widgets/number_formatter.dart';
 import '../../wallet/controller/crypto_provider.dart';
 import '../controller/providers.dart';
+import 'dropdown_crypto.dart';
 
 class ConvertBody extends StatefulHookConsumerWidget {
   const ConvertBody({Key? key}) : super(key: key);
@@ -88,7 +88,6 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
                 ref.watch(transferCryptoConverted.state).state =
                     (double.parse(value) * fromCryptoCotacao);
                 ref.watch(fieldTransferValue.state).state = value;
-                print(ref.watch(toCryptoCotacaoProvider.state).state);
               },
               onFieldSubmitted: (value) {
                 if (ref.watch(cryptoQtdWalletCriptoProvider) <

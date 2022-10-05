@@ -1,6 +1,7 @@
-import 'core/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import 'core/routes.dart';
 
 void main() {
   runApp(

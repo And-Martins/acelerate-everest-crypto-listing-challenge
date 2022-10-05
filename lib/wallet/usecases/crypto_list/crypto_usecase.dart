@@ -1,5 +1,4 @@
 import '../../mapper/list_crypto_mapper.dart';
-
 import '../../model/crypto_list_view_data.dart';
 import '../../repository/get_list/crypto_repo.dart';
 

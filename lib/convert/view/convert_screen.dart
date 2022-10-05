@@ -13,14 +13,13 @@ class ConvertScreen extends HookConsumerWidget {
   );
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
+    return const Scaffold(
       appBar: DefaultAppbar(
         title: "Converter",
         titleSize: 23,
-        appBar: AppBar(),
       ),
-      body: const ConvertBody(),
-      floatingActionButton: const ConfirmButton(zeroAlert: zeroAlert),
+      body: ConvertBody(),
+      floatingActionButton: ConfirmButton(zeroAlert: zeroAlert),
     );
   }
 }
