@@ -90,7 +90,7 @@ class _DropdownCryptoState extends ConsumerState<DropdownCrypto> {
                 ref.watch(resultConvertedValue.state).state =
                     (ref.watch(transferCryptoConverted.state).state /
                         ref.watch(toCryptoCotacaoProvider.state).state);
-                print(ref.watch(resultConvertedValue));
+                // print(ref.watch(resultConvertedValue));
               }
             },
           );

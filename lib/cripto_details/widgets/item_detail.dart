@@ -8,27 +8,29 @@ import '../../shared/widgets/number_formatter.dart';
 class ItemDetail extends StatelessWidget {
   const ItemDetail({
     Key? key,
-    required this.criptoAbrev,
-    required this.criptoCotacao,
-    required this.criptoVariacao,
-    required this.criptoQtdWallet,
-    required this.criptoValueWalletReais,
+    this.criptoAbrev = '',
+    this.criptoAbrevTo = '',
+    this.criptoCotacao = 0.0,
+    this.criptoVariacao = 0.0,
+    this.criptoQtdWallet = 0.0,
+    this.criptoValueWalletReais = 0.0,
+    this.option,
     required this.text,
-    required this.option,
   }) : super(key: key);
 
-  final String criptoAbrev;
-  final double criptoCotacao;
-  final double criptoVariacao;
-  final double criptoQtdWallet;
-  final double criptoValueWalletReais;
+  final String? criptoAbrev;
+  final String? criptoAbrevTo;
+  final double? criptoCotacao;
+  final double? criptoVariacao;
+  final double? criptoQtdWallet;
+  final double? criptoValueWalletReais;
   final String text;
-  final int option;
+  final int? option;
 
   @override
   Widget build(BuildContext context) {
     var cotacao = Decimal.parse(criptoCotacao.toString());
-    double variacao = criptoVariacao;
+    double variacao = criptoVariacao ?? 0.0;
     var criptoQtd = Decimal.parse(criptoQtdWallet.toString());
     var criptoValueReais = Decimal.parse(criptoValueWalletReais.toString());
 
@@ -80,7 +82,7 @@ class ItemDetail extends StatelessWidget {
                               )
                         : option == 3
                             ? Text(
-                                "${formatCriptoCompleto.format(DecimalIntl(criptoQtd))} ${criptoAbrev.toUpperCase()}",
+                                "${formatCriptoCompleto.format(DecimalIntl(criptoQtd))} ${criptoAbrev ?? "".toUpperCase()}",
                                 style: GoogleFonts.sourceSansPro(
                                   fontSize: 19,
                                   color: Colors.grey.shade800,
@@ -94,9 +96,17 @@ class ItemDetail extends StatelessWidget {
                                       color: Colors.grey.shade800,
                                     ),
                                   )
-                                : const Text(
-                                    " ",
-                                  ),
+                                : option == 5
+                                    ? Text(
+                                        "1 ${criptoAbrev ?? "".toUpperCase()} = ${criptoQtd.toStringAsFixed(8)} ${criptoAbrevTo ?? "".toUpperCase()}",
+                                        style: GoogleFonts.sourceSansPro(
+                                          fontSize: 19,
+                                          color: Colors.grey.shade800,
+                                        ),
+                                      )
+                                    : const Text(
+                                        " ",
+                                      )
               ],
             ),
           ),

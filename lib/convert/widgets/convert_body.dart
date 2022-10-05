@@ -187,6 +187,11 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
                           double.parse(formFieldController.text)) {
                         ScaffoldMessenger.of(context)
                             .showSnackBar(limitReachedMessage);
+                      } else {
+                        Navigator.pushNamed(
+                          context,
+                          '/confirm-conversion',
+                        );
                       }
                     },
                     iconSize: 58,
