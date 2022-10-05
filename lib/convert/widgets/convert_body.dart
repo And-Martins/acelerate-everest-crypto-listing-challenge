@@ -88,7 +88,6 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
                 ref.watch(transferCryptoConverted.state).state =
                     (double.parse(value) * fromCryptoCotacao);
                 ref.watch(fieldTransferValue.state).state = value;
-                print(ref.watch(toCryptoCotacaoProvider.state).state);
               },
               onFieldSubmitted: (value) {
                 if (ref.watch(cryptoQtdWalletCriptoProvider) <
