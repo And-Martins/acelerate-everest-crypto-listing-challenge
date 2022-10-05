@@ -1,12 +1,11 @@
 import 'package:decimal/decimal.dart';
 import 'package:decimal/intl.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../shared/models/wallet_model.dart';
-import '../../shared/providers/wallet_providers.dart';
+import '../../shared/providers/providers.dart';
 import '../../shared/widgets/number_formatter.dart';
 import '../model/crypto_view_data.dart';
 
@@ -30,7 +29,6 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
     final bool hideWallet = ref.watch(hideWalletStateProvider);
     CryptoViewData cryptoData = widget.cryptoData;
     WalletModel walletModel = widget.walletModel;
-    List<FlSpot> criptoCurrentList = [];
 
     var criptoValueWalletReais =
         (double.parse(cryptoData.currentPrice.toString()) *
@@ -48,22 +46,24 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
           ),
           ListTile(
             onTap: () {
-              ref.watch(criptoActualCurrencyProvider.state).state =
+              ref.watch(cryptoActualCurrencyProvider.state).state =
                   double.parse(cryptoData.currentPrice.toString());
-              ref.watch(criptoNameProvider.state).state = cryptoData.name;
+              ref.watch(cryptoNameProvider.state).state = cryptoData.name;
               ref.watch(cryptoIdProvider.state).state = cryptoData.id;
-              ref.watch(criptoAbrevProvider.state).state = cryptoData.symbol;
-              ref.watch(criptoImageProvider.state).state = cryptoData.image;
-              ref.watch(criptoCotacaoProvider.state).state =
+              ref.watch(cryptoAbrevProvider.state).state = cryptoData.symbol;
+              ref.watch(cryptoImageProvider.state).state = cryptoData.image;
+              ref.watch(cryptoCotacaoProvider.state).state =
                   cryptoData.currentPrice;
-              ref.watch(criptoVariacaoProvider.state).state =
+              ref.watch(cryptoVariacaoProvider.state).state =
                   cryptoData.marketCapChangePercentage24h;
-              ref.watch(criptoValueWalletReaisProvider.state).state =
+              ref.watch(cryptoValueWalletReaisProvider.state).state =
                   criptoValueWalletReais;
-              ref.watch(criptoQtdWalletCriptoProvider.state).state =
+              ref.watch(cryptoQtdWalletCriptoProvider.state).state =
                   walletModel.quantityCoin;
-              Navigator.pushNamed(context, '/criptoDetails',
-                  arguments: criptoCurrentList);
+              Navigator.pushNamed(
+                context,
+                '/criptoDetails',
+              );
             },
             leading:
                 CircleAvatar(backgroundImage: NetworkImage(cryptoData.image)),

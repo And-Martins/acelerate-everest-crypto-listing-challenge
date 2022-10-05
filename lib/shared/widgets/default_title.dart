@@ -21,7 +21,7 @@ class DefaultTitle extends StatelessWidget {
       title,
       style: GoogleFonts.montserrat(
         fontSize: titleSize,
-        fontWeight: strong == 600 ? FontWeight.w600 : FontWeight.w800,
+        fontWeight: strong == 700 ? FontWeight.w700 : FontWeight.w800,
         color: color,
       ),
     );

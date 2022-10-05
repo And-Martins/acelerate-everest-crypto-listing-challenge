@@ -2,7 +2,7 @@ import '../repository/get_list/crypto_repo.dart';
 import 'package:decimal/decimal.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../shared/providers/wallet_providers.dart';
+import '../../shared/providers/providers.dart';
 import '../endpoint/crypto_list_endpoint.dart';
 import '../usecases/crypto_list/crypto_usecase.dart';
 import '../usecases/wallet_amount/amount_usecase.dart';

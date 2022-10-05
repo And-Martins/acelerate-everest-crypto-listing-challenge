@@ -80,7 +80,7 @@ class ItemDetail extends StatelessWidget {
                               )
                         : option == 3
                             ? Text(
-                                "${formatCriptoCompleto.format(DecimalIntl(criptoQtd))} $criptoAbrev",
+                                "${formatCriptoCompleto.format(DecimalIntl(criptoQtd))} ${criptoAbrev.toUpperCase()}",
                                 style: GoogleFonts.sourceSansPro(
                                   fontSize: 19,
                                   color: Colors.grey.shade800,
