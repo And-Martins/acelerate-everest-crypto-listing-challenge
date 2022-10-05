@@ -31,8 +31,7 @@ class ReviewBody extends HookConsumerWidget {
               option: 3,
               criptoAbrev:
                   ref.watch(fromCryptoConvertAbrev.state).state.toUpperCase(),
-              criptoQtdWallet:
-                  double.parse(ref.watch(fieldTransferValue.state).state),
+              criptoQtdWallet: double.parse(ref.watch(fieldTransferValue)),
               text: "Converter",
             ),
             ItemDetail(
