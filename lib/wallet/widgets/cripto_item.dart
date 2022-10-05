@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../convert/controller/providers.dart';
 import '../../shared/models/wallet_model.dart';
 import '../../shared/providers/providers.dart';
 import '../../shared/widgets/number_formatter.dart';
@@ -46,6 +47,10 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
           ),
           ListTile(
             onTap: () {
+              ref.watch(fieldTransferValue.state).state = "";
+              ref.watch(transferCryptoConverted.state).state = 0.0;
+              ref.watch(toCryptoCotacaoProvider.state).state = 0.0;
+              ref.watch(resultConvertedValue.state).state = 0.0;
               ref.watch(cryptoActualCurrencyProvider.state).state =
                   double.parse(cryptoData.currentPrice.toString());
               ref.watch(cryptoNameProvider.state).state = cryptoData.name;

@@ -16,7 +16,10 @@ class CompleteConfirmation extends StatelessWidget {
         elevation: 1,
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.pushReplacementNamed(
+              context,
+              '/wallet',
+            );
           },
           icon: const Icon(Icons.close),
         ),

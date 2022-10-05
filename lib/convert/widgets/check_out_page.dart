@@ -53,7 +53,7 @@ class CheckOutPage extends ConsumerWidget {
                     ref.watch(fromCryptoConvertAbrev.state).state.toUpperCase(),
                 criptoAbrevTo:
                     ref.watch(toCryptoConvertAbrev.state).state.toUpperCase(),
-                criptoQtdWallet: ref.watch(resultConvertedValue.state).state,
+                criptoQtdWallet: ref.watch(toCryptoCotacaoProvider.state).state,
                 text: "Receber",
               ),
               Padding(
