@@ -15,6 +15,15 @@ class ConvertScreen extends StatelessWidget {
         appBar: AppBar(),
       ),
       body: const ConvertBody(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.pink.shade500,
+        child: const Icon(
+          Icons.arrow_forward,
+          size: 25,
+          color: Colors.white,
+        ),
+      ),
     );
   }
 }
