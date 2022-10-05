@@ -94,25 +94,26 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
                     double.parse(formFieldController.text.toString())) {
                   ScaffoldMessenger.of(context)
                       .showSnackBar(limitReachedMessage);
-                } else {
-                  // ref.watch(transferCryptoConverted.state).state =
-                  //     Decimal.parse(value) * fromCryptoCotacao;
-                  setState(() {
-                    var teste = ref.watch(transferCryptoConverted.state).state;
-                    var teste2 = ref.watch(toCryptoCotacaoProvider.state).state;
-                    print(teste);
-                    print(teste2);
-                    if (ref.watch(transferCryptoConverted.state).state > 0.0 &&
-                        ref.watch(toCryptoCotacaoProvider.state).state > 0.0) {
-                      // ref.watch(resultConvertedValue.state).state = (ref
-                      //             .watch(transferCryptoConverted.state)
-                      //             .state /
-                      //         ref.watch(toCryptoCotacaoProvider.state).state)
-                      //     .floor();
-                      print(ref.watch(resultConvertedValue.state).state);
-                    }
-                  });
                 }
+                //else {
+                // ref.watch(transferCryptoConverted.state).state =
+                //     Decimal.parse(value) * fromCryptoCotacao;
+                // setState(() {
+                //   var teste = ref.watch(transferCryptoConverted.state).state;
+                //   var teste2 = ref.watch(toCryptoCotacaoProvider.state).state;
+                //   print(teste);
+                //   print(teste2);
+                //   if (ref.watch(transferCryptoConverted.state).state > 0.0 &&
+                //       ref.watch(toCryptoCotacaoProvider.state).state > 0.0) {
+                //     // ref.watch(resultConvertedValue.state).state = (ref
+                //     //             .watch(transferCryptoConverted.state)
+                //     //             .state /
+                //     //         ref.watch(toCryptoCotacaoProvider.state).state)
+                //     //     .floor();
+                //     print(ref.watch(resultConvertedValue.state).state);
+                //   }
+                // });
+                // }
               },
               controller: formFieldController
                 ..text = ref.watch(fieldTransferValue.state).state
