@@ -33,7 +33,7 @@ class DefaultBigButton extends HookConsumerWidget {
           ref.watch(cryptoQtdWalletCriptoProvider.state).state =
               cryptoQtdWallet ?? 0;
           ref.watch(fromCryptoCotacaoProvider.state).state =
-              double.parse(cryptoCotacao.toString());
+              double.parse(ref.watch(cryptoCotacaoProvider).toString());
           Navigator.pushNamed(
             context,
             '$route',

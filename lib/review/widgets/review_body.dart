@@ -1,3 +1,4 @@
+import 'package:crypto_listing/review/widgets/confirm_review_button.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -31,7 +32,8 @@ class ReviewBody extends HookConsumerWidget {
               option: 3,
               criptoAbrev:
                   ref.watch(fromCryptoConvertAbrev.state).state.toUpperCase(),
-              criptoQtdWallet: double.parse(ref.watch(fieldTransferValue)),
+              criptoQtdWallet:
+                  double.parse(ref.watch(fieldTransferValue.state).state),
               text: "Converter",
             ),
             ItemDetail(
@@ -50,29 +52,7 @@ class ReviewBody extends HookConsumerWidget {
               criptoQtdWallet: ref.watch(toCryptoCotacaoProvider.state).state,
               text: "Receber",
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 30),
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height: 55,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.pink),
-                  onPressed: () {
-                    Navigator.pushNamed(
-                      context,
-                      '/complete-conversion',
-                    );
-                  },
-                  child: const Text(
-                    'Concluir conversão',
-                    style: TextStyle(
-                      fontSize: 17,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-            )
+            const ConfirmReviewButton()
           ],
         ),
       ),
