@@ -1,7 +1,7 @@
-import 'package:crypto_listing/shared/widgets/default_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../shared/widgets/default_appbar.dart';
 import '../widgets/review_body.dart';
 
 class ReviewPage extends ConsumerWidget {

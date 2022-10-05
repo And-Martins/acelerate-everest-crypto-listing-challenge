@@ -1,4 +1,4 @@
-import 'package:crypto_listing/review/widgets/confirm_review_button.dart';
+import 'confirm_review_button.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

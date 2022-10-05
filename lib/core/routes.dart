@@ -1,5 +1,5 @@
-import 'package:crypto_listing/review/view/review_page.dart';
-import 'package:crypto_listing/convert/widgets/complete_confirmation.dart';
+import '../review/view/review_page.dart';
+import '../confirmation/view/complete_confirmation.dart';
 
 import '../convert/view/convert_screen.dart';
 import '../wallet/view/wallet_screen.dart';
