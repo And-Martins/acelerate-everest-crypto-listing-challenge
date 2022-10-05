@@ -167,30 +167,6 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
                       ),
                     ],
                   ),
-                  // IconButton(
-                  //   disabledColor: Colors.grey.shade400,
-                  //   onPressed: () {
-                  //     if (ref.watch(cryptoQtdWalletCriptoProvider) <
-                  //         double.parse(formFieldController.text)) {
-                  //       ScaffoldMessenger.of(context)
-                  //           .showSnackBar(limitReachedMessage);
-                  //     } else {
-                  //       Navigator.pushNamed(
-                  //         context,
-                  //         '/confirm-conversion',
-                  //       );
-                  //     }
-                  //   },
-                  //   iconSize: 58,
-                  //   icon: CircleAvatar(
-                  //     backgroundColor: Colors.grey.shade400,
-                  //     child: const Icon(
-                  //       Icons.arrow_forward,
-                  //       size: 25,
-                  //       color: Colors.white,
-                  //     ),
-                  //   ),
-                  // ),
                 ],
               ),
             ],
