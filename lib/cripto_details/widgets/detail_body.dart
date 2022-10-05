@@ -131,6 +131,7 @@ class _WalletBodyState extends ConsumerState<DetailBody> {
                         horizontal: 8.0, vertical: 15.0),
                     child: DefaultBigButton(
                       title: "Converter moeda",
+                      route: "/convert",
                       cryptoQtdWallet: widget.cryptoQtdWallet,
                       cryptoAbrev: widget.cryptoAbrev,
                       cryptoCotacao: widget.cryptoCotacao,

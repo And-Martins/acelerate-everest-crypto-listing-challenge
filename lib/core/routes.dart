@@ -1,4 +1,5 @@
 import 'package:crypto_listing/convert/widgets/check_out_page.dart';
+import 'package:crypto_listing/convert/widgets/complete_confirmation.dart';
 
 import '../convert/view/convert_screen.dart';
 import '../wallet/view/wallet_screen.dart';
@@ -10,5 +11,6 @@ var routesNavigation = {
   '/criptoMoviments': (context) => const MovementsScreen(),
   '/criptoDetails': (context) => const DetailScreen(),
   '/convert': (context) => const ConvertScreen(),
-  '/confirm-conversion': (context) => const CheckOutPage()
+  '/confirm-conversion': (context) => const CheckOutPage(),
+  '/complete-conversion': (context) => const CompleteConfirmation()
 };

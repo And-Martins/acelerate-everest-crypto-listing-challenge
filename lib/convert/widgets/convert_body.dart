@@ -29,6 +29,7 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
       backgroundColor: Colors.red,
       content: Text('Quantidade inserida é maior que a quantidade disponível!'),
     );
+    
 
     final cryptoData = ref.watch(listCryptoProvider);
 

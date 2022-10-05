@@ -10,11 +10,13 @@ class DefaultBigButton extends HookConsumerWidget {
   late String? cryptoAbrev;
   late Decimal? cryptoCotacao;
   final String title;
+  final String? route;
 
   DefaultBigButton({
     this.cryptoQtdWallet,
     this.cryptoAbrev,
     this.cryptoCotacao,
+    this.route,
     required this.title,
     Key? key,
   }) : super(key: key);
@@ -34,7 +36,7 @@ class DefaultBigButton extends HookConsumerWidget {
               double.parse(cryptoCotacao.toString());
           Navigator.pushNamed(
             context,
-            '/convert',
+            '$route',
           );
         },
         child: Text(

@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../shared/widgets/default_appbar.dart';
+import '../widgets/confirm_button.dart';
 import '../widgets/convert_body.dart';
 
-class ConvertScreen extends StatelessWidget {
+class ConvertScreen extends HookConsumerWidget {
   const ConvertScreen({Key? key}) : super(key: key);
-
+  static const zeroAlert = SnackBar(
+    backgroundColor: Colors.red,
+    content: Text('Por favor insira um valor!'),
+  );
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: DefaultAppbar(
         title: "Converter",
@@ -15,15 +20,7 @@ class ConvertScreen extends StatelessWidget {
         appBar: AppBar(),
       ),
       body: const ConvertBody(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: Colors.pink.shade500,
-        child: const Icon(
-          Icons.arrow_forward,
-          size: 25,
-          color: Colors.white,
-        ),
-      ),
+      floatingActionButton: const ConfirmButton(zeroAlert: zeroAlert),
     );
   }
 }
