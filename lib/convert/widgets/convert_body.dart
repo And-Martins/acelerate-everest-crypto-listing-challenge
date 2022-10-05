@@ -1,4 +1,4 @@
-import 'package:crypto_listing/convert/widgets/dropdown_crypto.dart';
+import 'dropdown_crypto.dart';
 import 'package:decimal/decimal.dart';
 import 'package:decimal/intl.dart';
 import 'package:flutter/material.dart';
@@ -88,32 +88,18 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
                 ref.watch(transferCryptoConverted.state).state =
                     (double.parse(value) * fromCryptoCotacao);
                 ref.watch(fieldTransferValue.state).state = value;
+                print(ref.watch(toCryptoCotacaoProvider.state).state);
               },
               onFieldSubmitted: (value) {
                 if (ref.watch(cryptoQtdWalletCriptoProvider) <
                     double.parse(formFieldController.text.toString())) {
                   ScaffoldMessenger.of(context)
                       .showSnackBar(limitReachedMessage);
+                } else {
+                  ref.watch(resultConvertedValue.state).state =
+                      (ref.watch(transferCryptoConverted.state).state /
+                          ref.watch(toCryptoCotacaoProvider.state).state);
                 }
-                //else {
-                // ref.watch(transferCryptoConverted.state).state =
-                //     Decimal.parse(value) * fromCryptoCotacao;
-                // setState(() {
-                //   var teste = ref.watch(transferCryptoConverted.state).state;
-                //   var teste2 = ref.watch(toCryptoCotacaoProvider.state).state;
-                //   print(teste);
-                //   print(teste2);
-                //   if (ref.watch(transferCryptoConverted.state).state > 0.0 &&
-                //       ref.watch(toCryptoCotacaoProvider.state).state > 0.0) {
-                //     // ref.watch(resultConvertedValue.state).state = (ref
-                //     //             .watch(transferCryptoConverted.state)
-                //     //             .state /
-                //     //         ref.watch(toCryptoCotacaoProvider.state).state)
-                //     //     .floor();
-                //     print(ref.watch(resultConvertedValue.state).state);
-                //   }
-                // });
-                // }
               },
               controller: formFieldController
                 ..text = ref.watch(fieldTransferValue.state).state
@@ -182,17 +168,22 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
                     ],
                   ),
                   IconButton(
+                    disabledColor: Colors.grey.shade400,
                     onPressed: () {
                       if (ref.watch(cryptoQtdWalletCriptoProvider) <
                           double.parse(formFieldController.text)) {
                         ScaffoldMessenger.of(context)
                             .showSnackBar(limitReachedMessage);
+                      } else {
+                        Navigator.pushNamed(
+                          context,
+                          '/confirm-conversion',
+                        );
                       }
                     },
                     iconSize: 58,
                     icon: CircleAvatar(
                       backgroundColor: Colors.grey.shade400,
-                      radius: 40,
                       child: const Icon(
                         Icons.arrow_forward,
                         size: 25,

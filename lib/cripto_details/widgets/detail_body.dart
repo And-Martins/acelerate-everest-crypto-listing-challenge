@@ -1,5 +1,5 @@
-import 'package:crypto_listing/cripto_details/widgets/cripto_icon.dart';
-import 'package:crypto_listing/cripto_details/widgets/title_value_cripto.dart';
+import 'cripto_icon.dart';
+import 'title_value_cripto.dart';
 import 'package:decimal/decimal.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';

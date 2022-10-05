@@ -1,6 +1,5 @@
-import 'responses/detail_response.dart';
-
 import '../endpoint/get_detail_endpoint.dart';
+import 'responses/detail_response.dart';
 
 class GetDetailRepo {
   final GetDetailEndpoint _endpoint;
