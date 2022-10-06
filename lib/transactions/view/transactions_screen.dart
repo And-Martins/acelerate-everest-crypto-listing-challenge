@@ -41,7 +41,8 @@ class _TransactionsScreenState extends ConsumerState<TransactionsScreen> {
                   transaction
                       .add(ref.watch(transactionsProvider.state).state[index]);
                   return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     child: Column(
                       children: [
                         const Divider(
