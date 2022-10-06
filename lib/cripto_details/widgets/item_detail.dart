@@ -82,7 +82,7 @@ class ItemDetail extends StatelessWidget {
                               )
                         : option == 3
                             ? Text(
-                                "${formatCriptoCompleto.format(DecimalIntl(criptoQtd))} ${criptoAbrev ?? "".toUpperCase()}",
+                                "${formatCriptoCompleto.format(DecimalIntl(criptoQtd))} ${criptoAbrev!.toUpperCase()}",
                                 style: GoogleFonts.sourceSansPro(
                                   fontSize: 19,
                                   color: Colors.grey.shade800,
@@ -98,7 +98,7 @@ class ItemDetail extends StatelessWidget {
                                   )
                                 : option == 5
                                     ? Text(
-                                        "1 ${criptoAbrev ?? "".toUpperCase()} = ${criptoQtd.toStringAsFixed(8)} ${criptoAbrevTo ?? "".toUpperCase()}",
+                                        "1 ${criptoAbrev ?? "".toUpperCase()} = ${criptoQtd.toStringAsFixed(8)} ${criptoAbrevTo!.toUpperCase()}",
                                         style: GoogleFonts.sourceSansPro(
                                           fontSize: 19,
                                           color: Colors.grey.shade800,

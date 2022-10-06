@@ -13,7 +13,6 @@ class ConfirmReviewButton extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    List<TransactionModel> transactions = [];
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 30),
       child: SizedBox(
@@ -36,8 +35,8 @@ class ConfirmReviewButton extends HookConsumerWidget {
                   double.parse(ref.watch(fieldTransferValue.state).state),
             );
 
-            transactions.add(transactionModel);
-            ref.watch(transactionsProvider.state).state = transactions;
+            ref.watch(transactionsProvider.state).state.add(transactionModel);
+            print(ref.watch(transactionsProvider).length);
 
             Navigator.pushNamed(
               context,

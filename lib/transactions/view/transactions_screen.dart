@@ -1,9 +1,7 @@
-import 'package:dio/dio.dart';
+import 'package:crypto_listing/transactions/model/transaction_model.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../repository/crypto_list_repository.dart';
-import '../../shared/models/crypto_list_model.dart';
 import '../../shared/widgets/default_navbar.dart';
 import '../../shared/widgets/default_title.dart';
 import '../providers/transaction_providers.dart';
@@ -16,36 +14,37 @@ class TransactionsScreen extends StatefulHookConsumerWidget {
 }
 
 class _TransactionsScreenState extends ConsumerState<TransactionsScreen> {
-  CryptoListRepository repository = CryptoListRepository(Dio());
-  late Future<List<CryptoListModel>> cryptoList;
-
   @override
   void initState() {
-    cryptoList = repository.getList();
-
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    List<TransactionModel> transaction = [];
     return Scaffold(
-      body: FutureBuilder(
-        future: ref.watch(transactionsProvider),
-        builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
-          if (snapshot.hasData) {
-            child:
-            Column(
-              children: const [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 55),
-                  child: DefaultTitle(title: "Movimentações"),
-                ),
-              ],
-            );
-          } else {
-            return const Center(child: CircularProgressIndicator());
-          }
-        },
+      body: Column(
+        children: [
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 55),
+            child: DefaultTitle(title: "Movimentações"),
+          ),
+          Expanded(
+            child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              itemCount: ref.watch(transactionsProvider).length,
+              itemBuilder: (BuildContext context, int index) {
+                transaction
+                    .add(ref.watch(transactionsProvider.state).state[index]);
+                return Column(
+                  children: [
+                    Text(transaction[index].fromCryptoAbrev.toString()),
+                  ],
+                );
+              },
+            ),
+          ),
+        ],
       ),
       bottomNavigationBar: const DefaultNavbar(
         selectedIndex: 1,
