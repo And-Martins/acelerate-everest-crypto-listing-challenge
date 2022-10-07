@@ -1,6 +1,7 @@
 import 'package:crypto_listing/transactions/model/transaction_model.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../convert/controller/providers.dart';
 import '../../shared/providers/providers.dart';
@@ -41,9 +42,9 @@ class ConfirmReviewButton extends HookConsumerWidget {
               '/complete-conversion',
             );
           },
-          child: const Text(
-            'Concluir conversão',
-            style: TextStyle(
+          child: Text(
+            AppLocalizations.of(context)!.reviewButton,
+            style: const TextStyle(
               fontSize: 17,
               color: Colors.white,
             ),

@@ -1,7 +1,7 @@
 {
     "language": "English",
-    "movTitulo": "Transactions",
-    "portTitulo": "portfolio",
+    "movTitle": "Transactions",
+    "portTitle": "portfolio",
     "transactionNotFoundTitle": "No transactions encountered!",
     "transactionNotFoundSubtitle": "Your transactions will be registered on this screen",
     "walletTitle": "Crypto",
@@ -11,5 +11,17 @@
     "item2Title": "24H variation",
     "item3Title": "Quantity",
     "item4Title": "Amount",
-    "convertButtonTitle": "Convert money"
+    "convertButtonTitle": "Convert money",
+    "alertZeroMessage": "Please enter a valid value!",
+    "alertQuantityMessage": "Quantity entered is greater than the available quantity!",
+    "convertTitle": "Convert",
+    "convertBalance": "Available Balance",
+    "convertText": "How much would you like to convert?",
+    "convertTextTotal": "Total estimated",
+    "reviewTitle": "Review",
+    "reviewText": "Review your conversion results",
+    "item1TitleReview": "Convert",
+    "item2TitleReview": "Receive",
+    "item3TitleReview": "Exchange",
+    "reviewButton": "Finish conversion"
 }

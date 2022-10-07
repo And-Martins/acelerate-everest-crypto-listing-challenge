@@ -3,6 +3,7 @@ import 'package:decimal/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../shared/providers/providers.dart';
 import '../../shared/widgets/default_subtitle.dart';
@@ -25,9 +26,9 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
     double fromCryptoCotacao = ref.watch(fromCryptoCotacaoProvider);
     TextEditingController formFieldController = TextEditingController();
 
-    const limitReachedMessage = SnackBar(
+    final limitReachedMessage = SnackBar(
       backgroundColor: Colors.red,
-      content: Text('Quantidade inserida é maior que a quantidade disponível!'),
+      content: Text(AppLocalizations.of(context)!.alertQuantityMessage),
     );
 
     final cryptoData = ref.watch(listCryptoProvider);
@@ -45,7 +46,7 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const DefaultSubtitle('Saldo disponível'),
+                  DefaultSubtitle(AppLocalizations.of(context)!.convertBalance),
                   DefaultSubtitle(
                     "${formatCriptoCompleto.format(DecimalIntl(Decimal.parse(ref.watch(cryptoQtdWalletCriptoProvider).toString())))} ${ref.watch(fromCryptoConvertAbrev).toUpperCase()}",
                     strong: 600,
@@ -54,10 +55,10 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.all(20.0),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
             child: DefaultTitle(
-              title: "Quanto você gostaria de converter?",
+              title: AppLocalizations.of(context)!.convertText,
               strong: 700,
               titleSize: 28,
             ),
@@ -149,10 +150,10 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      const Padding(
-                        padding: EdgeInsets.all(8.0),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
                         child: DefaultSubtitle(
-                          'Total estimado',
+                          AppLocalizations.of(context)!.convertTextTotal,
                           strong: 500,
                         ),
                       ),

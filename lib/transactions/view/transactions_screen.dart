@@ -35,7 +35,7 @@ class _TransactionsScreenState extends ConsumerState<TransactionsScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 10),
               child:
-                  DefaultTitle(title: AppLocalizations.of(context)!.movTitulo),
+                  DefaultTitle(title: AppLocalizations.of(context)!.movTitle),
             ),
             Visibility(
               visible: ref.watch(transactionsProvider).isNotEmpty,

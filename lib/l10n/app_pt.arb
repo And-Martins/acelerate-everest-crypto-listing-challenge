@@ -3,53 +3,101 @@
     "@language": {
         "description": "Idioma atual"
     },
-    "movTitulo": "Movimentações",
-    "@movTitulo":{
-        "description" : "Titulo página movimentações"
+    "movTitle": "Movimentações",
+    "@movTitle":{
+        "description" : "Título página movimentações"
     },
-    "portTitulo": "Portifólio",
-    "@portTitulo":{
-        "description" : "Titulo página Portifólio"
+    "portTitle": "Portifólio",
+    "@portTitle":{
+        "description" : "Título página Portifólio"
     },
     "transactionNotFoundTitle": "Nenhuma transação encontrada!",
     "@transactionNotFoundTitle":{
-        "description" : "Titulo da mensagem da página de transação"
+        "description" : "Título da mensagem da página de transação"
     },
     "transactionNotFoundSubtitle": "Suas transações ficarão registradas nesta tela",
     "@transactionNotFoundSubtitle":{
-        "description" : "Subtitulo da mensagem da página de transação"
+        "description" : "SubTítulo da mensagem da página de transação"
     },
     "walletTitle": "Cripto",
     "@walletTitle":{
-        "description" : "Titulo da carteira da página Portifólio"
+        "description" : "Título da carteira da página Portifólio"
     },
     "walletSubtitle": "Valor total de moedas",
     "@walletSubtitle":{
-        "description" : "Subtitulo da carteira da página Portifólio"
+        "description" : "SubTítulo da carteira da página Portifólio"
     },
     "detailTitleAppBar": "Detalhes",
     "@detailTitleAppBar":{
-        "description" : "Titulo da barra de navegação da página detalhes"
+        "description" : "Título da barra de navegação da página detalhes"
     },
     "item1Title": "Preço atual",
     "@item1Title":{
-        "description" : "Titulo do item 1"
+        "description" : "Título do item 1"
     },
     "item2Title": "Variação 24H",
     "@item2Title":{
-        "description" : "Titulo do item 2"
+        "description" : "Título do item 2"
     },
     "item3Title": "Quantidade",
     "@item3Title":{
-        "description" : "Titulo do item 3"
+        "description" : "Título do item 3"
     },
     "item4Title": "Valor",
     "@item4Title":{
-        "description" : "Titulo do item 4"
+        "description" : "Título do item 4"
     },
     "convertButtonTitle": "Converter moeda",
     "@convertButtonTitle":{
-        "description" : "Titulo do botão de conversão da página de detalhes"
+        "description" : "Título do botão de conversão da página de detalhes"
+    },
+    "alertZeroMessage": "Por favor, insira um valor válido!",
+    "@alertZeroMessage":{
+        "description" : "Mensagem de Alerta quando valor inserido for nulo"
+    },
+    "alertQuantityMessage": "Quantidade inserida é maior que a quantidade disponível!",
+    "@alertQuantityMessage":{
+        "description" : "Mensagem de Alerta quando quantidade inserido for maior que a disponível"
+    },
+    "convertTitle": "Converter",
+    "@convertTitle":{
+        "description" : "Título da appbar da página de conversão"
+    },
+    "convertBalance": "Saldo disponível",
+    "@convertBalance":{
+        "description" : "Título saldo disponível da tela de conversão"
+    },
+    "convertText": "Quanto você gostaria de converter?",
+    "@convertText":{
+        "description" : "Texto exibido na tela de conversão"
+    },
+    "convertTextTotal": "Total estimado",
+    "@convertTextTotal":{
+        "description" : "Texto exibindo o total na tela de conversão"
+    },
+    "reviewTitle": "Revisar",
+    "@reviewTitle":{
+        "description" : "Título da página de revisão"
+    },
+    "reviewText": "Revise os dados da sua conversão",
+    "@reviewText":{
+        "description" : "Texto exibido na tela de revisão"
+    },
+    "item1TitleReview": "Converter",
+    "@item1TitleReview":{
+        "description" : "Título do item 1"
+    },
+    "item2TitleReview": "Receber",
+    "@item2TitleReview":{
+        "description" : "Título do item 2"
+    },
+    "item3TitleReview": "Câmbio",
+    "@item3TitleReview":{
+        "description" : "Título do item 3"
+    },
+    "reviewButton": "Concluir conversão",
+    "@reviewButton":{
+        "description" : "Texto do botão de conclusão de conversão da tela de review"
     }
     
 
