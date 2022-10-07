@@ -1,6 +1,7 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../shared/providers/providers.dart';
 import '../../shared/widgets/default_appbar.dart';
@@ -28,8 +29,8 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
     final double criptoActualCurrency = ref.watch(cryptoActualCurrencyProvider);
 
     return Scaffold(
-      appBar: const DefaultAppbar(
-        title: "Detalhes",
+      appBar: DefaultAppbar(
+        title: AppLocalizations.of(context)!.detailTitleAppBar,
         titleSize: 23,
       ),
       body: DetailBody(

@@ -10,6 +10,46 @@
     "portTitulo": "Portifólio",
     "@portTitulo":{
         "description" : "Titulo página Portifólio"
+    },
+    "transactionNotFoundTitle": "Nenhuma transação encontrada!",
+    "@transactionNotFoundTitle":{
+        "description" : "Titulo da mensagem da página de transação"
+    },
+    "transactionNotFoundSubtitle": "Suas transações ficarão registradas nesta tela",
+    "@transactionNotFoundSubtitle":{
+        "description" : "Subtitulo da mensagem da página de transação"
+    },
+    "walletTitle": "Cripto",
+    "@walletTitle":{
+        "description" : "Titulo da carteira da página Portifólio"
+    },
+    "walletSubtitle": "Valor total de moedas",
+    "@walletSubtitle":{
+        "description" : "Subtitulo da carteira da página Portifólio"
+    },
+    "detailTitleAppBar": "Detalhes",
+    "@detailTitleAppBar":{
+        "description" : "Titulo da barra de navegação da página detalhes"
+    },
+    "item1Title": "Preço atual",
+    "@item1Title":{
+        "description" : "Titulo do item 1"
+    },
+    "item2Title": "Variação 24H",
+    "@item2Title":{
+        "description" : "Titulo do item 2"
+    },
+    "item3Title": "Quantidade",
+    "@item3Title":{
+        "description" : "Titulo do item 3"
+    },
+    "item4Title": "Valor",
+    "@item4Title":{
+        "description" : "Titulo do item 4"
+    },
+    "convertButtonTitle": "Converter moeda",
+    "@convertButtonTitle":{
+        "description" : "Titulo do botão de conversão da página de detalhes"
     }
     
 

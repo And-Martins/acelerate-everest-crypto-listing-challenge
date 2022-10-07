@@ -1,5 +1,15 @@
 {
     "language": "English",
     "movTitulo": "Transactions",
-    "portTitulo": "portfolio"
+    "portTitulo": "portfolio",
+    "transactionNotFoundTitle": "No transactions encountered!",
+    "transactionNotFoundSubtitle": "Your transactions will be registered on this screen",
+    "walletTitle": "Crypto",
+    "walletSubtitle": "Total coin value",
+    "detailTitleAppBar": "Details",
+    "item1Title": "Current Price",
+    "item2Title": "24H variation",
+    "item3Title": "Quantity",
+    "item4Title": "Amount",
+    "convertButtonTitle": "Convert money"
 }

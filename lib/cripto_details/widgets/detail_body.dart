@@ -4,6 +4,7 @@ import 'package:decimal/decimal.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../shared/providers/providers.dart';
 import '../../shared/widgets/default_big_button.dart';
@@ -108,29 +109,29 @@ class _WalletBodyState extends ConsumerState<DetailBody> {
                   ItemDetail(
                     option: 1,
                     criptoCotacao: widget.cryptoActualCurrency,
-                    text: "Preço atual",
+                    text: AppLocalizations.of(context)!.item1Title,
                   ),
                   ItemDetail(
                     option: 2,
                     criptoVariacao: widget.cryptoVariacao,
-                    text: "Variação 24H",
+                    text: AppLocalizations.of(context)!.item2Title,
                   ),
                   ItemDetail(
                     option: 3,
                     criptoAbrev: widget.cryptoAbrev,
                     criptoQtdWallet: widget.cryptoQtdWallet,
-                    text: "Quantidade",
+                    text: AppLocalizations.of(context)!.item3Title,
                   ),
                   ItemDetail(
                     option: 4,
                     criptoValueWalletReais: widget.cryptoValueWalletReais,
-                    text: "Valor",
+                    text: AppLocalizations.of(context)!.item4Title,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 8.0, vertical: 15.0),
                     child: DefaultBigButton(
-                      title: "Converter moeda",
+                      title: AppLocalizations.of(context)!.convertButtonTitle,
                       route: "/convert",
                       cryptoQtdWallet: widget.cryptoQtdWallet,
                       cryptoAbrev: widget.cryptoAbrev,
