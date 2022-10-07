@@ -2,6 +2,7 @@ import 'package:crypto_listing/shared/widgets/default_subtitle.dart';
 import 'package:crypto_listing/transactions/model/transaction_model.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../shared/widgets/default_navbar.dart';
 import '../../shared/widgets/default_title.dart';
@@ -29,9 +30,10 @@ class _TransactionsScreenState extends ConsumerState<TransactionsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 25, horizontal: 10),
-              child: DefaultTitle(title: "Movimentações"),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 10),
+              child:
+                  DefaultTitle(title: AppLocalizations.of(context)!.movTitulo),
             ),
             Expanded(
               child: ListView.builder(

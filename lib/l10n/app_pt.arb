@@ -1,0 +1,16 @@
+{
+    "language": "Português",
+    "@language": {
+        "description": "Idioma atual"
+    },
+    "movTitulo": "Movimentações",
+    "@movTitulo":{
+        "description" : "Titulo página movimentações"
+    },
+    "portTitulo": "Portifólio",
+    "@portTitulo":{
+        "description" : "Titulo página Portifólio"
+    }
+    
+
+}
