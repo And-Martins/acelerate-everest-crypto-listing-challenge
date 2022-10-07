@@ -6,6 +6,7 @@ class DefaultTitle extends StatelessWidget {
   final double titleSize;
   final Color color;
   final int strong;
+  final bool center;
 
   const DefaultTitle({
     Key? key,
@@ -13,6 +14,7 @@ class DefaultTitle extends StatelessWidget {
     this.titleSize = 32,
     this.color = Colors.black,
     this.strong = 800,
+    this.center = false,
   }) : super(key: key);
 
   @override
@@ -24,6 +26,7 @@ class DefaultTitle extends StatelessWidget {
         fontWeight: strong == 700 ? FontWeight.w700 : FontWeight.w800,
         color: color,
       ),
+      textAlign: center == true ? TextAlign.center : TextAlign.left,
     );
   }
 }

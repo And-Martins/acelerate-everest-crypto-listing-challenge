@@ -35,7 +35,6 @@ class ConfirmReviewButton extends HookConsumerWidget {
             );
 
             ref.watch(transactionsProvider.state).state.add(transactionModel);
-            print(ref.watch(transactionsProvider).length);
 
             Navigator.pushNamed(
               context,
