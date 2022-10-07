@@ -6,12 +6,14 @@ class DefaultSubtitle extends StatelessWidget {
   final int strong;
   final Color color;
   final double size;
+  final bool center;
 
   const DefaultSubtitle(
     this.message, {
     this.size = 17,
     this.strong = 400,
     this.color = const Color.fromRGBO(117, 118, 128, 1),
+    this.center = false,
     Key? key,
   }) : super(key: key);
 
@@ -28,6 +30,7 @@ class DefaultSubtitle extends StatelessWidget {
                 ? FontWeight.w500
                 : FontWeight.w400,
       ),
+      textAlign: center == true ? TextAlign.center : TextAlign.left,
     );
   }
 }

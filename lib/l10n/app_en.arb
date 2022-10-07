@@ -23,5 +23,7 @@
     "item1TitleReview": "Convert",
     "item2TitleReview": "Receive",
     "item3TitleReview": "Exchange",
-    "reviewButton": "Finish conversion"
+    "reviewButton": "Finish conversion",
+    "completeTitle": "Conversion done",
+    "completeSubtitle": "The currency conversion has been successfully completed!"
 }

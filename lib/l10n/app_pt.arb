@@ -98,7 +98,16 @@
     "reviewButton": "Concluir conversão",
     "@reviewButton":{
         "description" : "Texto do botão de conclusão de conversão da tela de review"
+    },
+    "completeTitle": "Conversão efetuada",
+    "@completeTitle":{
+        "description" : "Título da tela de confirmação"
+    },
+    "completeSubtitle": "Conversão de moeda efetuada com sucesso!",
+    "@completeSubtitle":{
+        "description" : "Subtitulo da tela de confirmação"
     }
+    
     
 
 }
