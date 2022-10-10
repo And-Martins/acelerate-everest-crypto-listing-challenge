@@ -6,14 +6,18 @@ import '../../convert/controller/providers.dart';
 import '../providers/providers.dart';
 
 class DefaultBigButton extends HookConsumerWidget {
-  final double cryptoQtdWallet;
-  final String cryptoAbrev;
-  final Decimal cryptoCotacao;
+  late double? cryptoQtdWallet;
+  late String? cryptoAbrev;
+  late Decimal? cryptoCotacao;
+  final String title;
+  final String? route;
 
-  const DefaultBigButton({
-    required this.cryptoQtdWallet,
-    required this.cryptoAbrev,
-    required this.cryptoCotacao,
+  DefaultBigButton({
+    this.cryptoQtdWallet,
+    this.cryptoAbrev,
+    this.cryptoCotacao,
+    this.route,
+    required this.title,
     Key? key,
   }) : super(key: key);
 
@@ -25,19 +29,19 @@ class DefaultBigButton extends HookConsumerWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(backgroundColor: Colors.pink),
         onPressed: () {
-          ref.watch(fromCryptoConvertAbrev.state).state = cryptoAbrev;
+          ref.watch(fromCryptoConvertAbrev.state).state = cryptoAbrev ?? "";
           ref.watch(cryptoQtdWalletCriptoProvider.state).state =
-              cryptoQtdWallet;
+              cryptoQtdWallet ?? 0;
           ref.watch(fromCryptoCotacaoProvider.state).state =
-              double.parse(cryptoCotacao.toString());
+              double.parse(ref.watch(cryptoCotacaoProvider).toString());
           Navigator.pushNamed(
             context,
-            '/convert',
+            '$route',
           );
         },
-        child: const Text(
-          "Converter moeda",
-          style: TextStyle(
+        child: Text(
+          title,
+          style: const TextStyle(
             fontSize: 17,
             color: Colors.white,
           ),
