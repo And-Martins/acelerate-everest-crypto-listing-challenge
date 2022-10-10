@@ -5,6 +5,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'core/routes.dart';
 import 'l10n/l10n.dart';
 
+
 void main() {
   runApp(
     const ProviderScope(child: MyApp()),
