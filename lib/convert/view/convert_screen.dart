@@ -1,7 +1,7 @@
-import 'package:crypto_listing/shared/widgets/default_title.dart';
 import 'package:flutter/material.dart';
 
 import '../../shared/widgets/default_appbar.dart';
+import '../widgets/convert_body.dart';
 
 class ConvertScreen extends StatelessWidget {
   const ConvertScreen({Key? key}) : super(key: key);
@@ -9,21 +9,19 @@ class ConvertScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: DefaultAppbar(
+      appBar: const DefaultAppbar(
         title: "Converter",
         titleSize: 23,
-        appBar: AppBar(),
       ),
-      body: Column(
-        children: const [
-          Padding(
-            padding: EdgeInsets.all(15.0),
-            child: DefaultTitle(
-              title: "Quanto você gostaria de converter?",
-              strong: 600,
-            ),
-          ),
-        ],
+      body: const ConvertBody(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.pink.shade500,
+        child: const Icon(
+          Icons.arrow_forward,
+          size: 25,
+          color: Colors.white,
+        ),
       ),
     );
   }

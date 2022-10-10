@@ -3,7 +3,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../shared/providers/wallet_providers.dart';
+import '../../shared/providers/providers.dart';
 import '../../shared/widgets/number_formatter.dart';
 
 class Graphic extends StatefulHookConsumerWidget {
@@ -26,7 +26,7 @@ class _GraphicState extends ConsumerState<Graphic> {
   @override
   Widget build(BuildContext context) {
     void changeValue(Decimal newValue) {
-      ref.watch(criptoCotacaoProvider.state).state =
+      ref.watch(cryptoCotacaoProvider.state).state =
           Decimal.parse(newValue.toString());
     }
 
@@ -45,7 +45,7 @@ class _GraphicState extends ConsumerState<Graphic> {
                   dotData: FlDotData(show: false),
                   isStrokeCapRound: true,
                   spots: widget.defineSpot
-                      .sublist(0, ref.watch(criptoDaysProvider)),
+                      .sublist(0, ref.watch(cryptoDaysProvider)),
                 ),
               ],
               betweenBarsData: [],
@@ -86,7 +86,6 @@ class _GraphicState extends ConsumerState<Graphic> {
                   tooltipRoundedRadius: 15,
                   getTooltipItems: (touchedSpots) {
                     return touchedSpots.map((touchedSpot) {
-                      // changeValue(touchedSpot.y);
                       return LineTooltipItem(
                         "R\$ ${formatReais.format(touchedSpot.y)}",
                         const TextStyle(
@@ -109,7 +108,6 @@ class _GraphicState extends ConsumerState<Graphic> {
                   ),
                 ),
               ),
-              clipData: FlClipData.all(),
             ),
           ),
         ),

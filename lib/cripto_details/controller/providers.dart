@@ -1,6 +1,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../shared/providers/wallet_providers.dart';
+import '../../shared/providers/providers.dart';
 import '../endpoint/get_detail_endpoint.dart';
 import '../model/detail_list_view_data.dart';
 import '../repository/get_detail_repo.dart';

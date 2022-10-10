@@ -1,11 +1,11 @@
-import 'package:crypto_listing/cripto_details/widgets/cripto_icon.dart';
-import 'package:crypto_listing/cripto_details/widgets/title_value_cripto.dart';
+import 'cripto_icon.dart';
+import 'title_value_cripto.dart';
 import 'package:decimal/decimal.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../shared/providers/wallet_providers.dart';
+import '../../shared/providers/providers.dart';
 import '../../shared/widgets/default_big_button.dart';
 import '../../shared/widgets/default_subtitle.dart';
 import '../../shared/widgets/default_title.dart';
@@ -18,26 +18,26 @@ import 'item_detail.dart';
 class DetailBody extends StatefulHookConsumerWidget {
   const DetailBody({
     Key? key,
-    required this.criptoName,
-    required this.criptoImage,
-    required this.criptoAbrev,
-    required this.criptoCotacao,
-    required this.criptoDays,
-    required this.criptoActualCurrency,
-    required this.criptoVariacao,
-    required this.criptoValueWalletReais,
-    required this.criptoQtdWallet,
+    required this.cryptoName,
+    required this.cryptoImage,
+    required this.cryptoAbrev,
+    required this.cryptoCotacao,
+    required this.cryptoDays,
+    required this.cryptoActualCurrency,
+    required this.cryptoVariacao,
+    required this.cryptoValueWalletReais,
+    required this.cryptoQtdWallet,
   }) : super(key: key);
 
-  final String criptoName;
-  final String criptoImage;
-  final String criptoAbrev;
-  final Decimal criptoCotacao;
-  final int criptoDays;
-  final double criptoActualCurrency;
-  final double criptoVariacao;
-  final double criptoValueWalletReais;
-  final double criptoQtdWallet;
+  final String cryptoName;
+  final String cryptoImage;
+  final String cryptoAbrev;
+  final Decimal cryptoCotacao;
+  final int cryptoDays;
+  final double cryptoActualCurrency;
+  final double cryptoVariacao;
+  final double cryptoValueWalletReais;
+  final double cryptoQtdWallet;
 
   @override
   ConsumerState<DetailBody> createState() => _WalletBodyState();
@@ -63,12 +63,12 @@ class _WalletBodyState extends ConsumerState<DetailBody> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      DefaultTitle(title: widget.criptoName),
-                      CriptoIcon(criptoImage: widget.criptoImage),
+                      DefaultTitle(title: widget.cryptoName),
+                      CriptoIcon(criptoImage: widget.cryptoImage),
                     ],
                   ),
-                  DefaultSubtitle(widget.criptoAbrev.toUpperCase()),
-                  TitleValorCripto(criptoCotacao: widget.criptoCotacao),
+                  DefaultSubtitle(widget.cryptoAbrev.toUpperCase()),
+                  TitleValorCripto(criptoCotacao: widget.cryptoCotacao),
                   Graphic(
                     defineSpot: List<FlSpot>.from(
                       snapshot.data!.prices.reversed.map(
@@ -78,11 +78,11 @@ class _WalletBodyState extends ConsumerState<DetailBody> {
                         ),
                       ),
                     ),
-                    days: widget.criptoDays,
+                    days: widget.cryptoDays,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
+                    children: const [
                       ButtonDay(
                         text: "5D",
                         days: 5,
@@ -106,52 +106,65 @@ class _WalletBodyState extends ConsumerState<DetailBody> {
                     ],
                   ),
                   ItemDetail(
-                    opc: 1,
-                    criptoAbrev: widget.criptoAbrev,
-                    criptoCotacao: widget.criptoActualCurrency,
-                    criptoVariacao: widget.criptoVariacao,
-                    criptoValueWalletReais: widget.criptoValueWalletReais,
-                    criptoQtdWallet: widget.criptoQtdWallet,
+                    option: 1,
+                    criptoAbrev: widget.cryptoAbrev,
+                    criptoCotacao: widget.cryptoActualCurrency,
+                    criptoVariacao: widget.cryptoVariacao,
+                    criptoValueWalletReais: widget.cryptoValueWalletReais,
+                    criptoQtdWallet: widget.cryptoQtdWallet,
                     text: "Preço atual",
                   ),
                   ItemDetail(
-                    opc: 2,
-                    criptoAbrev: widget.criptoAbrev,
-                    criptoCotacao: widget.criptoActualCurrency,
-                    criptoVariacao: widget.criptoVariacao,
-                    criptoValueWalletReais: widget.criptoValueWalletReais,
-                    criptoQtdWallet: widget.criptoQtdWallet,
+                    option: 2,
+                    criptoAbrev: widget.cryptoAbrev,
+                    criptoCotacao: widget.cryptoActualCurrency,
+                    criptoVariacao: widget.cryptoVariacao,
+                    criptoValueWalletReais: widget.cryptoValueWalletReais,
+                    criptoQtdWallet: widget.cryptoQtdWallet,
                     text: "Variação 24H",
                   ),
                   ItemDetail(
-                    opc: 3,
-                    criptoAbrev: widget.criptoAbrev,
-                    criptoCotacao: widget.criptoActualCurrency,
-                    criptoVariacao: widget.criptoVariacao,
-                    criptoValueWalletReais: widget.criptoValueWalletReais,
-                    criptoQtdWallet: widget.criptoQtdWallet,
+                    option: 3,
+                    criptoAbrev: widget.cryptoAbrev,
+                    criptoCotacao: widget.cryptoActualCurrency,
+                    criptoVariacao: widget.cryptoVariacao,
+                    criptoValueWalletReais: widget.cryptoValueWalletReais,
+                    criptoQtdWallet: widget.cryptoQtdWallet,
                     text: "Quantidade",
                   ),
                   ItemDetail(
-                    opc: 4,
-                    criptoAbrev: widget.criptoAbrev,
-                    criptoCotacao: widget.criptoActualCurrency,
-                    criptoVariacao: widget.criptoVariacao,
-                    criptoValueWalletReais: widget.criptoValueWalletReais,
-                    criptoQtdWallet: widget.criptoQtdWallet,
+                    option: 4,
+                    criptoAbrev: widget.cryptoAbrev,
+                    criptoCotacao: widget.cryptoActualCurrency,
+                    criptoVariacao: widget.cryptoVariacao,
+                    criptoValueWalletReais: widget.cryptoValueWalletReais,
+                    criptoQtdWallet: widget.cryptoQtdWallet,
                     text: "Valor",
                   ),
-                  const Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 8.0, vertical: 15.0),
-                    child: DefaultBigButton(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 15.0),
+                    child: DefaultBigButton(
+                      cryptoQtdWallet: widget.cryptoQtdWallet,
+                      cryptoAbrev: widget.cryptoAbrev,
+                      cryptoCotacao: widget.cryptoCotacao,
+                    ),
                   ),
                 ],
               ),
             );
           } else {
-            return const Center(
-              child: CircularProgressIndicator(),
+            return SizedBox(
+              height: MediaQuery.of(context).size.height - 100,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: const [
+                  Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ],
+              ),
             );
           }
         },
