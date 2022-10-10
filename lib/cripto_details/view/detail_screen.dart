@@ -1,4 +1,3 @@
-import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -17,16 +16,10 @@ class DetailScreen extends StatefulHookConsumerWidget {
 class _DetailScreenState extends ConsumerState<DetailScreen> {
   @override
   Widget build(BuildContext context) {
-    final String criptoName = ref.watch(cryptoNameProvider);
-    final String criptoAbrev = ref.watch(cryptoAbrevProvider);
-    final String criptoImage = ref.watch(cryptoImageProvider);
-    late Decimal criptoCotacao = ref.watch(cryptoCotacaoProvider);
-    final double criptoVariacao = ref.watch(cryptoVariacaoProvider);
     final double criptoValueWalletReais =
         ref.watch(cryptoValueWalletReaisProvider);
     final double criptoQtdWallet = ref.watch(cryptoQtdWalletCriptoProvider);
     final int criptoDays = ref.watch(cryptoDaysProvider);
-    final double criptoActualCurrency = ref.watch(cryptoActualCurrencyProvider);
 
     return Scaffold(
       appBar: DefaultAppbar(
@@ -34,13 +27,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
         titleSize: 23,
       ),
       body: DetailBody(
-          cryptoName: criptoName,
-          cryptoImage: criptoImage,
-          cryptoAbrev: criptoAbrev,
-          cryptoCotacao: criptoCotacao,
           cryptoDays: criptoDays,
-          cryptoActualCurrency: criptoActualCurrency,
-          cryptoVariacao: criptoVariacao,
           cryptoValueWalletReais: criptoValueWalletReais,
           cryptoQtdWallet: criptoQtdWallet),
     );

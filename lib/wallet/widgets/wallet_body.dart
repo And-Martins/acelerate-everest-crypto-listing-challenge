@@ -32,6 +32,7 @@ class _WalletBodyState extends ConsumerState<WalletBody> {
   @override
   void initState() {
     scrollController.addListener(onListen);
+
     super.initState();
   }
 
@@ -43,6 +44,7 @@ class _WalletBodyState extends ConsumerState<WalletBody> {
 
   @override
   Widget build(BuildContext context) {
+    CryptoViewData cryptoData;
     return SafeArea(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,8 +95,7 @@ class _WalletBodyState extends ConsumerState<WalletBody> {
                     controller: scrollController,
                     itemCount: snapshot.data!.cryptoViewDataList.length,
                     itemBuilder: (context, index) {
-                      CryptoViewData cryptoData =
-                          snapshot.data!.cryptoViewDataList[index];
+                      cryptoData = snapshot.data!.cryptoViewDataList[index];
 
                       final WalletModel walletModel = WalletModel(
                         quantityCoin:
