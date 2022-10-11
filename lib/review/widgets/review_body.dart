@@ -1,4 +1,4 @@
-import '../../l10n/app_localizations.dart';
+import '../../l10n/translation_file.dart';
 import 'confirm_review_button.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

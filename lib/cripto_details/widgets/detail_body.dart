@@ -1,4 +1,4 @@
-import '../../l10n/app_localizations.dart';
+import '../../l10n/translation_file.dart';
 import '../../wallet/model/crypto_view_data.dart';
 import 'cripto_icon.dart';
 import 'title_value_cripto.dart';

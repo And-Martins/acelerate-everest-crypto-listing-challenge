@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../convert/controller/providers.dart';
-import '../../l10n/app_localizations.dart';
+
+import '../../l10n/translation_file.dart';
 import '../../shared/providers/providers.dart';
 import '../../transactions/providers/transaction_providers.dart';
 

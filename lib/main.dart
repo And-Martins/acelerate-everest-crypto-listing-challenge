@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'core/routes.dart';
-import 'l10n/app_localizations.dart';
+
+import 'l10n/translation_file.dart';
 
 void main() {
   runApp(

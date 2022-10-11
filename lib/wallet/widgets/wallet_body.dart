@@ -4,7 +4,7 @@ import 'package:crypto_listing/wallet/widgets/total_value.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../l10n/app_localizations.dart';
+import '../../l10n/translation_file.dart';
 import '../../shared/models/wallet_model.dart';
 import '../../shared/providers/providers.dart';
 import '../../shared/widgets/default_subtitle.dart';

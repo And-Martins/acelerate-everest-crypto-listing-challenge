@@ -4,7 +4,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../core/asset.dart';
-import '../../l10n/app_localizations.dart';
+
+import '../../l10n/translation_file.dart';
 import '../../shared/widgets/default_navbar.dart';
 import '../../shared/widgets/default_subtitle.dart';
 import '../../shared/widgets/default_title.dart';

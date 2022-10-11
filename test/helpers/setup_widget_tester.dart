@@ -1,3 +1,4 @@
+import 'package:crypto_listing/l10n/translation_file.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -9,6 +10,8 @@ class SetupWidgetTester extends StatelessWidget {
   Widget build(BuildContext context) {
     return ProviderScope(
       child: MaterialApp(
+        supportedLocales: TranslationFile.supportedLocales,
+        localizationsDelegates: TranslationFile.localizationsDelegates,
         home: Material(
           child: MediaQuery(
             data: const MediaQueryData(),
