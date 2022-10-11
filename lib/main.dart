@@ -15,8 +15,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // List<String> listLocale = Platform.localeName.split('_');
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

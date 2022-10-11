@@ -31,7 +31,6 @@ class _WalletBodyState extends ConsumerState<WalletBody> {
   @override
   void initState() {
     scrollController.addListener(onListen);
-
     super.initState();
   }
 
@@ -72,6 +71,7 @@ class _WalletBodyState extends ConsumerState<WalletBody> {
                       ),
                     ),
                     DefaultSubtitle(
+                      key: const Key('subtitleWalletScreen'),
                         TranslationFile.of(context)!.walletSubtitle),
                   ],
                 ),

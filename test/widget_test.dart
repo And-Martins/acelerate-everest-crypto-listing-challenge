@@ -32,6 +32,10 @@ void main() {
           ], child: const WalletScreen()));
       await tester.pump(const Duration(seconds: 4));
       expect(find.byKey(const Key('titleWalletScreen')), findsOneWidget);
+      expect(find.byKey(const Key('totalValueWalletScreen')), findsOneWidget);
+      expect(find.byKey(const Key('subtitleWalletScreen')), findsOneWidget);
+      // await tester.dragUntilVisible(find.byElementType(ListView),
+      //     find.text('BTC'), const Offset(0, -250));
     });
     // expect(find.byKey(const Key('titleWalletScreen')), findsOneWidget);
     // expect(find.byKey(const Key('totalValueWalletScreen')), findsOneWidget);
