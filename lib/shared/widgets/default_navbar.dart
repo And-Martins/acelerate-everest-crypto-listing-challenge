@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../core/asset.dart';
+import '../../l10n/app_localizations.dart';
 
 class DefaultNavbar extends StatefulWidget {
   final int selectedIndex;

@@ -1,10 +1,10 @@
 import 'package:crypto_listing/transactions/model/transaction_model.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../core/asset.dart';
+import '../../l10n/app_localizations.dart';
 import '../../shared/widgets/default_navbar.dart';
 import '../../shared/widgets/default_subtitle.dart';
 import '../../shared/widgets/default_title.dart';

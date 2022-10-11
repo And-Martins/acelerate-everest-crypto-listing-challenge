@@ -1,10 +1,10 @@
+import '../../l10n/app_localizations.dart';
 import '../../wallet/model/crypto_view_data.dart';
 import 'cripto_icon.dart';
 import 'title_value_cripto.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../shared/providers/providers.dart';
 import '../../shared/widgets/default_big_button.dart';
