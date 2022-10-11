@@ -131,7 +131,7 @@ class _WalletBodyState extends ConsumerState<WalletBody> {
                     },
                   );
                 } else {
-                  return const Center(child: CircularProgressIndicator());
+                  return const Center(child: CircularProgressIndicator(key: Key('loadingListViewWallet'),));
                 }
               },
             ),

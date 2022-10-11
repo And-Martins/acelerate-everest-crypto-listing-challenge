@@ -5,6 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../convert/controller/providers.dart';
 import '../providers/providers.dart';
 
+// ignore: must_be_immutable
 class DefaultBigButton extends HookConsumerWidget {
   late double? cryptoQtdWallet;
   late String? cryptoAbrev;
