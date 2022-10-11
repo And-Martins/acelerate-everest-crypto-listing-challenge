@@ -5,8 +5,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
-import 'app_localizations_en.dart';
-import 'app_localizations_pt.dart';
+import 'translation_file_en.dart';
+import 'translation_file_pt.dart';
 
 /// Callers can lookup localized strings with an instance of TranslationFile
 /// returned by `TranslationFile.of(context)`.
@@ -16,7 +16,7 @@ import 'app_localizations_pt.dart';
 /// `supportedLocales` list. For example:
 ///
 /// ```dart
-/// import 'l10n/app_localizations.dart';
+/// import 'l10n/translation_file.dart';
 ///
 /// return MaterialApp(
 ///   localizationsDelegates: TranslationFile.localizationsDelegates,
@@ -60,8 +60,7 @@ import 'app_localizations_pt.dart';
 /// be consistent with the languages listed in the TranslationFile.supportedLocales
 /// property.
 abstract class TranslationFile {
-  TranslationFile(String locale)
-      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  TranslationFile(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -69,8 +68,7 @@ abstract class TranslationFile {
     return Localizations.of<TranslationFile>(context, TranslationFile);
   }
 
-  static const LocalizationsDelegate<TranslationFile> delegate =
-      _TranslationFileDelegate();
+  static const LocalizationsDelegate<TranslationFile> delegate = _TranslationFileDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -82,8 +80,7 @@ abstract class TranslationFile {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
-      <LocalizationsDelegate<dynamic>>[
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
     delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
@@ -268,25 +265,25 @@ class _TranslationFileDelegate extends LocalizationsDelegate<TranslationFile> {
   }
 
   @override
-  bool isSupported(Locale locale) =>
-      <String>['en', 'pt'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['en', 'pt'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_TranslationFileDelegate old) => false;
 }
 
 TranslationFile lookupTranslationFile(Locale locale) {
+
+
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en':
-      return TranslationFileEn();
-    case 'pt':
-      return TranslationFilePt();
+    case 'en': return TranslationFileEn();
+    case 'pt': return TranslationFilePt();
   }
 
   throw FlutterError(
-      'TranslationFile.delegate failed to load unsupported locale "$locale". This is likely '
-      'an issue with the localizations generation tool. Please file an issue '
-      'on GitHub with a reproducible sample app and the gen-l10n configuration '
-      'that was used.');
+    'TranslationFile.delegate failed to load unsupported locale "$locale". This is likely '
+    'an issue with the localizations generation tool. Please file an issue '
+    'on GitHub with a reproducible sample app and the gen-l10n configuration '
+    'that was used.'
+  );
 }

@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:crypto_listing/shared/widgets/default_title.dart';
 import 'package:crypto_listing/wallet/controller/crypto_provider.dart';
 import 'package:crypto_listing/wallet/view/wallet_screen.dart';
 import 'package:crypto_listing/wallet/widgets/wallet_body.dart';
@@ -29,10 +28,10 @@ void main() {
           tester,
           ProviderScope(overrides: [
             getTotalWalletValue.overrideWithProvider((argument) =>
-                Provider((ref) => AsyncValue.data(Decimal.parse('2.5'))))
+                Provider((ref) => AsyncValue.data(Decimal.parse('39856.00'))))
           ], child: const WalletScreen()));
       await tester.pump(const Duration(seconds: 4));
-      expect(find.byType(DefaultTitle), findsOneWidget);
+      expect(find.byKey(const Key('titleWalletScreen')), findsOneWidget);
     });
     // expect(find.byKey(const Key('titleWalletScreen')), findsOneWidget);
     // expect(find.byKey(const Key('totalValueWalletScreen')), findsOneWidget);

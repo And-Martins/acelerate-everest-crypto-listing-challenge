@@ -28,7 +28,7 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
 
     final limitReachedMessage = SnackBar(
       backgroundColor: Colors.red,
-      content: Text(AppLocalizations.of(context)!.alertQuantityMessage),
+      content: Text(TranslationFile.of(context)!.alertQuantityMessage),
     );
 
     final cryptoData = ref.watch(listCryptoProvider);
@@ -46,7 +46,7 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  DefaultSubtitle(AppLocalizations.of(context)!.convertBalance),
+                  DefaultSubtitle(TranslationFile.of(context)!.convertBalance),
                   DefaultSubtitle(
                     "${formatCriptoCompleto.format(DecimalIntl(Decimal.parse(ref.watch(cryptoQtdWalletCriptoProvider).toString())))} ${ref.watch(fromCryptoConvertAbrev).toUpperCase()}",
                     strong: 600,
@@ -58,7 +58,7 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: DefaultTitle(
-              title: AppLocalizations.of(context)!.convertText,
+              title: TranslationFile.of(context)!.convertText,
               strong: 700,
               titleSize: 28,
             ),
@@ -153,7 +153,7 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: DefaultSubtitle(
-                          AppLocalizations.of(context)!.convertTextTotal,
+                          TranslationFile.of(context)!.convertTextTotal,
                           strong: 500,
                         ),
                       ),

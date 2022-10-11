@@ -34,8 +34,7 @@ class _TransactionsScreenState extends ConsumerState<TransactionsScreen> {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 10),
-              child:
-                  DefaultTitle(title: AppLocalizations.of(context)!.movTitle),
+              child: DefaultTitle(title: TranslationFile.of(context)!.movTitle),
             ),
             Visibility(
               visible: ref.watch(transactionsProvider).isNotEmpty,
@@ -51,8 +50,8 @@ class _TransactionsScreenState extends ConsumerState<TransactionsScreen> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: DefaultTitle(
-                      title: AppLocalizations.of(context)!
-                          .transactionNotFoundTitle,
+                      title:
+                          TranslationFile.of(context)!.transactionNotFoundTitle,
                       titleSize: 27,
                       center: true,
                     ),
@@ -61,7 +60,7 @@ class _TransactionsScreenState extends ConsumerState<TransactionsScreen> {
                     padding: const EdgeInsets.symmetric(
                         vertical: 15, horizontal: 20),
                     child: DefaultSubtitle(
-                      AppLocalizations.of(context)!.transactionNotFoundSubtitle,
+                      TranslationFile.of(context)!.transactionNotFoundSubtitle,
                     ),
                   ),
                 ],

@@ -13,12 +13,12 @@ class ConvertScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final zeroAlert = SnackBar(
       backgroundColor: Colors.red,
-      content: Text(AppLocalizations.of(context)!.alertZeroMessage),
+      content: Text(TranslationFile.of(context)!.alertZeroMessage),
     );
 
     return Scaffold(
       appBar: DefaultAppbar(
-        title: AppLocalizations.of(context)!.convertTitle,
+        title: TranslationFile.of(context)!.convertTitle,
         titleSize: 23,
       ),
       body: const ConvertBody(),

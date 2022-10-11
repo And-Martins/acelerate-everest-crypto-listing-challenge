@@ -1,4 +1,4 @@
-import 'app_localizations.dart';
+import 'translation_file.dart';
 
 /// The translations for Portuguese (`pt`).
 class TranslationFilePt extends TranslationFile {
@@ -17,8 +17,7 @@ class TranslationFilePt extends TranslationFile {
   String get transactionNotFoundTitle => 'Nenhuma transação encontrada!';
 
   @override
-  String get transactionNotFoundSubtitle =>
-      'Suas transações ficarão registradas nesta tela';
+  String get transactionNotFoundSubtitle => 'Suas transações ficarão registradas nesta tela';
 
   @override
   String get walletTitle => 'Cripto';
@@ -48,8 +47,7 @@ class TranslationFilePt extends TranslationFile {
   String get alertZeroMessage => 'Por favor, insira um valor válido!';
 
   @override
-  String get alertQuantityMessage =>
-      'Quantidade inserida é maior que a quantidade disponível!';
+  String get alertQuantityMessage => 'Quantidade inserida é maior que a quantidade disponível!';
 
   @override
   String get convertTitle => 'Converter';

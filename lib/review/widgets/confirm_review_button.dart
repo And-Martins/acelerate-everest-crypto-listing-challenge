@@ -43,7 +43,7 @@ class ConfirmReviewButton extends HookConsumerWidget {
             );
           },
           child: Text(
-            AppLocalizations.of(context)!.reviewButton,
+            TranslationFile.of(context)!.reviewButton,
             style: const TextStyle(
               fontSize: 17,
               color: Colors.white,

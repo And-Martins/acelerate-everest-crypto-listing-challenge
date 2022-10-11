@@ -21,8 +21,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.grey,
       ),
-      supportedLocales: AppLocalizations.supportedLocales,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: TranslationFile.supportedLocales,
+      localizationsDelegates: TranslationFile.localizationsDelegates,
       initialRoute: '/wallet',
       routes: routesNavigation,
     );

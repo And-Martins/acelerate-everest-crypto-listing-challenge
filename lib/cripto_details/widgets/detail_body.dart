@@ -100,29 +100,29 @@ class _WalletBodyState extends ConsumerState<DetailBody> {
                     option: 1,
                     criptoCotacao:
                         double.parse(cryptoViewData.currentPrice.toString()),
-                    text: AppLocalizations.of(context)!.item1Title,
+                    text: TranslationFile.of(context)!.item1Title,
                   ),
                   ItemDetail(
                     option: 2,
                     criptoVariacao: cryptoViewData.marketCapChangePercentage24h,
-                    text: AppLocalizations.of(context)!.item2Title,
+                    text: TranslationFile.of(context)!.item2Title,
                   ),
                   ItemDetail(
                     option: 3,
                     criptoAbrev: cryptoViewData.symbol,
                     criptoQtdWallet: widget.cryptoQtdWallet,
-                    text: AppLocalizations.of(context)!.item3Title,
+                    text: TranslationFile.of(context)!.item3Title,
                   ),
                   ItemDetail(
                     option: 4,
                     criptoValueWalletReais: widget.cryptoValueWalletReais,
-                    text: AppLocalizations.of(context)!.item4Title,
+                    text: TranslationFile.of(context)!.item4Title,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 8.0, vertical: 15.0),
                     child: DefaultBigButton(
-                      title: AppLocalizations.of(context)!.convertButtonTitle,
+                      title: TranslationFile.of(context)!.convertButtonTitle,
                       route: "/convert",
                       cryptoQtdWallet: widget.cryptoQtdWallet,
                       cryptoAbrev: cryptoViewData.symbol,

@@ -12,7 +12,7 @@ class ReviewPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: DefaultAppbar(
-        title: AppLocalizations.of(context)!.reviewTitle,
+        title: TranslationFile.of(context)!.reviewTitle,
         titleSize: 22,
       ),
       body: const ReviewBody(),

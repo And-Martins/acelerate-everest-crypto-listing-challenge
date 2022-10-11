@@ -49,7 +49,7 @@ class _DefaultNavbarState extends State<DefaultNavbar> {
             width: 23,
             height: 23,
           ),
-          label: AppLocalizations.of(context)!.portTitle,
+          label: TranslationFile.of(context)?.portTitle,
         ),
         BottomNavigationBarItem(
           icon: SvgPicture.asset(
@@ -63,7 +63,7 @@ class _DefaultNavbarState extends State<DefaultNavbar> {
             width: 23,
             height: 23,
           ),
-          label: AppLocalizations.of(context)!.movTitle,
+          label: TranslationFile.of(context)!.movTitle,
         ),
       ],
       currentIndex: widget.selectedIndex,

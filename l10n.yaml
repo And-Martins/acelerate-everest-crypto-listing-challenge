@@ -1,8 +1,8 @@
 arb-dir: lib/l10n
 template-arb-file: app_pt.arb
 
-output-localization-file: app_localizations.dart
-output-class: AppLocalizations
+output-localization-file: translation_file.dart
+output-class: TranslationFile
 
 output-dir: lib/l10n
 synthetic-package: false

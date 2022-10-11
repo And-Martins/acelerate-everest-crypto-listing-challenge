@@ -1,4 +1,4 @@
-import 'app_localizations.dart';
+import 'translation_file.dart';
 
 /// The translations for English (`en`).
 class TranslationFileEn extends TranslationFile {
@@ -17,8 +17,7 @@ class TranslationFileEn extends TranslationFile {
   String get transactionNotFoundTitle => 'No transactions encountered!';
 
   @override
-  String get transactionNotFoundSubtitle =>
-      'Your transactions will be registered on this screen';
+  String get transactionNotFoundSubtitle => 'Your transactions will be registered on this screen';
 
   @override
   String get walletTitle => 'Crypto';
@@ -48,8 +47,7 @@ class TranslationFileEn extends TranslationFile {
   String get alertZeroMessage => 'Please enter a valid value!';
 
   @override
-  String get alertQuantityMessage =>
-      'Quantity entered is greater than the available quantity!';
+  String get alertQuantityMessage => 'Quantity entered is greater than the available quantity!';
 
   @override
   String get convertTitle => 'Convert';
@@ -85,6 +83,5 @@ class TranslationFileEn extends TranslationFile {
   String get completeTitle => 'Conversion done';
 
   @override
-  String get completeSubtitle =>
-      'The currency conversion has been successfully completed!';
+  String get completeSubtitle => 'The currency conversion has been successfully completed!';
 }

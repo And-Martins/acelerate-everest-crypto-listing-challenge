@@ -25,10 +25,10 @@ class ConfirmBody extends StatelessWidget {
             height: 150,
           ),
           const SizedBox(height: 10),
-          DefaultTitle(title: AppLocalizations.of(context)!.completeTitle),
+          DefaultTitle(title: TranslationFile.of(context)!.completeTitle),
           const SizedBox(height: 10),
           DefaultSubtitle(
-            AppLocalizations.of(context)!.completeSubtitle,
+            TranslationFile.of(context)!.completeSubtitle,
             center: true,
           )
         ],

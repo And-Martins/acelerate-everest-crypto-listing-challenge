@@ -24,7 +24,7 @@ class ReviewBody extends HookConsumerWidget {
             Padding(
               padding: const EdgeInsets.all(10),
               child: DefaultTitle(
-                title: AppLocalizations.of(context)!.reviewText,
+                title: TranslationFile.of(context)!.reviewText,
                 strong: 700,
               ),
             ),
@@ -36,14 +36,14 @@ class ReviewBody extends HookConsumerWidget {
               criptoQtdWallet: ref.watch(fieldTransferValue.state).state != ""
                   ? double.parse(ref.watch(fieldTransferValue.state).state)
                   : 0.0,
-              text: AppLocalizations.of(context)!.item1TitleReview,
+              text: TranslationFile.of(context)!.item1TitleReview,
             ),
             ItemDetail(
               option: 3,
               criptoAbrev:
                   ref.watch(toCryptoConvertAbrev.state).state.toUpperCase(),
               criptoQtdWallet: ref.watch(resultConvertedValue.state).state,
-              text: AppLocalizations.of(context)!.item2TitleReview,
+              text: TranslationFile.of(context)!.item2TitleReview,
             ),
             ItemDetail(
               option: 5,
@@ -52,7 +52,7 @@ class ReviewBody extends HookConsumerWidget {
               criptoAbrevTo:
                   ref.watch(toCryptoConvertAbrev.state).state.toUpperCase(),
               criptoQtdWallet: ref.watch(toCryptoCotacaoProvider.state).state,
-              text: AppLocalizations.of(context)!.item3TitleReview,
+              text: TranslationFile.of(context)!.item3TitleReview,
             ),
             const ConfirmReviewButton()
           ],

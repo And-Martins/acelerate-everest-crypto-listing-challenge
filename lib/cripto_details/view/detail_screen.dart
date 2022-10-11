@@ -23,7 +23,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
 
     return Scaffold(
       appBar: DefaultAppbar(
-        title: AppLocalizations.of(context)!.detailTitleAppBar,
+        title: TranslationFile.of(context)!.detailTitleAppBar,
         titleSize: 23,
       ),
       body: DetailBody(
