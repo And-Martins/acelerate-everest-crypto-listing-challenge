@@ -1,7 +1,7 @@
+import 'package:crypto_listing/convert/widgets/convert_textfield.dart';
 import 'package:decimal/decimal.dart';
 import 'package:decimal/intl.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -23,14 +23,6 @@ class ConvertBody extends StatefulHookConsumerWidget {
 class _ConvertBodyState extends ConsumerState<ConvertBody> {
   @override
   Widget build(BuildContext context) {
-    double fromCryptoCotacao = ref.watch(fromCryptoCotacaoProvider);
-    TextEditingController formFieldController = TextEditingController();
-
-    final limitReachedMessage = SnackBar(
-      backgroundColor: Colors.red,
-      content: Text(AppLocalizations.of(context)!.alertQuantityMessage),
-    );
-
     final cryptoData = ref.watch(listCryptoProvider);
 
     return SingleChildScrollView(
@@ -82,47 +74,7 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
               ),
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 15),
-            child: TextFormField(
-              onChanged: (value) {
-                ref.watch(transferCryptoConverted.state).state =
-                    (double.parse(value) * fromCryptoCotacao);
-                ref.watch(fieldTransferValue.state).state = value;
-              },
-              onFieldSubmitted: (value) {
-                if (ref.watch(cryptoQtdWalletCriptoProvider) <
-                    double.parse(formFieldController.text.toString())) {
-                  ScaffoldMessenger.of(context)
-                      .showSnackBar(limitReachedMessage);
-                } else {
-                  ref.watch(resultConvertedValue.state).state =
-                      (ref.watch(transferCryptoConverted.state).state /
-                          ref.watch(toCryptoCotacaoProvider.state).state);
-                }
-              },
-              controller: formFieldController
-                ..text = ref.watch(fieldTransferValue.state).state
-                ..selection = TextSelection.collapsed(
-                    offset: ref.watch(fieldTransferValue.state).state.length),
-              style: GoogleFonts.montserrat(
-                fontSize: 30,
-                color: const Color.fromRGBO(149, 151, 166, 1),
-                fontWeight: FontWeight.w500,
-              ),
-              keyboardType: TextInputType.number,
-              cursorHeight: 35,
-              decoration: InputDecoration(
-                hintText:
-                    "${ref.watch(fromCryptoConvertAbrev).toUpperCase()} 0,00",
-                hintStyle: GoogleFonts.montserrat(
-                  fontSize: 35,
-                  color: const Color.fromRGBO(149, 151, 166, 1),
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-          ),
+          const ConvertTextfield(),
           Padding(
             padding: const EdgeInsets.only(top: 8.0, left: 20),
             child: Row(
