@@ -54,7 +54,10 @@ class _WalletBodyState extends ConsumerState<DetailBody> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      DefaultTitle(title: cryptoViewData.name),
+                      DefaultTitle(
+                        title: cryptoViewData.name,
+                        key: const Key('defaultTitleDetailScreen'),
+                      ),
                       CriptoIcon(criptoImage: cryptoViewData.image),
                     ],
                   ),
