@@ -1,4 +1,3 @@
-import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -6,13 +5,13 @@ import '../../convert/controller/providers.dart';
 import '../providers/providers.dart';
 
 class DefaultBigButton extends HookConsumerWidget {
-  late double? cryptoQtdWallet;
-  late String? cryptoAbrev;
-  late Decimal? cryptoCotacao;
+  final double? cryptoQtdWallet;
+  final String? cryptoAbrev;
+  final double? cryptoCotacao;
   final String title;
   final String? route;
 
-  DefaultBigButton({
+  const DefaultBigButton({
     this.cryptoQtdWallet,
     this.cryptoAbrev,
     this.cryptoCotacao,

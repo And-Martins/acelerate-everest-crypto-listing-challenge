@@ -21,11 +21,5 @@ final totalValueAmountProvider =
   (ref) => TotalWalletAmountProvider(),
 );
 
-final cryptoDataProvider = StateProvider<CryptoViewData>((ref) =>
-    CryptoViewData(
-        id: "",
-        symbol: "",
-        name: "",
-        currentPrice: Decimal.parse("0.0"),
-        image: "",
-        marketCapChangePercentage24h: 0.0));
+final cryptoDataProvider =
+    StateProvider<CryptoViewData>((ref) => CryptoViewData());

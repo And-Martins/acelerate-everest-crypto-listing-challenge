@@ -1,5 +1,3 @@
-import 'package:decimal/decimal.dart';
-import 'package:decimal/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -11,14 +9,14 @@ class TitleValorCripto extends StatelessWidget {
     required this.criptoCotacao,
   }) : super(key: key);
 
-  final Decimal criptoCotacao;
+  final double criptoCotacao;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 10),
       child: Text(
-        "R\$ ${formatReais.format(DecimalIntl(criptoCotacao))}",
+        "R\$ ${formatReais.format(criptoCotacao)}",
         style: GoogleFonts.montserrat(
           fontSize: 32,
           fontWeight: FontWeight.w600,
