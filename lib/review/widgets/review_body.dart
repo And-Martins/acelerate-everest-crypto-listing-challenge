@@ -1,6 +1,7 @@
 import 'confirm_review_button.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../convert/controller/providers.dart';
 import '../../cripto_details/widgets/item_detail.dart';
@@ -20,10 +21,10 @@ class ReviewBody extends HookConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Padding(
-              padding: EdgeInsets.all(10),
+            Padding(
+              padding: const EdgeInsets.all(10),
               child: DefaultTitle(
-                title: 'Revise os dados da sua conversão',
+                title: AppLocalizations.of(context)!.reviewText,
                 strong: 700,
               ),
             ),
@@ -32,17 +33,15 @@ class ReviewBody extends HookConsumerWidget {
               option: 3,
               criptoAbrev:
                   ref.watch(fromCryptoConvertAbrev.state).state.toUpperCase(),
-              criptoQtdWallet: ref.watch(fieldTransferValue.state).state != ""
-                  ? double.parse(ref.watch(fieldTransferValue.state).state)
-                  : 0.0,
-              text: "Converter",
+              criptoQtdWallet: double.parse(ref.watch(fieldTransferValue.state).state),
+              text: AppLocalizations.of(context)!.item1TitleReview,
             ),
             ItemDetail(
               option: 3,
               criptoAbrev:
                   ref.watch(toCryptoConvertAbrev.state).state.toUpperCase(),
               criptoQtdWallet: ref.watch(resultConvertedValue.state).state,
-              text: "Receber",
+              text: AppLocalizations.of(context)!.item2TitleReview,
             ),
             ItemDetail(
               option: 5,
@@ -51,7 +50,7 @@ class ReviewBody extends HookConsumerWidget {
               criptoAbrevTo:
                   ref.watch(toCryptoConvertAbrev.state).state.toUpperCase(),
               criptoQtdWallet: ref.watch(toCryptoCotacaoProvider.state).state,
-              text: "Receber",
+              text: AppLocalizations.of(context)!.item3TitleReview,
             ),
             const ConfirmReviewButton()
           ],

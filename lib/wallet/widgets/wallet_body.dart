@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../shared/models/wallet_model.dart';
 import '../../shared/providers/providers.dart';
@@ -31,6 +32,7 @@ class _WalletBodyState extends ConsumerState<WalletBody> {
   @override
   void initState() {
     scrollController.addListener(onListen);
+
     super.initState();
   }
 
@@ -42,6 +44,7 @@ class _WalletBodyState extends ConsumerState<WalletBody> {
 
   @override
   Widget build(BuildContext context) {
+    CryptoViewData cryptoData;
     return SafeArea(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,17 +62,21 @@ class _WalletBodyState extends ConsumerState<WalletBody> {
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
+                        children: [
                           DefaultTitle(
-                            title: 'Cripto',
-                            color: Color.fromRGBO(224, 43, 87, 1),
+                            title: AppLocalizations.of(context)!.walletTitle,
+                            color: const Color.fromRGBO(224, 43, 87, 1),
                           ),
-                          HideButton(),
+                          const HideButton(),
                         ],
                       ),
                       TotalValue(
-                          totalReais: double.parse(snapshot.data!.toString())),
-                      const DefaultSubtitle('Valor total de moedas'),
+                        totalReais: double.parse(
+                          snapshot.data!.toString(),
+                        ),
+                      ),
+                      DefaultSubtitle(
+                          AppLocalizations.of(context)!.walletSubtitle),
                     ],
                   );
                 } else {
@@ -88,8 +95,7 @@ class _WalletBodyState extends ConsumerState<WalletBody> {
                     controller: scrollController,
                     itemCount: snapshot.data!.cryptoViewDataList.length,
                     itemBuilder: (context, index) {
-                      CryptoViewData cryptoData =
-                          snapshot.data!.cryptoViewDataList[index];
+                      cryptoData = snapshot.data!.cryptoViewDataList[index];
 
                       final WalletModel walletModel = WalletModel(
                         quantityCoin:

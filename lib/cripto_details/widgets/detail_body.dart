@@ -1,9 +1,10 @@
+import '../../wallet/model/crypto_view_data.dart';
 import 'cripto_icon.dart';
 import 'title_value_cripto.dart';
-import 'package:decimal/decimal.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../shared/providers/providers.dart';
 import '../../shared/widgets/default_big_button.dart';
@@ -18,24 +19,12 @@ import 'item_detail.dart';
 class DetailBody extends StatefulHookConsumerWidget {
   const DetailBody({
     Key? key,
-    required this.cryptoName,
-    required this.cryptoImage,
-    required this.cryptoAbrev,
-    required this.cryptoCotacao,
     required this.cryptoDays,
-    required this.cryptoActualCurrency,
-    required this.cryptoVariacao,
     required this.cryptoValueWalletReais,
     required this.cryptoQtdWallet,
   }) : super(key: key);
 
-  final String cryptoName;
-  final String cryptoImage;
-  final String cryptoAbrev;
-  final Decimal cryptoCotacao;
   final int cryptoDays;
-  final double cryptoActualCurrency;
-  final double cryptoVariacao;
   final double cryptoValueWalletReais;
   final double cryptoQtdWallet;
 
@@ -46,12 +35,14 @@ class DetailBody extends StatefulHookConsumerWidget {
 class _WalletBodyState extends ConsumerState<DetailBody> {
   @override
   Widget build(BuildContext context) {
+    final CryptoViewData cryptoViewData =
+        ref.watch(cryptoDataProvider.state).state;
     double count = 90;
     return SingleChildScrollView(
       physics: const ScrollPhysics(parent: BouncingScrollPhysics()),
       child: FutureBuilder(
         future: ref.watch(
-          getDetailProvider(ref.watch(cryptoIdProvider)).future,
+          getDetailProvider(cryptoViewData.id).future,
         ),
         builder: (context, AsyncSnapshot<DetailListViewData> snapshot) {
           if (snapshot.hasData) {
@@ -63,12 +54,12 @@ class _WalletBodyState extends ConsumerState<DetailBody> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      DefaultTitle(title: widget.cryptoName),
-                      CriptoIcon(criptoImage: widget.cryptoImage),
+                      DefaultTitle(title: cryptoViewData.name),
+                      CriptoIcon(criptoImage: cryptoViewData.image),
                     ],
                   ),
-                  DefaultSubtitle(widget.cryptoAbrev.toUpperCase()),
-                  TitleValorCripto(criptoCotacao: widget.cryptoCotacao),
+                  DefaultSubtitle(cryptoViewData.symbol.toUpperCase()),
+                  TitleValorCripto(criptoCotacao: cryptoViewData.currentPrice),
                   Graphic(
                     defineSpot: List<FlSpot>.from(
                       snapshot.data!.prices.reversed.map(
@@ -107,34 +98,35 @@ class _WalletBodyState extends ConsumerState<DetailBody> {
                   ),
                   ItemDetail(
                     option: 1,
-                    criptoCotacao: widget.cryptoActualCurrency,
-                    text: "Preço atual",
+                    criptoCotacao:
+                        double.parse(cryptoViewData.currentPrice.toString()),
+                    text: AppLocalizations.of(context)!.item1Title,
                   ),
                   ItemDetail(
                     option: 2,
-                    criptoVariacao: widget.cryptoVariacao,
-                    text: "Variação 24H",
+                    criptoVariacao: cryptoViewData.marketCapChangePercentage24h,
+                    text: AppLocalizations.of(context)!.item2Title,
                   ),
                   ItemDetail(
                     option: 3,
-                    criptoAbrev: widget.cryptoAbrev,
+                    criptoAbrev: cryptoViewData.symbol,
                     criptoQtdWallet: widget.cryptoQtdWallet,
-                    text: "Quantidade",
+                    text: AppLocalizations.of(context)!.item3Title,
                   ),
                   ItemDetail(
                     option: 4,
                     criptoValueWalletReais: widget.cryptoValueWalletReais,
-                    text: "Valor",
+                    text: AppLocalizations.of(context)!.item4Title,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 8.0, vertical: 15.0),
                     child: DefaultBigButton(
-                      title: "Converter moeda",
+                      title: AppLocalizations.of(context)!.convertButtonTitle,
                       route: "/convert",
                       cryptoQtdWallet: widget.cryptoQtdWallet,
-                      cryptoAbrev: widget.cryptoAbrev,
-                      cryptoCotacao: widget.cryptoCotacao,
+                      cryptoAbrev: cryptoViewData.symbol,
+                      cryptoCotacao: cryptoViewData.currentPrice,
                     ),
                   ),
                 ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../core/asset.dart';
 import '../../shared/widgets/default_subtitle.dart';
@@ -12,22 +13,26 @@ class ConfirmBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Center(
-          child: SizedBox(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Lottie.asset(
+            confirmAnimation,
+            repeat: false,
             height: 150,
-            child: Lottie.asset(
-              confirmAnimation,
-              repeat: false,
-            ),
           ),
-        ),
-        const DefaultTitle(title: "Conversão efetuada"),
-        const DefaultSubtitle('Conversão de moeda efetuada com sucesso!')
-      ],
+          const SizedBox(height: 10),
+          DefaultTitle(title: AppLocalizations.of(context)!.completeTitle),
+          const SizedBox(height: 10),
+          DefaultSubtitle(
+            AppLocalizations.of(context)!.completeSubtitle,
+            center: true,
+          )
+        ],
+      ),
     );
   }
 }

@@ -1,0 +1,113 @@
+{
+    "language": "Português",
+    "@language": {
+        "description": "Idioma atual"
+    },
+    "movTitle": "Movimentações",
+    "@movTitle":{
+        "description" : "Título página movimentações"
+    },
+    "portTitle": "Portifólio",
+    "@portTitle":{
+        "description" : "Título página Portifólio"
+    },
+    "transactionNotFoundTitle": "Nenhuma transação encontrada!",
+    "@transactionNotFoundTitle":{
+        "description" : "Título da mensagem da página de transação"
+    },
+    "transactionNotFoundSubtitle": "Suas transações ficarão registradas nesta tela",
+    "@transactionNotFoundSubtitle":{
+        "description" : "SubTítulo da mensagem da página de transação"
+    },
+    "walletTitle": "Cripto",
+    "@walletTitle":{
+        "description" : "Título da carteira da página Portifólio"
+    },
+    "walletSubtitle": "Valor total de moedas",
+    "@walletSubtitle":{
+        "description" : "SubTítulo da carteira da página Portifólio"
+    },
+    "detailTitleAppBar": "Detalhes",
+    "@detailTitleAppBar":{
+        "description" : "Título da barra de navegação da página detalhes"
+    },
+    "item1Title": "Preço atual",
+    "@item1Title":{
+        "description" : "Título do item 1"
+    },
+    "item2Title": "Variação 24H",
+    "@item2Title":{
+        "description" : "Título do item 2"
+    },
+    "item3Title": "Quantidade",
+    "@item3Title":{
+        "description" : "Título do item 3"
+    },
+    "item4Title": "Valor",
+    "@item4Title":{
+        "description" : "Título do item 4"
+    },
+    "convertButtonTitle": "Converter moeda",
+    "@convertButtonTitle":{
+        "description" : "Título do botão de conversão da página de detalhes"
+    },
+    "alertZeroMessage": "Por favor, insira um valor válido!",
+    "@alertZeroMessage":{
+        "description" : "Mensagem de Alerta quando valor inserido for nulo"
+    },
+    "alertQuantityMessage": "Quantidade inserida é maior que a quantidade disponível!",
+    "@alertQuantityMessage":{
+        "description" : "Mensagem de Alerta quando quantidade inserido for maior que a disponível"
+    },
+    "convertTitle": "Converter",
+    "@convertTitle":{
+        "description" : "Título da appbar da página de conversão"
+    },
+    "convertBalance": "Saldo disponível",
+    "@convertBalance":{
+        "description" : "Título saldo disponível da tela de conversão"
+    },
+    "convertText": "Quanto você gostaria de converter?",
+    "@convertText":{
+        "description" : "Texto exibido na tela de conversão"
+    },
+    "convertTextTotal": "Total estimado",
+    "@convertTextTotal":{
+        "description" : "Texto exibindo o total na tela de conversão"
+    },
+    "reviewTitle": "Revisar",
+    "@reviewTitle":{
+        "description" : "Título da página de revisão"
+    },
+    "reviewText": "Revise os dados da sua conversão",
+    "@reviewText":{
+        "description" : "Texto exibido na tela de revisão"
+    },
+    "item1TitleReview": "Converter",
+    "@item1TitleReview":{
+        "description" : "Título do item 1"
+    },
+    "item2TitleReview": "Receber",
+    "@item2TitleReview":{
+        "description" : "Título do item 2"
+    },
+    "item3TitleReview": "Câmbio",
+    "@item3TitleReview":{
+        "description" : "Título do item 3"
+    },
+    "reviewButton": "Concluir conversão",
+    "@reviewButton":{
+        "description" : "Texto do botão de conclusão de conversão da tela de review"
+    },
+    "completeTitle": "Conversão efetuada",
+    "@completeTitle":{
+        "description" : "Título da tela de confirmação"
+    },
+    "completeSubtitle": "Conversão de moeda efetuada com sucesso!",
+    "@completeSubtitle":{
+        "description" : "Subtitulo da tela de confirmação"
+    }
+    
+    
+
+}

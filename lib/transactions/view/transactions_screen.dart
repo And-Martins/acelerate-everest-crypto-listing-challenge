@@ -1,6 +1,7 @@
 import 'package:crypto_listing/transactions/model/transaction_model.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../core/asset.dart';
@@ -31,9 +32,10 @@ class _TransactionsScreenState extends ConsumerState<TransactionsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 25, horizontal: 10),
-              child: DefaultTitle(title: "Movimentações"),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 10),
+              child:
+                  DefaultTitle(title: AppLocalizations.of(context)!.movTitle),
             ),
             Visibility(
               visible: ref.watch(transactionsProvider).isNotEmpty,
@@ -41,25 +43,26 @@ class _TransactionsScreenState extends ConsumerState<TransactionsScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(
+                  Lottie.asset(
+                    transactionAnimation,
+                    repeat: false,
                     height: 250,
-                    child: Lottie.asset(
-                      transactionAnimation,
-                      repeat: false,
-                    ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 5),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: DefaultTitle(
-                      title: "Nenhuma transação realizada!",
-                      titleSize: 25,
+                      title: AppLocalizations.of(context)!
+                          .transactionNotFoundTitle,
+                      titleSize: 27,
                       center: true,
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.all(10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 15, horizontal: 20),
                     child: DefaultSubtitle(
-                        "Suas transações ficarão registradas nesta tela"),
+                      AppLocalizations.of(context)!.transactionNotFoundSubtitle,
+                    ),
                   ),
                 ],
               ),

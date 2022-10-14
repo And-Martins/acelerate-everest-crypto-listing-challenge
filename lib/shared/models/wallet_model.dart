@@ -1,8 +1,6 @@
-import 'package:decimal/decimal.dart';
-
 class WalletModel {
   final double quantityCoin;
-  final Decimal valueWalletCoin;
+  final double valueWalletCoin;
   final String idCoin;
 
   WalletModel({

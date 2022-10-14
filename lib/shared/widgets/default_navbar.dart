@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../core/asset.dart';
 
@@ -48,7 +49,7 @@ class _DefaultNavbarState extends State<DefaultNavbar> {
             width: 23,
             height: 23,
           ),
-          label: 'Portifólio',
+          label: AppLocalizations.of(context)!.portTitle,
         ),
         BottomNavigationBarItem(
           icon: SvgPicture.asset(
@@ -62,7 +63,7 @@ class _DefaultNavbarState extends State<DefaultNavbar> {
             width: 23,
             height: 23,
           ),
-          label: 'Movimentações',
+          label: AppLocalizations.of(context)!.movTitle,
         ),
       ],
       currentIndex: widget.selectedIndex,

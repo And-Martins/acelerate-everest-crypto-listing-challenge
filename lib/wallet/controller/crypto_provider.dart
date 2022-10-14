@@ -1,4 +1,3 @@
-import 'package:decimal/decimal.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../shared/providers/providers.dart';
@@ -35,6 +34,6 @@ final listCryptoProvider = FutureProvider(
   (ref) => ref.watch(getCryptoUseCaseProvider).execute(),
 );
 
-final getTotalWalletValue = FutureProvider.family<Decimal, List<double>>(
+final getTotalWalletValue = FutureProvider.family<double, List<double>>(
   (ref, args) => ref.watch(getTotalWalletAmountUseCaseProvider).execute(args),
 );
