@@ -5,9 +5,11 @@ class DefaultSubtitle extends StatelessWidget {
   final String message;
   final int strong;
   final Color color;
+  final double size;
 
   const DefaultSubtitle(
     this.message, {
+    this.size = 17,
     this.strong = 400,
     this.color = const Color.fromRGBO(117, 118, 128, 1),
     Key? key,
@@ -18,10 +20,10 @@ class DefaultSubtitle extends StatelessWidget {
     return Text(
       message,
       style: GoogleFonts.montserrat(
-        fontSize: 17,
+        fontSize: size,
         color: color,
         fontWeight: strong == 600
-            ? FontWeight.w700
+            ? FontWeight.w600
             : strong == 500
                 ? FontWeight.w500
                 : FontWeight.w400,

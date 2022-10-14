@@ -1,12 +1,18 @@
+import 'package:crypto_listing/transactions/model/transaction_model.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class ConfirmReviewButton extends StatelessWidget {
+import '../../convert/controller/providers.dart';
+import '../../shared/providers/providers.dart';
+import '../../transactions/providers/transaction_providers.dart';
+
+class ConfirmReviewButton extends HookConsumerWidget {
   const ConfirmReviewButton({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 30),
       child: SizedBox(
@@ -15,6 +21,21 @@ class ConfirmReviewButton extends StatelessWidget {
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(backgroundColor: Colors.pink),
           onPressed: () {
+            DateTime now = DateTime.now();
+
+            DateTime date = DateTime(now.year, now.month, now.day);
+            TransactionModel transactionModel = TransactionModel(
+              date: date,
+              fromCryptoQtd:
+                  double.parse(ref.watch(fieldTransferValue.state).state),
+              fromCryptoAbrev: ref.watch(fromCryptoConvertAbrev.state).state,
+              toCryptoQtd: ref.watch(resultConvertedValue.state).state,
+              toCryptoAbrev: ref.watch(toCryptoConvertAbrev.state).state,
+              valueReais: ref.watch(transferCryptoConverted.state).state,
+            );
+
+            ref.watch(transactionsProvider.state).state.add(transactionModel);
+
             Navigator.pushNamed(
               context,
               '/complete-conversion',
