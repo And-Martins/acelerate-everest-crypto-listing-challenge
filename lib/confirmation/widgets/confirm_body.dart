@@ -8,9 +8,7 @@ import '../../shared/widgets/default_subtitle.dart';
 import '../../shared/widgets/default_title.dart';
 
 class ConfirmBody extends StatelessWidget {
-  const ConfirmBody({
-    Key? key,
-  }) : super(key: key);
+  const ConfirmBody({super.key});
 
   @override
   Widget build(BuildContext context) {

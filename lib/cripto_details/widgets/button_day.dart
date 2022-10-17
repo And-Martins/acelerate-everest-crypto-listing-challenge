@@ -7,11 +7,10 @@ class ButtonDay extends StatefulHookConsumerWidget {
   final String text;
   final int days;
 
-  const ButtonDay({
-    Key? key,
+  const ButtonDay({super.key, 
     required this.text,
     required this.days,
-  }) : super(key: key);
+  });
 
   @override
   ConsumerState<ButtonDay> createState() => _ButtonDayState();
@@ -34,6 +33,7 @@ class _ButtonDayState extends ConsumerState<ButtonDay> {
             ),
           ),
         ),
+        //TODO - Verificar por que o teste não entra aqui
         onPressed: () {
           ref.watch(cryptoDaysProvider.state).state = widget.days;
           setState(() {});

@@ -9,9 +9,7 @@ import '../../shared/providers/providers.dart';
 import '../../shared/widgets/default_title.dart';
 
 class ReviewBody extends HookConsumerWidget {
-  const ReviewBody({
-    Key? key,
-  }) : super(key: key);
+  const ReviewBody({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

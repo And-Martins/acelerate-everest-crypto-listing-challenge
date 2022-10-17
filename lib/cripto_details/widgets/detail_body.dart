@@ -130,6 +130,7 @@ class _WalletBodyState extends ConsumerState<DetailBody> {
                 ],
               ),
             ),
+            //TODO - Testar o erro
             error: (error, stackTrace) => const Text("Deu erro"),
             loading: () => SizedBox(
               height: MediaQuery.of(context).size.height - 100,

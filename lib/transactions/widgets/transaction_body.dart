@@ -31,6 +31,7 @@ class TransactionBody extends HookConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Lottie.asset(
+                  key: const Key('animationWithoutTransaction'),
                   transactionAnimation,
                   repeat: false,
                   height: 250,
@@ -38,6 +39,7 @@ class TransactionBody extends HookConsumerWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: DefaultTitle(
+                    key: const Key('defaultTitleTransactionScreen'),
                     title:
                         TranslationFile.of(context)!.transactionNotFoundTitle,
                     titleSize: 27,
@@ -48,6 +50,7 @@ class TransactionBody extends HookConsumerWidget {
                   padding:
                       const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                   child: DefaultSubtitle(
+                    key: const Key('defaultSubtitleTransactionScreen'),
                     TranslationFile.of(context)!.transactionNotFoundSubtitle,
                   ),
                 ),
@@ -81,6 +84,7 @@ class TransactionBody extends HookConsumerWidget {
                                     strong: 600,
                                     size: 20,
                                     color: Colors.grey.shade500,
+                                    key: const Key('transactionFirstLine'),
                                   ),
                                   DefaultSubtitle(
                                     formatDate
@@ -89,6 +93,7 @@ class TransactionBody extends HookConsumerWidget {
                                     strong: 600,
                                     size: 20,
                                     color: Colors.grey.shade500,
+                                    key: const Key('transactionDate'),
                                   ),
                                 ],
                               ),
@@ -100,12 +105,14 @@ class TransactionBody extends HookConsumerWidget {
                                     strong: 600,
                                     size: 20,
                                     color: Colors.black87,
+                                    key: const Key('transactionSecoundLine'),
                                   ),
                                   DefaultSubtitle(
                                     "R\$ ${formatReais.format(transaction[index].valueReais)}",
                                     strong: 600,
                                     size: 20,
                                     color: Colors.grey.shade500,
+                                    key: const Key('transactionValue'),
                                   ),
                                 ],
                               ),

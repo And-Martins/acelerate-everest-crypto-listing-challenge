@@ -9,9 +9,7 @@ import '../../shared/providers/providers.dart';
 import '../../transactions/providers/transaction_providers.dart';
 
 class ConfirmReviewButton extends HookConsumerWidget {
-  const ConfirmReviewButton({
-    Key? key,
-  }) : super(key: key);
+  const ConfirmReviewButton({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -22,9 +20,9 @@ class ConfirmReviewButton extends HookConsumerWidget {
         height: 55,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(backgroundColor: Colors.pink),
+          //TODO - Verificar por que o teste não está entrando aqui
           onPressed: () {
             DateTime now = DateTime.now();
-
             DateTime date = DateTime(now.year, now.month, now.day);
             TransactionModel transactionModel = TransactionModel(
               date: date,

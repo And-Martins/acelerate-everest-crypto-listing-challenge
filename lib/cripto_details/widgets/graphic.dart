@@ -23,6 +23,7 @@ class Graphic extends StatefulHookConsumerWidget {
 class _GraphicState extends ConsumerState<Graphic> {
   late List<FlSpot> spotsList;
 
+//TODO - Testar o onChange
   @override
   Widget build(BuildContext context) {
     void changeValue(Decimal newValue) {
@@ -52,6 +53,7 @@ class _GraphicState extends ConsumerState<Graphic> {
               titlesData: FlTitlesData(show: false),
               extraLinesData: ExtraLinesData(),
               lineTouchData: LineTouchData(
+                //TODO - Testar o onChange
                 touchCallback: (FlTouchEvent event, lineTouchResponse) {
                   if (!event.isInterestedForInteractions) {
                     setState(() {
@@ -84,6 +86,7 @@ class _GraphicState extends ConsumerState<Graphic> {
                     vertical: 5,
                   ),
                   tooltipRoundedRadius: 15,
+                  //TODO - Testar o retorno do toque
                   getTooltipItems: (touchedSpots) {
                     return touchedSpots.map((touchedSpot) {
                       return LineTooltipItem(
