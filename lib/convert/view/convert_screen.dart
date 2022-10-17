@@ -22,7 +22,10 @@ class ConvertScreen extends HookConsumerWidget {
         titleSize: 23,
       ),
       body: const ConvertBody(),
-      floatingActionButton: ConfirmButton(zeroAlert: zeroAlert),
+      floatingActionButton: ConfirmButton(
+        zeroAlert: zeroAlert,
+        key: const Key('confirmButtonConvertScreen'),
+      ),
     );
   }
 }

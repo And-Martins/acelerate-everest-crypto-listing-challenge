@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../review/view/review_page.dart';
 import '../../shared/providers/providers.dart';
 
 class ConfirmButton extends HookConsumerWidget {
@@ -16,10 +17,12 @@ class ConfirmButton extends HookConsumerWidget {
     return FloatingActionButton(
       onPressed: () {
         if (ref.watch(fieldTransferValue.state).state != "") {
-          Navigator.pushNamed(
-            context,
-            '/confirm-conversion',
-          );
+          // Navigator.pushNamed(
+          //   context,
+          //   '/confirmConversion',
+          // );
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const ReviewPage()));
         } else {
           ScaffoldMessenger.of(context).showSnackBar(zeroAlert);
         }

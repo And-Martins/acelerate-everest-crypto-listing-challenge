@@ -35,7 +35,7 @@ class _DropdownCryptoState extends ConsumerState<DropdownCrypto> {
       }
 
       if (widget.type == "from") {
-        for (int index = 0; index <= listCrypto.length; index++) {
+        for (int index = 0; index < listCrypto.length; index++) {
           if (listCrypto[index].symbol == widget.fromCrypto) {
             dropdownValue = listCrypto[index];
             ref.watch(fromCryptoConvertAbrev.state).state =
@@ -46,7 +46,7 @@ class _DropdownCryptoState extends ConsumerState<DropdownCrypto> {
           }
         }
       } else if (widget.type == "to") {
-        for (int index = 0; index <= listCrypto.length; index++) {
+        for (int index = 0; index < listCrypto.length; index++) {
           if (listCrypto[index].symbol == widget.fromCrypto) {
             if (index < listCrypto.length - 1) {
               dropdownValue = listCrypto[index + 1];

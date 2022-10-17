@@ -36,7 +36,6 @@ class _ButtonDayState extends ConsumerState<ButtonDay> {
         ),
         onPressed: () {
           ref.watch(cryptoDaysProvider.state).state = widget.days;
-
           setState(() {});
         },
         child: Text(

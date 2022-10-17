@@ -20,13 +20,15 @@ class ConfirmBody extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Lottie.asset(
-            confirmAnimation,
-            repeat: false,
-            height: 150,
-          ),
+          Lottie.asset(confirmAnimation,
+              repeat: false,
+              height: 150,
+              key: const Key('animtaionConfirmScreen')),
           const SizedBox(height: 10),
-          DefaultTitle(title: TranslationFile.of(context)!.completeTitle),
+          DefaultTitle(
+            title: TranslationFile.of(context)!.completeTitle,
+            key: const Key('defaultTitleConfirmScreen'),
+          ),
           const SizedBox(height: 10),
           DefaultSubtitle(
             TranslationFile.of(context)!.completeSubtitle,

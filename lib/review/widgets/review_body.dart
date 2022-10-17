@@ -24,6 +24,7 @@ class ReviewBody extends HookConsumerWidget {
             Padding(
               padding: const EdgeInsets.all(10),
               child: DefaultTitle(
+                key: const Key('defaultTitleReviewScreen'),
                 title: TranslationFile.of(context)!.reviewText,
                 strong: 700,
               ),
@@ -54,7 +55,9 @@ class ReviewBody extends HookConsumerWidget {
               criptoQtdWallet: ref.watch(toCryptoCotacaoProvider.state).state,
               text: TranslationFile.of(context)!.item3TitleReview,
             ),
-            const ConfirmReviewButton()
+            const ConfirmReviewButton(
+              key: Key('confirmButtonReviewScreen'),
+            )
           ],
         ),
       ),

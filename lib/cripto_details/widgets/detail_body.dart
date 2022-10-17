@@ -119,6 +119,7 @@ class _WalletBodyState extends ConsumerState<DetailBody> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 8.0, vertical: 15.0),
                     child: DefaultBigButton(
+                      key: const Key('convertButtonDetailScreen'),
                       title: TranslationFile.of(context)!.convertButtonTitle,
                       route: "/convert",
                       cryptoQtdWallet: widget.cryptoQtdWallet,

@@ -40,7 +40,7 @@ class ConfirmReviewButton extends HookConsumerWidget {
 
             Navigator.pushNamed(
               context,
-              '/complete-conversion',
+              '/completeConversion',
             );
           },
           child: Text(

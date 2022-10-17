@@ -48,6 +48,7 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
                 children: [
                   DefaultSubtitle(TranslationFile.of(context)!.convertBalance),
                   DefaultSubtitle(
+                    key: const Key('quantityConvertBodyScreen'),
                     "${formatCriptoCompleto.format(DecimalIntl(Decimal.parse(ref.watch(cryptoQtdWalletCriptoProvider).toString())))} ${ref.watch(fromCryptoConvertAbrev).toUpperCase()}",
                     strong: 600,
                   ),
@@ -58,6 +59,7 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: DefaultTitle(
+              key: const Key('defaultTitleConvertBodyScreen'),
               title: TranslationFile.of(context)!.convertText,
               strong: 700,
               titleSize: 28,
