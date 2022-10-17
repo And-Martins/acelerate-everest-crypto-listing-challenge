@@ -1,25 +1,29 @@
-import 'package:crypto_listing/wallet_presenter/wallet_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'core/routes.dart';
+
+import 'l10n/translation_file.dart';
 
 void main() {
   runApp(
-    const MyApp(),
+    const ProviderScope(child: MyApp()),
   );
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.grey,
       ),
-      home: const WalletScreen(),
+      supportedLocales: TranslationFile.supportedLocales,
+      localizationsDelegates: TranslationFile.localizationsDelegates,
+      initialRoute: '/wallet',
+      routes: routesNavigation,
     );
   }
 }
