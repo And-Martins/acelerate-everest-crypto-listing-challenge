@@ -15,10 +15,6 @@ class ConfirmScreen extends StatelessWidget {
         leading: IconButton(
           key: const Key('backButtonConfirmScreen'),
           onPressed: () {
-            // Navigator.pushReplacementNamed(
-            //   context,
-            //   '/wallet',
-            // );
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const WalletScreen()));
           },

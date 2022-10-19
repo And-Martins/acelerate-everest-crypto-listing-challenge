@@ -22,7 +22,6 @@ class WalletBody extends StatefulHookConsumerWidget {
 class _WalletBodyState extends ConsumerState<WalletBody> {
   final scrollController = ScrollController();
 
-//TODO - Entrar no onListen
   void onListen() {
     setState(() {});
   }
@@ -78,7 +77,6 @@ class _WalletBodyState extends ConsumerState<WalletBody> {
                           TranslationFile.of(context)!.walletSubtitle),
                     ],
                   ),
-                  //TODO - Testar erro 1
                   error: (error, stackTrace) => const Text("Deu erro"),
                   loading: () => const Center(
                     child: CircularProgressIndicator(
@@ -131,7 +129,6 @@ class _WalletBodyState extends ConsumerState<WalletBody> {
                       }
                     },
                   ),
-                  //TODO - Testar erro 2
                   error: (error, stackTrace) => const Text("Deu erro"),
                   loading: () => const Center(
                     child: CircularProgressIndicator(

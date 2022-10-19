@@ -19,7 +19,6 @@ class InternationalizationTester extends ConsumerWidget {
       localizationsDelegates: TranslationFile.localizationsDelegates,
       supportedLocales: TranslationFile.supportedLocales,
       locale: locale,
-      //TODO - onGenerateRoute?
     );
   }
 }

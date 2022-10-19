@@ -20,7 +20,6 @@ class ConfirmReviewButton extends HookConsumerWidget {
         height: 55,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(backgroundColor: Colors.pink),
-          //TODO - Verificar por que o teste não está entrando aqui
           onPressed: () {
             DateTime now = DateTime.now();
             DateTime date = DateTime(now.year, now.month, now.day);

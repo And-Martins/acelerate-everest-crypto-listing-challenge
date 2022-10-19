@@ -17,10 +17,6 @@ class ConfirmButton extends HookConsumerWidget {
     return FloatingActionButton(
       onPressed: () {
         if (ref.watch(fieldTransferValue.state).state != "") {
-          // Navigator.pushNamed(
-          //   context,
-          //   '/confirmConversion',
-          // );
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => const ReviewPage()));
         } else {
