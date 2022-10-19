@@ -4,6 +4,7 @@ import 'core/routes.dart';
 
 import 'l10n/translation_file.dart';
 
+
 void main() {
   runApp(
     const ProviderScope(child: MyApp()),

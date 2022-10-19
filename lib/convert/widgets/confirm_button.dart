@@ -3,6 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../review/view/review_page.dart';
 import '../../shared/providers/providers.dart';
+import '../controller/providers.dart';
 
 class ConfirmButton extends HookConsumerWidget {
   const ConfirmButton({
@@ -16,6 +17,14 @@ class ConfirmButton extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return FloatingActionButton(
       onPressed: () {
+        if (ref.watch(cryptoQtdWalletCriptoProvider) <
+            double.parse(ref.watch(fieldTransferValue.state).state)) {
+        } else {
+          ref.watch(resultConvertedValue.state).state =
+              (ref.watch(transferCryptoConverted.state).state /
+                  ref.watch(toCryptoCotacaoProvider.state).state);
+        }
+        FocusManager.instance.primaryFocus?.unfocus();
         if (ref.watch(fieldTransferValue.state).state != "") {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => const ReviewPage()));

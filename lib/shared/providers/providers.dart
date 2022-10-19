@@ -1,9 +1,9 @@
+import 'package:crypto_listing/shared/providers/total_amount_provider.dart';
 import 'package:decimal/decimal.dart';
 import 'package:dio/dio.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../wallet/model/crypto_view_data.dart';
-import 'total_amount_provider.dart';
 
 final hideWalletStateProvider = StateProvider((ref) => false);
 final cryptoCotacaoProvider = StateProvider((ref) => Decimal.parse('00.0'));
@@ -21,11 +21,5 @@ final totalValueAmountProvider =
   (ref) => TotalWalletAmountProvider(),
 );
 
-final cryptoDataProvider = StateProvider<CryptoViewData>((ref) =>
-    CryptoViewData(
-        id: "",
-        symbol: "",
-        name: "",
-        currentPrice: Decimal.parse("0.0"),
-        image: "",
-        marketCapChangePercentage24h: 0.0));
+final cryptoDataProvider =
+    StateProvider<CryptoViewData>((ref) => CryptoViewData());
