@@ -111,7 +111,6 @@ class _GraphicState extends ConsumerState<Graphic> {
                   ),
                 ),
               ),
-              // clipData: FlClipData.vertical(),
             ),
           ),
         ),
