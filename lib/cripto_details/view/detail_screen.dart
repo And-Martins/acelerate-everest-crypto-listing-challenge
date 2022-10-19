@@ -28,9 +28,10 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
         titleSize: 23,
       ),
       body: DetailBody(
-          cryptoDays: criptoDays,
-          cryptoValueWalletReais: criptoValueWalletReais,
-          cryptoQtdWallet: criptoQtdWallet),
+        cryptoDays: criptoDays,
+        cryptoValueWalletReais: criptoValueWalletReais,
+        cryptoQtdWallet: criptoQtdWallet,
+      ),
     );
   }
 }

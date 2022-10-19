@@ -72,6 +72,7 @@ class _ConvertBodyState extends ConsumerState<ConvertBody> {
                 cryptoData: cryptoData,
                 type: "from",
                 fromCrypto: ref.watch(fromCryptoConvertAbrev),
+                key: const Key("dropdownFromConvert"),
               ),
               const Icon(
                 Icons.sync_alt_rounded,
