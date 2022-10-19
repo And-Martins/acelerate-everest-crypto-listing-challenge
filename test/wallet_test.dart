@@ -5,7 +5,6 @@ import 'package:crypto_listing/wallet/model/crypto_list_view_data.dart';
 import 'package:crypto_listing/wallet/model/crypto_view_data.dart';
 import 'package:crypto_listing/wallet/view/wallet_screen.dart';
 import 'package:crypto_listing/wallet/widgets/wallet_body.dart';
-import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -34,8 +33,7 @@ void main() {
           overrides: [
             getTotalWalletValue.overrideWithProvider(
               (argument) {
-                return Provider(
-                    (ref) => AsyncValue.data(Decimal.parse('39856.00')));
+                return Provider((ref) => const AsyncValue.data(39856.00));
               },
             ),
             listCryptoProvider.overrideWithValue(
@@ -43,7 +41,7 @@ void main() {
                 CryptoListViewData(
                   cryptoViewDataList: [
                     CryptoViewData(
-                        currentPrice: Decimal.parse('100663'),
+                        currentPrice: 100663,
                         id: 'bitcoin',
                         image:
                             'https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579',

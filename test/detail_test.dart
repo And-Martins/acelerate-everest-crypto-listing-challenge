@@ -6,7 +6,6 @@ import 'package:crypto_listing/cripto_details/view/detail_screen.dart';
 import 'package:crypto_listing/cripto_details/widgets/button_day.dart';
 import 'package:crypto_listing/shared/providers/providers.dart';
 import 'package:crypto_listing/wallet/model/crypto_view_data.dart';
-import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -30,7 +29,7 @@ void main() {
                     name: 'Bitcoin',
                     image:
                         'https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579',
-                    currentPrice: Decimal.parse('100663'),
+                    currentPrice: 100663,
                     marketCapChangePercentage24h: -0.63286),
               ),
             ),
@@ -172,7 +171,7 @@ void main() {
                   name: 'Bitcoin',
                   image:
                       'https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579',
-                  currentPrice: Decimal.parse('100663'),
+                  currentPrice: 100663,
                   marketCapChangePercentage24h: 0.63286,
                 ),
               ),

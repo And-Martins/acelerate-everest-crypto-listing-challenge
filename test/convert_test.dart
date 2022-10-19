@@ -29,7 +29,7 @@ void main() {
               CryptoListViewData(
                 cryptoViewDataList: [
                   CryptoViewData(
-                      currentPrice: Decimal.parse('100663'),
+                      currentPrice: 100663,
                       id: 'bitcoin',
                       image:
                           'https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579',
@@ -37,7 +37,7 @@ void main() {
                       name: 'Bitcoin',
                       symbol: 'btc'),
                   CryptoViewData(
-                      currentPrice: Decimal.parse('100663'),
+                      currentPrice: 100663,
                       id: 'ethereum',
                       image:
                           'https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880',
@@ -81,7 +81,7 @@ void main() {
               CryptoListViewData(
                 cryptoViewDataList: [
                   CryptoViewData(
-                      currentPrice: Decimal.parse('100663'),
+                      currentPrice: 100663,
                       id: 'bitcoin',
                       image:
                           'https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579',
@@ -89,7 +89,7 @@ void main() {
                       name: 'Bitcoin',
                       symbol: 'btc'),
                   CryptoViewData(
-                      currentPrice: Decimal.parse('100663'),
+                      currentPrice: 100663,
                       id: 'ethereum',
                       image:
                           'https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880',
@@ -100,7 +100,7 @@ void main() {
               ),
             ),
           ),
-          fieldTransferValue.overrideWithValue(StateController("")),
+          fieldTransferValue.overrideWithValue(StateController("0")),
         ], child: const ConvertScreen()),
       );
 
