@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../l10n/translation_file.dart';
 import '../../shared/providers/providers.dart';
 import '../../shared/widgets/default_appbar.dart';
 import '../widgets/detail_body.dart';
@@ -23,13 +23,15 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
 
     return Scaffold(
       appBar: DefaultAppbar(
-        title: AppLocalizations.of(context)!.detailTitleAppBar,
+        key: const Key('AppbarDetailScreen'),
+        title: TranslationFile.of(context)!.detailTitleAppBar,
         titleSize: 23,
       ),
       body: DetailBody(
-          cryptoDays: criptoDays,
-          cryptoValueWalletReais: criptoValueWalletReais,
-          cryptoQtdWallet: criptoQtdWallet),
+        cryptoDays: criptoDays,
+        cryptoValueWalletReais: criptoValueWalletReais,
+        cryptoQtdWallet: criptoQtdWallet,
+      ),
     );
   }
 }

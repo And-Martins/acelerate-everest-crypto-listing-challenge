@@ -1,22 +1,19 @@
+import 'package:crypto_listing/wallet/widgets/cripto_item.dart';
+import 'package:crypto_listing/wallet/widgets/hide_button.dart';
+import 'package:crypto_listing/wallet/widgets/total_value.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../l10n/translation_file.dart';
 import '../../shared/models/wallet_model.dart';
 import '../../shared/providers/providers.dart';
 import '../../shared/widgets/default_subtitle.dart';
 import '../../shared/widgets/default_title.dart';
 import '../controller/crypto_provider.dart';
-import '../model/crypto_list_view_data.dart';
 import '../model/crypto_view_data.dart';
-import 'cripto_item.dart';
-import 'hide_button.dart';
-import 'total_value.dart';
 
 class WalletBody extends StatefulHookConsumerWidget {
-  const WalletBody({
-    Key? key,
-  }) : super(key: key);
+  const WalletBody({super.key});
 
   @override
   ConsumerState<WalletBody> createState() => _WalletBodyState();
@@ -32,7 +29,6 @@ class _WalletBodyState extends ConsumerState<WalletBody> {
   @override
   void initState() {
     scrollController.addListener(onListen);
-
     super.initState();
   }
 
@@ -51,57 +47,59 @@ class _WalletBodyState extends ConsumerState<WalletBody> {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 15),
-            child: FutureBuilder(
-              future: ref.watch(
-                  getTotalWalletValue(ref.watch(totalValueAmountProvider))
-                      .future),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Column(
+            child: ref
+                .watch(getTotalWalletValue(ref.watch(totalValueAmountProvider)))
+                .when(
+                  data: (data) => Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           DefaultTitle(
-                            title: AppLocalizations.of(context)!.walletTitle,
+                            key: const Key('titleWalletScreen'),
+                            title: TranslationFile.of(context)!.walletTitle,
                             color: const Color.fromRGBO(224, 43, 87, 1),
                           ),
-                          const HideButton(),
+                          const HideButton(
+                            key: Key('hideButtonWalletScreen'),
+                          ),
                         ],
                       ),
                       TotalValue(
+                        key: const Key('totalValueWalletScreen'),
                         totalReais: double.parse(
-                          snapshot.data!.toString(),
+                          data.toString(),
                         ),
                       ),
                       DefaultSubtitle(
-                          AppLocalizations.of(context)!.walletSubtitle),
+                          key: const Key('subtitleWalletScreen'),
+                          TranslationFile.of(context)!.walletSubtitle),
                     ],
-                  );
-                } else {
-                  return const Center(child: CircularProgressIndicator());
-                }
-              },
-            ),
+                  ),
+                  error: (error, stackTrace) => const Text("Deu erro"),
+                  loading: () => const Center(
+                    child: CircularProgressIndicator(
+                      key: Key('loadingHeaderWallet'),
+                    ),
+                  ),
+                ),
           ),
           Expanded(
-            child: FutureBuilder(
-              future: ref.watch(listCryptoProvider.future),
-              builder: (context, AsyncSnapshot<CryptoListViewData> snapshot) {
-                if (snapshot.hasData) {
-                  return ListView.builder(
+            child: ref.watch(listCryptoProvider).when(
+                  data: (data) => ListView.builder(
+                    key: const Key('listviewCrypto'),
                     physics: const BouncingScrollPhysics(),
                     controller: scrollController,
-                    itemCount: snapshot.data!.cryptoViewDataList.length,
+                    itemCount: data.cryptoViewDataList.length,
                     itemBuilder: (context, index) {
-                      cryptoData = snapshot.data!.cryptoViewDataList[index];
+                      cryptoData = data.cryptoViewDataList[index];
 
                       final WalletModel walletModel = WalletModel(
                         quantityCoin:
                             ref.watch(totalValueAmountProvider)[index],
-                        valueWalletCoin: snapshot
-                            .data!.cryptoViewDataList[index].currentPrice,
+                        valueWalletCoin:
+                            data.cryptoViewDataList[index].currentPrice,
                         idCoin: cryptoData.symbol,
                       );
 
@@ -122,6 +120,7 @@ class _WalletBodyState extends ConsumerState<WalletBody> {
                             alignment: Alignment.center,
                             transform: Matrix4.identity()..scale(scale, 1.0),
                             child: CriptoItem(
+                              key: const Key('criptoItemWalletScreen'),
                               cryptoData: cryptoData,
                               walletModel: walletModel,
                             ),
@@ -129,12 +128,14 @@ class _WalletBodyState extends ConsumerState<WalletBody> {
                         );
                       }
                     },
-                  );
-                } else {
-                  return const Center(child: CircularProgressIndicator());
-                }
-              },
-            ),
+                  ),
+                  error: (error, stackTrace) => const Text("Deu erro"),
+                  loading: () => const Center(
+                    child: CircularProgressIndicator(
+                      key: Key('loadingListViewWallet'),
+                    ),
+                  ),
+                ),
           ),
         ],
       ),

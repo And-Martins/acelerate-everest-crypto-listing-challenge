@@ -8,10 +8,10 @@ class ButtonDay extends StatefulHookConsumerWidget {
   final int days;
 
   const ButtonDay({
-    Key? key,
+    super.key,
     required this.text,
     required this.days,
-  }) : super(key: key);
+  });
 
   @override
   ConsumerState<ButtonDay> createState() => _ButtonDayState();
@@ -36,7 +36,6 @@ class _ButtonDayState extends ConsumerState<ButtonDay> {
         ),
         onPressed: () {
           ref.watch(cryptoDaysProvider.state).state = widget.days;
-
           setState(() {});
         },
         child: Text(

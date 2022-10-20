@@ -1,17 +1,16 @@
 import 'package:crypto_listing/transactions/model/transaction_model.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 import '../../convert/controller/providers.dart';
+
+import '../../l10n/translation_file.dart';
 import '../../shared/providers/providers.dart';
 import '../../transactions/providers/transaction_providers.dart';
 
 class ConfirmReviewButton extends HookConsumerWidget {
-  const ConfirmReviewButton({
-    Key? key,
-  }) : super(key: key);
+  const ConfirmReviewButton({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,7 +23,6 @@ class ConfirmReviewButton extends HookConsumerWidget {
           style: ElevatedButton.styleFrom(backgroundColor: Colors.pink),
           onPressed: () {
             DateTime now = DateTime.now();
-
             DateTime date = DateTime(now.year, now.month, now.day);
             TransactionModel transactionModel = TransactionModel(
               date: date,
@@ -40,11 +38,11 @@ class ConfirmReviewButton extends HookConsumerWidget {
 
             Navigator.pushNamed(
               context,
-              '/complete-conversion',
+              '/completeConversion',
             );
           },
           child: Text(
-            AppLocalizations.of(context)!.reviewButton,
+            TranslationFile.of(context)!.reviewButton,
             style: const TextStyle(
               fontSize: 17,
               color: Colors.white,
