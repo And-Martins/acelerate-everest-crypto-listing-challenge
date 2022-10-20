@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:crypto_listing/cripto_details/controller/providers.dart';
 import 'package:crypto_listing/cripto_details/model/detail_list_view_data.dart';
 import 'package:crypto_listing/cripto_details/view/detail_screen.dart';
-import 'package:crypto_listing/cripto_details/widgets/button_day.dart';
 import 'package:crypto_listing/shared/providers/providers.dart';
 import 'package:crypto_listing/wallet/model/crypto_view_data.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +14,7 @@ import 'helpers/setup_widget_tester.dart';
 void main() {
   setUpAll(() => HttpOverrides.global = null);
   testWidgets(
-    'WHEN loading Detail THEN ensure widgets have information',
+    'WHEN loading Detail THEN ensure buttons are working',
     (WidgetTester tester) async {
       await loadPage(
         tester,
@@ -142,16 +141,11 @@ void main() {
       );
 
       expect(find.byKey(const Key('defaultTitleDetailScreen')), findsOneWidget);
-      var criptoDaySelected = tester.widget<ButtonDay>(
-        find.widgetWithText(ButtonDay, '5D'),
+      await tester.scrollUntilVisible(
+        find.byKey(const Key('5DButtonDay')),
+        10,
       );
-      await tester.tap(find.text('5D'));
-      await tester.pump(const Duration(seconds: 2));
-      expect(criptoDaySelected.days, equals(5));
-
-      await tester.tap(find.text('15D'));
-      await tester.pump(const Duration(seconds: 2));
-      expect(criptoDaySelected.days, equals(5));
+      await tester.pump();
 
       await tester.tap(find.byKey(const Key('convertButtonDetailScreen')));
     },

@@ -72,6 +72,7 @@ class _WalletBodyState extends ConsumerState<DetailBody> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: const [
                       ButtonDay(
+                        key: Key('5DButtonDay'),
                         text: "5D",
                         days: 5,
                       ),
