@@ -11,7 +11,7 @@ final cryptoValueWalletReaisProvider = StateProvider((ref) => 00.0);
 final cryptoQtdWalletCriptoProvider = StateProvider((ref) => 00.0);
 final cryptoDaysProvider = StateProvider((ref) => 5);
 
-final fieldTransferValue = StateProvider((ref) => "");
+final fieldTransferValue = StateProvider((ref) => "0");
 final dioProvider = Provider(
   (ref) => Dio(BaseOptions(baseUrl: 'https://api.coingecko.com/api/v3')),
 );

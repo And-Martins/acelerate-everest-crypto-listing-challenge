@@ -25,7 +25,7 @@ class ConfirmButton extends HookConsumerWidget {
                   ref.watch(toCryptoCotacaoProvider.state).state);
         }
         FocusManager.instance.primaryFocus?.unfocus();
-        if (ref.watch(fieldTransferValue.state).state != "") {
+        if (ref.watch(fieldTransferValue.state).state != "0") {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => const ReviewPage()));
         } else {

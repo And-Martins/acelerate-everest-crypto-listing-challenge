@@ -30,7 +30,11 @@ void main() {
         ),
       );
       expect(find.byKey(const Key('defaultTitleReviewScreen')), findsOneWidget);
-      await tester.press(find.byKey(const Key('confirmButtonReviewScreen')));
+      await tester.scrollUntilVisible(
+        find.byKey(const Key('confirmButtonReviewScreen')),
+        5,
+      );
+      // await tester.tap(find.byKey(const Key('confirmButtonReviewScreen')));
       await tester.pumpAndSettle(const Duration(seconds: 2));
     },
   );

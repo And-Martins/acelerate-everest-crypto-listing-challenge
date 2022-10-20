@@ -69,6 +69,59 @@ void main() {
       await tester.tap(find.byKey(const Key('dropdownFromConvert')));
     },
   );
+  testWidgets(
+    'WHEN selected the last crypto in Wallet THEN ensure the dropdown will show the last crypto',
+    (WidgetTester tester) async {
+      await loadPage(
+        tester,
+        ProviderScope(
+          overrides: [
+            fromCryptoCotacaoProvider
+                .overrideWithValue(StateController(39856.00)),
+            listCryptoProvider.overrideWithValue(
+              AsyncValue.data(
+                CryptoListViewData(
+                  cryptoViewDataList: [
+                    CryptoViewData(
+                        currentPrice: 100663,
+                        id: 'bitcoin',
+                        image:
+                            'https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579',
+                        marketCapChangePercentage24h: -0.63286,
+                        name: 'Bitcoin',
+                        symbol: 'btc'),
+                    CryptoViewData(
+                        currentPrice: 100663,
+                        id: 'ethereum',
+                        image:
+                            'https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880',
+                        marketCapChangePercentage24h: -0.63286,
+                        name: 'Ethereum',
+                        symbol: 'eth'),
+                  ],
+                ),
+              ),
+            ),
+            cryptoQtdWalletCriptoProvider
+                .overrideWithValue(StateController(0.84)),
+            fromCryptoConvertAbrev.overrideWithValue(StateController('btc')),
+            fromCryptoConvertImg.overrideWithValue(StateController(
+                'https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579')),
+            convertedValue
+                .overrideWithValue(StateController(Decimal.parse('0.924'))),
+          ],
+          child: const ConvertScreen(),
+        ),
+      );
+
+      final dropdown = find.byKey(const Key('dropdownFromConvert'));
+      await tester.tap(dropdown);
+      await tester.pump();
+
+      await tester.tap(dropdown.last);
+      await tester.pump();
+    },
+  );
 
   testWidgets(
     'WHEN confirm button in review are pressed THEN ensure widgets are showing message',
@@ -104,6 +157,11 @@ void main() {
         ], child: const ConvertScreen()),
       );
 
+      await tester.tap(find.byKey(const Key('confirmButtonConvertScreen')));
+      await tester.pump(const Duration(seconds: 3));
+      expect(find.byType(SnackBar), findsOneWidget);
+
+      fieldTransferValue.overrideWithValue(StateController("10"));
       await tester.tap(find.byKey(const Key('confirmButtonConvertScreen')));
     },
   );
