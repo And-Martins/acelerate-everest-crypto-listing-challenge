@@ -132,7 +132,7 @@ LF:5
 LH:1
 end_of_record
 SF:lib\cripto_details\model\detail_list_view_data.dart
-DA:4,2
+DA:4,1
 LF:1
 LH:1
 end_of_record
@@ -306,7 +306,7 @@ LF:5
 LH:5
 end_of_record
 SF:lib\wallet\model\crypto_view_data.dart
-DA:9,4
+DA:9,3
 LF:1
 LH:1
 end_of_record
