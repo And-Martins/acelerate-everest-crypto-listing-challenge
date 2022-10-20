@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../review/view/review_page.dart';
 import '../../shared/providers/providers.dart';
 import '../controller/providers.dart';
 
@@ -25,10 +26,8 @@ class ConfirmButton extends HookConsumerWidget {
         }
         FocusManager.instance.primaryFocus?.unfocus();
         if (ref.watch(fieldTransferValue.state).state != "") {
-          Navigator.pushNamed(
-            context,
-            '/confirm-conversion',
-          );
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const ReviewPage()));
         } else {
           ScaffoldMessenger.of(context).showSnackBar(zeroAlert);
         }

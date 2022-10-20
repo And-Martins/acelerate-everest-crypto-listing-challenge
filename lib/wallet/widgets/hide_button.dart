@@ -4,9 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../shared/providers/providers.dart';
 
 class HideButton extends HookConsumerWidget {
-  const HideButton({
-    Key? key,
-  }) : super(key: key);
+  const HideButton({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

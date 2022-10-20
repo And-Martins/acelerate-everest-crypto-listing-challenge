@@ -1,17 +1,16 @@
+import '../../l10n/translation_file.dart';
 import '../../wallet/model/crypto_view_data.dart';
 import 'cripto_icon.dart';
 import 'title_value_cripto.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../shared/providers/providers.dart';
 import '../../shared/widgets/default_big_button.dart';
 import '../../shared/widgets/default_subtitle.dart';
 import '../../shared/widgets/default_title.dart';
 import '../controller/providers.dart';
-import '../model/detail_list_view_data.dart';
 import 'button_day.dart';
 import 'graphic.dart';
 import 'item_detail.dart';
@@ -40,13 +39,8 @@ class _WalletBodyState extends ConsumerState<DetailBody> {
     double count = 90;
     return SingleChildScrollView(
       physics: const ScrollPhysics(parent: BouncingScrollPhysics()),
-      child: FutureBuilder(
-        future: ref.watch(
-          getDetailProvider(cryptoViewData.id).future,
-        ),
-        builder: (context, AsyncSnapshot<DetailListViewData> snapshot) {
-          if (snapshot.hasData) {
-            return Padding(
+      child: ref.watch(getDetailProvider(cryptoViewData.id)).when(
+            data: (data) => Padding(
               padding: const EdgeInsets.all(15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,7 +48,10 @@ class _WalletBodyState extends ConsumerState<DetailBody> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      DefaultTitle(title: cryptoViewData.name),
+                      DefaultTitle(
+                        title: cryptoViewData.name,
+                        key: const Key('defaultTitleDetailScreen'),
+                      ),
                       CriptoIcon(criptoImage: cryptoViewData.image),
                     ],
                   ),
@@ -62,7 +59,7 @@ class _WalletBodyState extends ConsumerState<DetailBody> {
                   TitleValorCripto(criptoCotacao: cryptoViewData.currentPrice),
                   Graphic(
                     defineSpot: List<FlSpot>.from(
-                      snapshot.data!.prices.reversed.map(
+                      data.prices.reversed.map(
                         (item) => FlSpot(
                           count--,
                           item[0].toDouble(),
@@ -100,29 +97,30 @@ class _WalletBodyState extends ConsumerState<DetailBody> {
                     option: 1,
                     criptoCotacao:
                         double.parse(cryptoViewData.currentPrice.toString()),
-                    text: AppLocalizations.of(context)!.item1Title,
+                    text: TranslationFile.of(context)!.item1Title,
                   ),
                   ItemDetail(
                     option: 2,
                     criptoVariacao: cryptoViewData.marketCapChangePercentage24h,
-                    text: AppLocalizations.of(context)!.item2Title,
+                    text: TranslationFile.of(context)!.item2Title,
                   ),
                   ItemDetail(
                     option: 3,
                     criptoAbrev: cryptoViewData.symbol,
                     criptoQtdWallet: widget.cryptoQtdWallet,
-                    text: AppLocalizations.of(context)!.item3Title,
+                    text: TranslationFile.of(context)!.item3Title,
                   ),
                   ItemDetail(
                     option: 4,
                     criptoValueWalletReais: widget.cryptoValueWalletReais,
-                    text: AppLocalizations.of(context)!.item4Title,
+                    text: TranslationFile.of(context)!.item4Title,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 8.0, vertical: 15.0),
                     child: DefaultBigButton(
-                      title: AppLocalizations.of(context)!.convertButtonTitle,
+                      key: const Key('convertButtonDetailScreen'),
+                      title: TranslationFile.of(context)!.convertButtonTitle,
                       route: "/convert",
                       cryptoQtdWallet: widget.cryptoQtdWallet,
                       cryptoAbrev: cryptoViewData.symbol,
@@ -131,23 +129,24 @@ class _WalletBodyState extends ConsumerState<DetailBody> {
                   ),
                 ],
               ),
-            );
-          } else {
-            return SizedBox(
+            ),
+            error: (error, stackTrace) =>
+                const Text("Deu erro", key: Key('errorMessage')),
+            loading: () => SizedBox(
               height: MediaQuery.of(context).size.height - 100,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: const [
                   Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(
+                      key: Key('loadingDetailScreen'),
+                    ),
                   ),
                 ],
               ),
-            );
-          }
-        },
-      ),
+            ),
+          ),
     );
   }
 }

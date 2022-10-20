@@ -1,7 +1,7 @@
+import '../../l10n/translation_file.dart';
 import 'confirm_review_button.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../convert/controller/providers.dart';
 import '../../cripto_details/widgets/item_detail.dart';
@@ -9,9 +9,7 @@ import '../../shared/providers/providers.dart';
 import '../../shared/widgets/default_title.dart';
 
 class ReviewBody extends HookConsumerWidget {
-  const ReviewBody({
-    Key? key,
-  }) : super(key: key);
+  const ReviewBody({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,7 +22,8 @@ class ReviewBody extends HookConsumerWidget {
             Padding(
               padding: const EdgeInsets.all(10),
               child: DefaultTitle(
-                title: AppLocalizations.of(context)!.reviewText,
+                key: const Key('defaultTitleReviewScreen'),
+                title: TranslationFile.of(context)!.reviewText,
                 strong: 700,
               ),
             ),
@@ -33,15 +32,17 @@ class ReviewBody extends HookConsumerWidget {
               option: 3,
               criptoAbrev:
                   ref.watch(fromCryptoConvertAbrev.state).state.toUpperCase(),
-              criptoQtdWallet: double.parse(ref.watch(fieldTransferValue.state).state),
-              text: AppLocalizations.of(context)!.item1TitleReview,
+              criptoQtdWallet: ref.watch(fieldTransferValue.state).state != ""
+                  ? double.parse(ref.watch(fieldTransferValue.state).state)
+                  : 0.0,
+              text: TranslationFile.of(context)!.item1TitleReview,
             ),
             ItemDetail(
               option: 3,
               criptoAbrev:
                   ref.watch(toCryptoConvertAbrev.state).state.toUpperCase(),
               criptoQtdWallet: ref.watch(resultConvertedValue.state).state,
-              text: AppLocalizations.of(context)!.item2TitleReview,
+              text: TranslationFile.of(context)!.item2TitleReview,
             ),
             ItemDetail(
               option: 5,
@@ -50,9 +51,11 @@ class ReviewBody extends HookConsumerWidget {
               criptoAbrevTo:
                   ref.watch(toCryptoConvertAbrev.state).state.toUpperCase(),
               criptoQtdWallet: ref.watch(toCryptoCotacaoProvider.state).state,
-              text: AppLocalizations.of(context)!.item3TitleReview,
+              text: TranslationFile.of(context)!.item3TitleReview,
             ),
-            const ConfirmReviewButton()
+            const ConfirmReviewButton(
+              key: Key('confirmButtonReviewScreen'),
+            )
           ],
         ),
       ),

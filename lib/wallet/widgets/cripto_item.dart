@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../convert/controller/providers.dart';
+import '../../cripto_details/view/detail_screen.dart';
 import '../../shared/models/wallet_model.dart';
 import '../../shared/providers/providers.dart';
 import '../../shared/widgets/number_formatter.dart';
@@ -57,9 +58,12 @@ class _CriptoItemState extends ConsumerState<CriptoItem> {
                   criptoValueWalletReais;
               ref.watch(cryptoQtdWalletCriptoProvider.state).state =
                   walletModel.quantityCoin;
-              Navigator.pushNamed(
+
+              Navigator.push(
                 context,
-                '/criptoDetails',
+                MaterialPageRoute(
+                  builder: (context) => const DetailScreen(),
+                ),
               );
             },
             leading:
